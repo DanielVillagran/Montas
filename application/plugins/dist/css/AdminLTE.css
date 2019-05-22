@@ -30,7 +30,7 @@ body {
 .wrapper {
   min-height: 100%;
   position: relative;
-  background-image: url(back2.jpg);
+  background-image: url(back.png);
   overflow: hidden!important;
 }
 .wrapper:before,
@@ -3042,7 +3042,7 @@ table.text-center th {
 .login-page,
 .register-page {
   background: #d2d6de;
-  background-image: url(back2.jpg);
+  background-image: url(back.png);
 }
 .login-box,
 .register-box {

@@ -254,12 +254,12 @@ doc.autoTable(columns2, rows2, {
 });
 //doc.setFontsize
 img = new Image();
-img.src = "storage/configuration/logo.jpg";
+img.src = "storage/configuration/logo.png";
 
 doc.addImage(img, 'PNG', 495, 20, 60, 60,'mon');  // Cache the image using the alias 'monkey'
 doc.setFontSize(20);
 doc.setFontSize(12);
-doc.text("Casa Maria, agradece su visita. ", 40, doc.autoTableEndPosY()+25);
+doc.text("Montacargas Azteca, agradece su visita. ", 40, doc.autoTableEndPosY()+25);
 doc.save('sell-<?php echo date("d-m-Y h:i:s",time()); ?>.pdf');
 //doc.output("datauri");
 

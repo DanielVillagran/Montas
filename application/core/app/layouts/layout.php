@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Casa Maria | Panel de Administracion</title>
+    <title>Montacargas Azteca | Panel de Administracion</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.4 -->
     <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -42,9 +42,9 @@
         <!-- Logo -->
         <a href="./" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>C</b>M</span>
+          <span class="logo-mini"><b>M</b>A</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Casa</b>Maria</span>
+          <span class="logo-lg"><b>Montacargas</b>Azteca</span>
         </a>
 
         <!-- Header Navbar -->
@@ -280,7 +280,7 @@ $msgs = MessageData::getUnreadedByUserId($_SESSION["user_id"]);
         <?php if(isset($_GET["view"]) && $_GET["view"]=="clientaccess"):?>
 <div class="login-box">
       <div class="login-logo">
-        <a href="./"><img src="logo.jpg"></a>
+        <a href="./"><img src="logo.png"></a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
       <center><h4>Cliente</h4></center>
@@ -306,7 +306,7 @@ $msgs = MessageData::getUnreadedByUserId($_SESSION["user_id"]);
         <?php else:?>
 <div class="login-box">
       <div class="login-logo">
-        <a href="./"><b><img src="logo.jpg"></a>
+        <a href="./"><b><img src="logo.png"></a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
       <center><h4>Admin</h4></center>
