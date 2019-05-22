@@ -12,8 +12,8 @@ class Core {
 	public static $email_user ="odvillagrana@gmail.com";
 	public static $email_password ="daniel200796";
 
-	public static $pdf_footer = "Generado por el Sistema Casa Maria";
-	public static $email_footer = "Correo generado Automaticamente por el Sistema Casa Maria v6";
+	public static $pdf_footer = "Generado por el Sistema Montacargas Azteca";
+	public static $email_footer = "Correo generado Automaticamente por el Sistema Montacargas Azteca v6";
 
 	public static $pdf_table_fillcolor = "[100, 100, 100]";
 	public static $pdf_table_column_fillcolor = "255";

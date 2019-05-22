@@ -5,7 +5,7 @@ if(Core::$user->kind==3){ Core::redir("./?view=sell"); }
 ?>
         <!-- Content Header (Page header) -->
         <section class="content-header">
-          <h1>Casa maria</h1>
+          <h1>Montacargas Azteca</h1>
           <h4>Almacen principal: <?php echo StockData::getPrincipal()->name;  ?></h4>
         </section>
 
