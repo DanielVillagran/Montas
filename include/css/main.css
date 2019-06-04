@@ -132,7 +132,7 @@ html {
 	padding:30px 0;
 }
 .jumbotron h1 {
-	color:#33596f;
+	color:#062333;
 	font-weight:normal;
 	font-size:20px;
 	font-family: 'Questrial', sans-serif;
@@ -140,10 +140,12 @@ html {
 .jumbotron h1 span {
 	font-weight:bold;
 	font-size:32px;
+	
 	font-family: 'Poppins', sans-serif;
 }
 .jumbotron p {
 	font-size:16px;
+	color: black;
 	font-family: 'Questrial', sans-serif;
 }
 
@@ -157,7 +159,7 @@ html {
       display: inline-block;
       font-size: 16px;
       margin: 4px 2px;
-      -webkit-transition-duration: 0.4s; /* Safari */
+      -webkit-transition-duration: 0.4s;
       transition-duration: 0.4s;
       cursor: pointer;
       text-decoration: none;
@@ -216,15 +218,20 @@ padding:10px 30px;
 	margin-bottom:0;
 }
 
-.navbar,fa-ul,li{
+ /* 00000000000000000000000000000000000000000000000 */
+
+ .whiteBar li{
 	color: black;
 	font-size: 20px;
-	font-family: 'Questrial', sans-serif;	
+	font-family: 'Poppins', sans-serif;	
 }
 
-.navbar,fa-ul,p{
-	font-size: 20px;
+.whiteBar p{
+	font-size: 14px;
+	font-family: 'Questrial', sans-serif;
 }
+
+ /* 00000000000000000000000000000000000000000000000000000*/
 
 #navbar .navbar-nav {
 	margin-top:-1px;
@@ -325,7 +332,7 @@ border: 1px solid rgba(1, 2, 2, 0.11);
 -moz-border-radius: 4px;
 -webkit-border-radius: 4px;
 border-radius: 4px;
-padding:20px;
+padding:40px;
 opacity: 0.85;
   filter: alpha(opacity=50); 
 }
@@ -436,3 +443,50 @@ label { cursor: pointer; }
 	.viewDesktop { display: none; }
 
 }
+
+
+/*///////////////////////////////tabla equipos*/
+
+.grayBar .box-part .imagen {
+	width: 200px;
+	height: 400px;
+	margin: 20px;
+	background-image: url(../images/monta.jpg);
+}
+
+.grayBar h4{
+	color:black;
+}
+
+.box{
+	padding:30px 10px;
+	border-radius: 1px;
+	background-color: transparent;
+
+}
+.box-part{
+	background: gray;
+	border-radius: 0px;
+	padding:30px 10px;
+	margin:30px px;
+	padding-top: 5px;
+	padding-right: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+}
+.text{
+	margin:10px 0px;
+}
+
+.fa{
+	color:#000;
+}
+
+.text span {
+	border:none;
+	font-family: "Poppins", sans-serif;
+	font-weight: 800;
+	font-size: 25px;
+}
+
+/*fin tabla equipos///////////////////////////////*/
