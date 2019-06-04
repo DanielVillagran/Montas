@@ -70,22 +70,32 @@ if($product!=null):
       <input type="text" name="price_out" class="form-control" id="price_out" value="<?php echo $product->price_out; ?>" placeholder="Precio de salida">
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group" style="display: none;">
     <label for="inputEmail1" class="col-lg-3 control-label">Unidad*</label>
     <div class="col-md-8">
       <input type="text" name="unit" class="form-control" id="unit" value="<?php echo $product->unit; ?>" placeholder="Unidad del Producto">
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group" style="display: none;">
     <label for="inputEmail1" class="col-lg-3 control-label">Presentacion</label>
     <div class="col-md-8">
       <input type="text" name="presentation" class="form-control" id="inputEmail1" value="<?php echo $product->presentation; ?>" placeholder="Presentacion del Producto">
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group" style="display: none;">
     <label for="inputEmail1" class="col-lg-3 control-label">Minima en inventario:</label>
     <div class="col-md-8">
       <input type="text" name="inventary_min" class="form-control" value="<?php echo $product->inventary_min;?>" id="inputEmail1" placeholder="Minima en Inventario (Default 10)">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail1" class="col-lg-3 control-label" >Renta</label>
+    <div class="col-md-8">
+<div class="checkbox">
+    <label>
+      <input type="checkbox" name="is_rent" <?php if($product->is_rent){ echo "checked";}?>> 
+    </label>
+  </div>
     </div>
   </div>
 
@@ -104,6 +114,7 @@ if($product!=null):
     <div class="col-lg-offset-3 col-lg-8">
     <input type="hidden" name="product_id" value="<?php echo $product->id; ?>">
       <button type="submit" class="btn btn-success">Actualizar Producto</button>
+       <a href="./?view=products" class="btn btn-danger">Regresar</a>
     </div>
   </div>
 </form>

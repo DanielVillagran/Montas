@@ -25,6 +25,9 @@ if(isset($_POST["presentation"]))
   $product->category_id=$category_id;
   $product->inventary_min=$inventary_min;
   $product->user_id = $_SESSION["user_id"];
+  $is_rent=0;
+  if(isset($_POST["is_rent"])){ $is_rent=1;}
+  $product->is_rent=$is_rent;
 
 
   if(isset($_FILES["image"])){

@@ -39,14 +39,13 @@
   </div>
 
 <?php if(isset($_GET["kind"]) &&$_GET["kind"]=="2" || $_GET["kind"]=="3"):?>
-  <div class="form-group">
+  <div style="display: none;" class="form-group">
     <label for="inputEmail1" class="col-lg-2 control-label">Almacen</label>
     <div class="col-md-6">
     <?php 
 $clients = StockData::getAll();
     ?>
     <select name="stock_id" class="form-control" required>
-    <option value="">-- NINGUNO --</option>
     <?php foreach($clients as $client):?>
       <option value="<?php echo $client->id;?>"><?php echo $client->name;?></option>
     <?php endforeach;?>

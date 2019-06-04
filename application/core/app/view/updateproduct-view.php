@@ -17,6 +17,9 @@ if(count($_POST)>0){
 
   $is_active=0;
   if(isset($_POST["is_active"])){ $is_active=1;}
+  $is_rent=0;
+  if(isset($_POST["is_rent"])){ $is_rent=1;}
+  $product->is_rent=$is_rent;
 
   $product->is_active=$is_active;
   $product->category_id=$category_id;

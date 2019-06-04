@@ -58,30 +58,40 @@ $categories = CategoryData::getAll();
       <input type="text" name="price_out" required class="form-control" id="price_out" placeholder="Precio de salida">
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group" style="display: none;">
     <label for="inputEmail1" class="col-lg-2 control-label">Unidad*</label>
     <div class="col-md-6">
-      <input type="text" name="unit" class="form-control" id="unit" placeholder="Unidad del Producto">
+      <input type="text" name="unit" class="form-control" id="unit" value="l" placeholder="Unidad del Producto">
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" style="display: none;">
     <label for="inputEmail1" class="col-lg-2 control-label">Presentacion</label>
     <div class="col-md-6">
       <input type="text" name="presentation" class="form-control" id="inputEmail1" placeholder="Presentacion del Producto">
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group" style="display: none;">
     <label for="inputEmail1" class="col-lg-2 control-label">Minima en inventario:</label>
     <div class="col-md-6">
-      <input type="text" name="inventary_min" class="form-control" id="inputEmail1" placeholder="Minima en Inventario (Default 10)">
+      <input type="text" name="inventary_min" class="form-control" value="0" id="inputEmail1" placeholder="Minima en Inventario (Default 10)">
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" style="display: none;">
     <label for="inputEmail1" class="col-lg-2 control-label">Inventario inicial:</label>
     <div class="col-md-6">
-      <input type="text" name="q" class="form-control" id="inputEmail1" placeholder="Inventario inicial">
+      <input type="text" name="q" class="form-control" id="inputEmail1" value="1" placeholder="Inventario inicial">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail1" class="col-lg-3 control-label" >Renta</label>
+    <div class="col-md-8">
+<div class="checkbox">
+    <label>
+      <input type="checkbox" name="is_rent"> 
+    </label>
+  </div>
     </div>
   </div>
 

@@ -34,11 +34,7 @@ $sheet->setCellValue('A1', 'Reporte de Productos - Inventio Max')
 ->setCellValue('A2', 'Codigo de barra')
 ->setCellValue('B2', 'Nombre')
 ->setCellValue('C2', 'Descripcion')
-->setCellValue('D2', 'Minima en Inventario')
-->setCellValue('E2', 'Precio de Entrada')
 ->setCellValue('F2', 'Precio de Salida')
-->setCellValue('G2', 'Unidad')
-->setCellValue('H2', 'Presentacion')
 ->setCellValue('I2', 'Categoria')
 ->setCellValue('J2', 'Activo');
 
@@ -47,11 +43,7 @@ foreach($products as $product){
 $sheet->setCellValue('A'.$start, $product->barcode)
 ->setCellValue('B'.$start, $product->name)
 ->setCellValue('C'.$start, $product->description)
-->setCellValue('D'.$start, $product->inventary_min)
-->setCellValue('E'.$start, $product->price_in)
 ->setCellValue('F'.$start, $product->price_out)
-->setCellValue('G'.$start, $product->unit)
-->setCellValue('H'.$start, $product->presentation)
 ->setCellValue('I'.$start, $product->category_id)
 ->setCellValue('J'.$start, $product->is_active);
 $start++;

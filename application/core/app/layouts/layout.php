@@ -147,18 +147,18 @@ $msgs = MessageData::getUnreadedByUserId($_SESSION["user_id"]);
             <?php if(isset($_SESSION["user_id"])):?>
                         <li><a href="./index.php?view=home"><i class='fa fa-dashboard'></i> <span>Dashboard</span></a></li>
 <?php if(Core::$user->kind==1||Core::$user->kind==2):?>
-                        <li><a href="./index.php?view=alerts"><i class='fa fa-bell-o'></i> <span>Alertas</span></a></li>
+                        <!-- <li><a href="./index.php?view=alerts"><i class='fa fa-bell-o'></i> <span>Alertas</span></a></li> -->
 <?php endif; ?>
             <li><a href="./?view=sell"><i class='fa fa-usd'></i> <span>Vender</span></a></li>
-            <li><a href="./?view=cotizations"><i class='fa fa-square-o'></i> <span>Cotizaciones</span></a></li>
-
+ <!--           <li><a href="./?view=cotizations"><i class='fa fa-square-o'></i> <span>Cotizaciones</span></a></li>
+ 
             <li class="treeview">
               <a href="#"><i class='fa fa-wrench'></i> <span>Herramientas</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
                 <li><a href="./?view=contacts">Contactos</a></li>
                 <li><a href="./?view=messages&opt=all">Mensajes</a></li>
               </ul>
-            </li>
+            </li> -->
             <li class="treeview <?php if(isset($_GET["view"]) && ($_GET["view"]=="sells"||$_GET["view"]=="bydeliver" ||$_GET["view"]=="bycob")){ echo "active"; }?>"   >
               <a href="#"><i class='fa fa-shopping-cart'></i> <span>Ventas</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
@@ -192,8 +192,8 @@ $msgs = MessageData::getUnreadedByUserId($_SESSION["user_id"]);
                 <li><a href="./?view=products">Productos</a></li>
                 <li><a href="./?view=categories">Categorias</a></li>
                 <li><a href="./?view=clients">Clientes</a></li>
-                <li><a href="./?view=stocks">Almacenes</a></li>
-                <li><a href="./?view=providers">Proveedores</a></li>
+                <!-- <li><a href="./?view=stocks">Almacenes</a></li>
+                <li><a href="./?view=providers">Proveedores</a></li> -->
               </ul>
             </li>
 
@@ -202,13 +202,13 @@ $msgs = MessageData::getUnreadedByUserId($_SESSION["user_id"]);
               <ul class="treeview-menu">
                 <li><a href="./?view=credit">Credito</a></li>
                 <li><a href="./?view=balance">Balance</a></li>
-                <li><a href="./?view=spends">Gastos</a></li>
-                <li><a href="./?view=smallbox&opt=all">Caja Chica</a></li>
-                <li><a href="./?view=box">Caja</a></li>
+                 <li><a href="./?view=spends">Gastos</a></li>
+<!--                <li><a href="./?view=smallbox&opt=all">Caja Chica</a></li>
+                <li><a href="./?view=box">Caja</a></li> -->
               </ul>
             </li>
           <?php endif; ?>
-            <li class="treeview">
+<!--             <li class="treeview">
               <a href="#"><i class='fa fa-area-chart'></i> <span>Inventario</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
                 <li><a href="./?view=inventary&stock=<?php echo StockData::getPrincipal()->id;?>">Inventario Principal</a></li>
@@ -219,7 +219,7 @@ $msgs = MessageData::getUnreadedByUserId($_SESSION["user_id"]);
                 <li><a href="./?view=dev">Devolucion</a></li>
               <?php endif; ?>
               </ul>
-            </li>
+            </li> -->
             <?php if(Core::$user->kind==1):?>
                         <li class="treeview">
               <a href="#"><i class='fa fa-file-text-o'></i> <span>Reportes</span> <i class="fa fa-angle-left pull-right"></i></a>
@@ -323,7 +323,7 @@ $msgs = MessageData::getUnreadedByUserId($_SESSION["user_id"]);
 
             <div class="col-xs-12">
               <button type="submit" class="btn btn-primary btn-block btn-flat">Acceder</button>
-              <a href="./?view=clientaccess" class="btn btn-default btn-block btn-flat">Acceso al cliente <i class="fa fa-arrow-right"></i> </a>
+              <!-- <a href="./?view=clientaccess" class="btn btn-default btn-block btn-flat">Acceso al cliente <i class="fa fa-arrow-right"></i> </a> -->
             </div><!-- /.col -->
           </div>
         </form>
