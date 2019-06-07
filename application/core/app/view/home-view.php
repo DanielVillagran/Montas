@@ -31,7 +31,6 @@ for($i=$sd;$i<=$ed;$i+=(60*60*24)){
   <div class="col-md-12">
   <a href="./?view=newproduct" class="btn btn-default">Nuevo Producto</a>
   <a href="./?view=inventary&stock=<?php echo StockData::getPrincipal()->id; ?>" class="btn btn-default">Inventario Principal</a>
-  <a href="./?view=smallbox&opt=all" class="btn btn-default">Caja chica</a>
   <a href="./?view=messages&opt=all" class="btn btn-default">Mensajes</a>
   </div>
   </div>
@@ -97,87 +96,7 @@ for($i=$sd;$i<=$ed;$i+=(60*60*24)){
       </div>
       <!-- /.row -->
 
-      <div class="row">
-        <div class="col-md-12">
-          <div class="box box-primary">
-            <!-- /.box-header -->
-            <div class="box-body">
-              <div class="row">
-                <div class="col-md-12">
-                  <p class="text-center">
-                    <strong>Balance de los ultimos 30 dias</strong>
-                  </p>
 
-
-
-
-
-
-
-
-
-<?php 
-  $dateB = new DateTime(date('Y-m-d')); 
-  $dateA = $dateB->sub(DateInterval::createFromDateString('30 days'));
-  $sd= strtotime(date_format($dateA,"Y-m-d"));
-  $ed = strtotime(date("Y-m-d"));
-
-?>
-<div id="graph" class="animate" data-animate="fadeInUp" ></div>
-<script>
-
-<?php 
-echo "var c=0;";
-echo "var dates=Array();";
-echo "var data=Array();";
-echo "var total=Array();";
-for($i=$sd;$i<=$ed;$i+=(60*60*24)){
-  $operations = SellData::getGroupByDateOp(date("Y-m-d",$i),date("Y-m-d",$i),2);
-  $res = SellData::getGroupByDateOp(date("Y-m-d",$i),date("Y-m-d",$i),1);
-  $spends = SpendData::getGroupByDateOp(date("Y-m-d",$i),date("Y-m-d",$i));
-//  echo $operations[0]->t;
-  $sr = $res[0]->tot!=null?$res[0]->tot:0;
-  $sl = $operations[0]->t!=null?$operations[0]->t:0;
-  $sp = $spends[0]->t!=null?$spends[0]->t:0;
-  echo "dates[c]=\"".date("Y-m-d",$i)."\";";
-  echo "data[c]=".($sl-($sp+$sr)).";";
-  echo "total[c]={x: dates[c],y: data[c]};";
-  echo "c++;";
-}
-?>
-// Use Morris.Area instead of Morris.Line
-Morris.Area({
-  element: 'graph',
-  data: total,
-  xkey: 'x',
-  ykeys: ['y',],
-  labels: ['Y']
-}).on('click', function(i, row){
-  console.log(i, row);
-});
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                  <!-- /.chart-responsive -->
-                </div>
-                <!-- /.col -->
-
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-            </div>
             <!-- 
             <div class="box-footer">
               <div class="row">

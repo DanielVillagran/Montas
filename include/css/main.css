@@ -1,9 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 
-html,body,p {
-	font-family: 'Open Sans', sans-serif;
-}
 
 /* ==========================================================================
    Author's custom styles
@@ -55,7 +52,7 @@ html {
   /* line 29, /Applications/MAMP/htdocs/naim/color-lib/160 lagoon Logistics/scss/_header.scss */
   .top_menu .left_side li a,
   .top_menu .right_side li a {
-	font-size: 12px;
+	font-size: 18px;
 	color: #ffffff;
 	display: inline-block;
 	transition: all 300ms linear 0s;

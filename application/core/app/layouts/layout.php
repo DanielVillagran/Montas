@@ -197,16 +197,16 @@ $msgs = MessageData::getUnreadedByUserId($_SESSION["user_id"]);
               </ul>
             </li>
 
-            <li class="treeview">
+           <!--  <li class="treeview">
               <a href="#"><i class='fa fa-briefcase'></i> <span>Finanzas</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
                 <li><a href="./?view=credit">Credito</a></li>
                 <li><a href="./?view=balance">Balance</a></li>
                  <li><a href="./?view=spends">Gastos</a></li>
-<!--                <li><a href="./?view=smallbox&opt=all">Caja Chica</a></li>
-                <li><a href="./?view=box">Caja</a></li> -->
+                <li><a href="./?view=smallbox&opt=all">Caja Chica</a></li>
+                <li><a href="./?view=box">Caja</a></li> 
               </ul>
-            </li>
+            </li> -->
           <?php endif; ?>
 <!--             <li class="treeview">
               <a href="#"><i class='fa fa-area-chart'></i> <span>Inventario</span> <i class="fa fa-angle-left pull-right"></i></a>
