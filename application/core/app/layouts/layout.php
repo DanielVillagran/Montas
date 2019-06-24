@@ -147,9 +147,10 @@ $msgs = MessageData::getUnreadedByUserId($_SESSION["user_id"]);
             <?php if(isset($_SESSION["user_id"])):?>
                         <li><a href="./index.php?view=home"><i class='fa fa-dashboard'></i> <span>Dashboard</span></a></li>
 <?php if(Core::$user->kind==1||Core::$user->kind==2):?>
-                        <!-- <li><a href="./index.php?view=alerts"><i class='fa fa-bell-o'></i> <span>Alertas</span></a></li> -->
+                         <li><a href="./index.php?view=alerts"><i class='fa fa-bell-o'></i> <span>Alertas</span></a></li>
 <?php endif; ?>
             <li><a href="./?view=sell"><i class='fa fa-usd'></i> <span>Vender</span></a></li>
+            <li><a href="./?view=sell"><i class='fa fa-usd'></i> <span>Rentar</span></a></li>
  <!--           <li><a href="./?view=cotizations"><i class='fa fa-square-o'></i> <span>Cotizaciones</span></a></li>
  
             <li class="treeview">
@@ -166,60 +167,19 @@ $msgs = MessageData::getUnreadedByUserId($_SESSION["user_id"]);
 <?php if(Core::$user->kind==1):?>
        <li><a href="./?view=sellscredit">Ventas credito</a></li>
    <?php endif; ?>
-                <li><a href="./?view=bydeliver">Por Entregar</a></li>
-                <li><a href="./?view=bycob">Por Cobrar</a></li>
               </ul>
             </li>
-            <?php if(Core::$user->kind==3):?>
-            <li><a href="./?view=inventary&stock=<?php echo StockData::getPrincipal()->id;?>"><i class='fa fa-area-chart'></i> <span>Inventario</span></a></li>
-          <?php endif; ?>
-
-
-            <?php if(Core::$user->kind==1 || Core::$user->kind==2):?>
-            <li class="treeview">
-              <a href="#"><i class='fa fa-clock-o'></i> <span>Compras</span> <i class="fa fa-angle-left pull-right"></i></a>
+            <li class="treeview <?php if(isset($_GET["view"]) && ($_GET["view"]=="sells"||$_GET["view"]=="bydeliver" ||$_GET["view"]=="bycob")){ echo "active"; }?>"   >
+              <a href="#"><i class='fa fa-shopping-cart'></i> <span>Rentas</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="./?view=re">Nueva *</a></li>
-                <li><a href="./?view=res">Compras</a></li>
-                <li><a href="./?view=byreceive">Por Recibir</a></li>
-          <li><a href="./?view=topay">por Pagar</a></li>
+                <li><a href="./?view=sells">Rentas</a></li>
               </ul>
             </li>
-            <?php if(Core::$user->kind==1):?>
-                        <li class="treeview">
-              <a href="#"><i class='fa fa-database'></i> <span>Catalogos</span> <i class="fa fa-angle-left pull-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="./?view=products">Productos</a></li>
-                <li><a href="./?view=categories">Categorias</a></li>
-                <li><a href="./?view=clients">Clientes</a></li>
-                <!-- <li><a href="./?view=stocks">Almacenes</a></li>
-                <li><a href="./?view=providers">Proveedores</a></li> -->
-              </ul>
-            </li>
+            <li><a href="./?view=products"><i class='fa fa-database'></i>Almacen</a></li>
+            <li><a href="./?view=products"><i class='fa fa-database'></i>Taller</a></li>
+            <li><a href="./?view=products"><i class='fa fa-database'></i>Terminados</a></li>
 
-           <!--  <li class="treeview">
-              <a href="#"><i class='fa fa-briefcase'></i> <span>Finanzas</span> <i class="fa fa-angle-left pull-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="./?view=credit">Credito</a></li>
-                <li><a href="./?view=balance">Balance</a></li>
-                 <li><a href="./?view=spends">Gastos</a></li>
-                <li><a href="./?view=smallbox&opt=all">Caja Chica</a></li>
-                <li><a href="./?view=box">Caja</a></li> 
-              </ul>
-            </li> -->
-          <?php endif; ?>
-<!--             <li class="treeview">
-              <a href="#"><i class='fa fa-area-chart'></i> <span>Inventario</span> <i class="fa fa-angle-left pull-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="./?view=inventary&stock=<?php echo StockData::getPrincipal()->id;?>">Inventario Principal</a></li>
-                <li><a href="./?view=re">Abastecer</a></li>
-            <?php if(Core::$user->kind==1):?>
-                <li><a href="./?view=stocks">Inventarios</a></li>
-                <li><a href="./?view=selectstock">Traspasar</a></li>
-                <li><a href="./?view=dev">Devolucion</a></li>
-              <?php endif; ?>
-              </ul>
-            </li> -->
+<!-- 
             <?php if(Core::$user->kind==1):?>
                         <li class="treeview">
               <a href="#"><i class='fa fa-file-text-o'></i> <span>Reportes</span> <i class="fa fa-angle-left pull-right"></i></a>
@@ -242,10 +202,9 @@ $msgs = MessageData::getUnreadedByUserId($_SESSION["user_id"]);
 
 
               </ul>
-            </li>
-          <?php endif; ?>
-          <?php endif; ?>
-            <?php elseif(isset($_SESSION["client_id"])):?>
+            </li> -->
+          <?php endif; ?> 
+                      <?php elseif(isset($_SESSION["client_id"])):?>
             <li><a href="./index.php?view=clienthome"><i class='fa fa-dashboard'></i> <span>Dashboard</span></a></li>
             <li><a href="./?view=cotizations"><i class='fa fa-square-o'></i> <span>Cotizaciones</span></a></li>
             <li class="treeview <?php if(isset($_GET["view"]) && ($_GET["view"]=="sells"||$_GET["view"]=="bydeliver" ||$_GET["view"]=="bycob")){ echo "active"; }?>"   >
