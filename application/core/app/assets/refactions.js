@@ -7,7 +7,7 @@ function insertReparation() {
     var product_id = $("#product_id").val();
     if(reparations!= "" && hours !=""){
         $.ajax({
-            url:"/application/core/app/view/insertreparations.php",
+            url:"../application/core/app/view/insertreparations.php",
             type:'POST',
             data: {
                 'reparations': reparations,
@@ -40,7 +40,7 @@ $('#addref').one('click', function () {
     if(refaction!= ""){
         console.log("entro");
         $.ajax({
-            url:"/application/core/app/view/insertrefactions.php",
+            url:"../application/core/app/view/insertrefactions.php",
             type:'POST',
             data: {
                 'refaction': refaction,
