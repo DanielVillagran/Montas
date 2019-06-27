@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c1ecf92-a06e-4555-ba5e-d1dee53b799a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/application/core/app/model/Conection.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/core/app/model/Conection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/core/app/view/editproduct-view.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/core/app/view/editproduct-view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/core/controller/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/core/controller/Database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/core/controller/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/core/controller/Model.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -74,11 +71,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/core/controller/Model.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="345">
               <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/core/controller/Database.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="48" lean-forward="true" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -95,15 +101,6 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/core/app/view/deletereparations.php">
           <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/core/app/assets/css/alertify.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="393" column="25" selection-start-line="393" selection-start-column="20" selection-end-line="393" selection-end-column="25" />
-            </state>
-          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -175,7 +172,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/core/controller/Database.php" />
         <option value="$PROJECT_DIR$/application/core/app/view/addproduct-view.php" />
         <option value="$PROJECT_DIR$/application/core/app/model/UsesData.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
@@ -196,6 +192,7 @@
         <option value="$PROJECT_DIR$/application/core/app/model/Conection.php" />
         <option value="$PROJECT_DIR$/application/core/app/view/editproduct-view.php" />
         <option value="$PROJECT_DIR$/application/core/controller/Model.php" />
+        <option value="$PROJECT_DIR$/application/core/controller/Database.php" />
       </list>
     </option>
   </component>
@@ -377,12 +374,12 @@
       <updated>1561345681338</updated>
       <workItem from="1561345682559" duration="7423000" />
       <workItem from="1561574710777" duration="4510000" />
-      <workItem from="1561652872297" duration="9087000" />
+      <workItem from="1561652872297" duration="9275000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21020000" />
+    <option name="totallyTimeSpent" value="21208000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1680" y="23" width="1680" height="1027" extended-state="6" />
@@ -455,13 +452,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/core/app/model/UsesData.php" />
-    <entry file="file://$PROJECT_DIR$/application/core/controller/Database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/5c03430d-d40c-4201-99bb-cfacf2923476/console.sql">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -623,6 +613,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/core/controller/Database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="48" lean-forward="true" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
         </state>
       </provider>
     </entry>
