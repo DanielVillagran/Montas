@@ -15,18 +15,27 @@ class ProductData {
 		$this->image = "";
 		$this->presentation = "0";
 		$this->created_at = "NOW()";
+		$this->model ="";
+		$this->serie ="";
+		$this->capacity ="";
+		$this->height ="";
+		$this->fuel ="";
+		$this->admissiondate ="";
+		$this->horometer ="";
+		$this->observation ="";
+		$this->type ="";
 	}
 
 	public function getCategory(){ return CategoryData::getById($this->category_id);}
 
 	public function add(){
-		$sql = "insert into ".self::$tablename." (barcode,name,description,price_in,price_out,user_id,presentation,unit,category_id,inventary_min,created_at,is_rent) ";
-		$sql .= "value (\"$this->barcode\",\"$this->name\",\"$this->description\",\"$this->price_in\",\"$this->price_out\",$this->user_id,\"$this->presentation\",\"$this->unit\",$this->category_id,$this->inventary_min,NOW(),\"$this->is_rent\")";
+		$sql = "insert into ".self::$tablename." (barcode,name,description,price_in,price_out,user_id,presentation,unit,category_id,inventary_min,created_at,is_rent,model,serie,capacity,height,fuel,admissiondate,horometer,observation,type) ";
+		$sql .= "value (\"$this->barcode\",\"$this->name\",\"$this->description\",\"$this->price_in\",\"$this->price_out\",$this->user_id,\"$this->presentation\",\"$this->unit\",$this->category_id,$this->inventary_min,NOW(),\"$this->is_rent\",\"$this->model\",\"$this->serie\",\"$this->capacity\",\"$this->height\",\"$this->fuel\",\"$this->admissiondate\",\"$this->horometer\",\"$this->observation\",\"$this->type\")";
 		return Executor::doit($sql);
 	}
 	public function add_with_image(){
-		$sql = "insert into ".self::$tablename." (barcode,image,name,description,price_in,price_out,user_id,presentation,unit,category_id,inventary_min,is_rent) ";
-		$sql .= "value (\"$this->barcode\",\"$this->image\",\"$this->name\",\"$this->description\",\"$this->price_in\",\"$this->price_out\",$this->user_id,\"$this->presentation\",\"$this->unit\",$this->category_id,$this->inventary_min,\"$this->is_rent\")";
+		$sql = "insert into ".self::$tablename." (barcode,image,name,description,price_in,price_out,user_id,presentation,unit,category_id,inventary_min,is_rent,model,serie,capacity,height,fuel,admissiondate,horometer,observation,type) ";
+		$sql .= "value (\"$this->barcode\",\"$this->image\",\"$this->name\",\"$this->description\",\"$this->price_in\",\"$this->price_out\",$this->user_id,\"$this->presentation\",\"$this->unit\",$this->category_id,$this->inventary_min,\"$this->is_rent\",\"$this->model\",\"$this->serie\",\"$this->capacity\",\"$this->height\",\"$this->fuel\",\"$this->admissiondate\",\"$this->horometer\",\"$this->observation\",\"$this->type\")";
 		return Executor::doit($sql);
 	}
 
@@ -42,7 +51,7 @@ class ProductData {
 
 // partiendo de que ya tenemos creado un objecto ProductData previamente utilizamos el contexto
 	public function update(){
-		$sql = "update ".self::$tablename." set barcode=\"$this->barcode\",name=\"$this->name\",price_in=\"$this->price_in\",price_out=\"$this->price_out\",unit=\"$this->unit\",presentation=\"$this->presentation\",category_id=$this->category_id,inventary_min=\"$this->inventary_min\",description=\"$this->description\",is_active=\"$this->is_active\",is_rent=\"$this->is_rent\" where id=$this->id";
+		$sql = "update ".self::$tablename." set barcode=\"$this->barcode\",name=\"$this->name\",price_in=\"$this->price_in\",price_out=\"$this->price_out\",unit=\"$this->unit\",presentation=\"$this->presentation\",category_id=$this->category_id,inventary_min=\"$this->inventary_min\",description=\"$this->description\",is_active=\"$this->is_active\",is_rent=\"$this->is_rent\" ,model=\"$this->model\",serie=\"$this->serie\",capacity=\"$this->capacity\",height=\"$this->height\",fuel=\"$this->fuel\",admissiondate=\"$this->admissiondate\",horometer=\"$this->horometer\",observation=\"$this->observation\",type=\"$this->type\" where id=$this->id";
 		Executor::doit($sql);
 	}
 

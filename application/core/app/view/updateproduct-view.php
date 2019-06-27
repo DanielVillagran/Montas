@@ -20,6 +20,24 @@ if(count($_POST)>0){
   $is_rent=0;
   if(isset($_POST["is_rent"])){ $is_rent=1;}
   $product->is_rent=$is_rent;
+    if (isset($_POST["modelo"]))
+        $product->model = $_POST["modelo"];
+    if (isset($_POST["serie"]))
+        $product->serie = $_POST["serie"];
+    if (isset($_POST["capacidad"]))
+        $product->capacity = $_POST["capacidad"];
+    if (isset($_POST["altura"]))
+        $product->height = $_POST["altura"];
+    if (isset($_POST["combustible"]))
+        $product->fuel = $_POST["combustible"];
+    if (isset($_POST["fechaingreso"]))
+        $product->admissiondate = $_POST["fechaingreso"];
+    if (isset($_POST["horometro"]))
+        $product->horometer = $_POST["horometro"];
+    if (isset($_POST["observacion"]))
+        $product->observation = $_POST["observacion"];
+    if (isset($_POST["tipo"]))
+        $product->type = $_POST["tipo"];
 
   $product->is_active=$is_active;
   $product->category_id=$category_id;

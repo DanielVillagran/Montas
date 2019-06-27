@@ -176,7 +176,7 @@ $msgs = MessageData::getUnreadedByUserId($_SESSION["user_id"]);
               </ul>
             </li>
             <li><a href="./?view=products"><i class='fa fa-database'></i>Almacen</a></li>
-            <li><a href="./?view=products"><i class='fa fa-database'></i>Taller</a></li>
+            <li><a href="./?view=products&is_workshop=1"><i class='fa fa-database'></i>Taller</a></li>
             <li><a href="./?view=products"><i class='fa fa-database'></i>Terminados</a></li>
 
 <!-- 
