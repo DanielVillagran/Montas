@@ -1,5 +1,5 @@
 <?php
 require 'rb.php';
-R::setup( 'mysql:host=localhost;dbname=montas',
-    'root', 'root' );
+R::setup( 'mysql:host=localhost;dbname=inventiomax',
+    'root', '' );
 ?>
