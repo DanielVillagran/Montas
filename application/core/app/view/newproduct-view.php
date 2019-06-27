@@ -31,7 +31,7 @@
                                 <div class="form-group" style="display: none;">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Nombre*</label>
                                     <div class="col-md-6">
-                                        <input type="text" name="name" required class="form-control" id="name"
+                                        <input type="text" name="name"  class="form-control" id="name"
                                                placeholder="Nombre del Producto">
                                     </div>
                                 </div>
@@ -55,14 +55,14 @@
                                 <div class="form-group" style="display: none;">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Precio de Entrada*</label>
                                     <div class="col-md-6">
-                                        <input type="text" name="price_in" required class="form-control" id="price_in"
+                                        <input type="text" name="price_in"  class="form-control" id="price_in"
                                                placeholder="Precio de entrada">
                                     </div>
                                 </div>
                                 <div class="form-group" style="display: none;">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Precio de Salida*</label>
                                     <div class="col-md-6">
-                                        <input type="text" name="price_out" required class="form-control" id="price_out"
+                                        <input type="text" name="price_out"  class="form-control" id="price_out"
                                                placeholder="Precio de salida">
                                     </div>
                                 </div>
