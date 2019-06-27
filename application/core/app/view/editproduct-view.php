@@ -1,6 +1,6 @@
 <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/alertify.min.js"></script>
-<!--<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/css/alertify.min.css"/>-->
-<link rel="stylesheet" href="/application/core/app/assets/css/alertify.css"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/css/alertify.min.css"/>
+<!--<link rel="stylesheet" href="/application/core/app/assets/css/alertify.css"/>-->
 
 <style>
     .alertify-notifier{
