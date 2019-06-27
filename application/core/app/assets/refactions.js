@@ -70,7 +70,7 @@ function deleteReparation(id){
     alertify.confirm('Desea eliminar el registro?', 'Si lo elimina, no se podrá recuperar', function(){
 
             $.ajax({
-                url:"/application/core/app/view/deleterefactions.php",
+                url:"../application/core/app/view/deleterefactions.php",
                 type:'POST',
                 data: {
                     'id': id,
@@ -91,7 +91,7 @@ function deleteRefaction(id){
     alertify.confirm('Desea eliminar el registro?', 'Si lo elimina, no se podrá recuperar', function(){
 
             $.ajax({
-                url:"/application/core/app/view/deleterefactions.php",
+                url:"../application/core/app/view/deleterefactions.php",
                 type:'POST',
                 data: {
                     'id': id,
