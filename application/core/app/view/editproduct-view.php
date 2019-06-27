@@ -288,9 +288,7 @@
                                     </div>
 
                                     <?php if ($workshop != 1): ?>
-                                        <hr>
-                                        <h1 style="width: 100%; text-align: center;">Reparaciones</h1>
-                                        <br>
+
                                         <div class="form-group">
                                             <div class="col-lg-offset-3 col-lg-8">
                                                 <input type="hidden" name="product_id"
@@ -304,6 +302,9 @@
                                     <?php endif; ?>
                                 </form>
                                 <?php if($workshop):?>
+                                    <hr>
+                                    <h1 style="width: 100%; text-align: center;">Reparaciones</h1>
+                                    <br>
                                 <div class="row">
                                     <div class="col-md-2"></div>
                                 <form class="form-horizontal col-md-4" method="post" id="addproduct"
@@ -461,5 +462,5 @@
         </div>
     <?php endif; ?>
 </section>
-<script src="/application/core/app/assets/refactions.js"></script>
-<script src="/application/core/app/assets/alertify.js"></script>
+<script src="../application/core/app/assets/refactions.js"></script>
+<script src="../application/core/app/assets/alertify.js"></script>
