@@ -43,8 +43,11 @@ if(isset($_GET["is_workshop"])){
             <br>
 
             <?php
-
-            $products = ProductData::getAll();
+            if($workshop){
+                $products = ProductData::getWorkshop();
+            }else{
+                $products = ProductData::getAll();
+            }
             if (count($products) > 0) {
                 ?>
                 <div class="box">
@@ -71,11 +74,22 @@ if(isset($_GET["is_workshop"])){
                                 <?php foreach ($products as $product): ?>
                                     <tr>
                                         <td><?php echo $product->id; ?></td>
+
                                         <td>
-                                            <?php if ($product->image != ""): ?>
-                                                <img src="storage/products/<?php echo $product->image; ?>"
+
+                                            <?php
+                                            $serie = $product->serie;
+                                            $imagenes = ProductData::getBySerie($serie);
+                                            ?>
+
+                                            <?php foreach ($imagenes as $i): ?>
+                                                <a href="storage/products/<?php echo $i->img; ?>" target="_blank">
+                                                <div class="col-md-2">
+                                                <img src="storage/products/<?php echo $i->img; ?>"
                                                      style="width:64px;">
-                                            <?php endif; ?>
+                                            </div>
+                                                </a>
+                                            <?php endforeach; ?>
                                         </td>
                                         <td><?php echo $product->model; ?></td>
                                         <td><?php echo $product->serie; ?></td>
@@ -87,7 +101,13 @@ if(isset($_GET["is_workshop"])){
                                                 echo "<center>----</center>";
                                             } ?></td>
                                         <td><?php echo $product->type; ?></td>
-                                        <td><?php if ($product->is_active): ?><i class="fa fa-check"></i><?php endif; ?>
+                                        <td style="text-align: center; font-size: 30px;">
+                                            <?php if ($product->is_active): ?>
+                                                <i class="fa fa-check"></i>
+                                            <?php else:?>
+                                                <i class="fa fa-times"></i>
+
+                                            <?php endif; ?>
                                         </td>
 
                                         <?php if(!$workshop): ?>
@@ -95,7 +115,7 @@ if(isset($_GET["is_workshop"])){
                                             <a target="_blank"
                                                href="index.php?action=productqr&id=<?php echo $product->id; ?>"
                                                class="btn btn-xs btn-default"><i class="fa fa-qrcode"></i></a>
-                                            <a href="index.php?view=editproduct&id=<?php echo $product->id; ?>"
+                                            <a href="index.php?view=editproduct&id=<?php echo $product->id; ?>&serie=<?php echo $product->serie; ?>"
                                                class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-pencil"></i></a>
                                             <a style="display: none" href="index.php?view=refaproduct&id=<?php echo $product->id; ?>"
                                                class="btn btn-xs btn-success"><i class="glyphicon glyphicon-wrench"></i></a>
@@ -137,6 +157,7 @@ if(isset($_GET["is_workshop"])){
 
 
 <script type="text/javascript">
+
     function thePDF() {
         var doc = new jsPDF('p', 'pt');
         doc.setFontSize(26);

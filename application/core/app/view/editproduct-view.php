@@ -3,16 +3,46 @@
 <!--<link rel="stylesheet" href="/application/core/app/assets/css/alertify.css"/>-->
 
 <style>
-    .alertify-notifier{
+    .alertify-notifier {
         color: white !important;
         font-weight: bolder !important;
+    }
+    /* Container needed to position the button. Adjust the width as needed */
+    .container {
+        position: relative;
+        width: 100%;
+    }
+
+    /* Make the image responsive */
+    .container img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Style the button and place it in the middle of the container/image */
+    .container .btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        color: white;
+        font-size: 16px;
+        padding: 12px 24px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .container .btn:hover {
+        background-color: red;
     }
 </style>
 <section class="content">
     <?php
     require '../application/core/app/model/Conection.php';
-    $lista=R::find( 'reparations', ' product_id =  "'.$_GET["id"].'"');
-    $list2=R::find( 'refactions', ' product_id =  "'.$_GET["id"].'"');
+    $lista = R::find('reparations', ' product_id =  "' . $_GET["id"] . '"');
+    $list2 = R::find('refactions', ' product_id =  "' . $_GET["id"] . '"');
 
 
     $product = ProductData::getById($_GET["id"]);
@@ -23,6 +53,8 @@
         $workshop = 0;
     }
     $categories = CategoryData::getAll();
+    $imagenes = ProductData::getBySerie($_GET["serie"]);
+
 
     if ($product != null):
         ?>
@@ -45,14 +77,26 @@
                                     <div class="form-group">
                                         <label for="inputEmail1" class="col-lg-3 control-label">Imagen*</label>
                                         <div class="col-md-8">
-                                            <input type="file" <?php if ($workshop == 1): echo "disabled"; endif; ?>
-                                                   name="image" id="name" placeholder="">
-                                            <?php if ($product->image != ""): ?>
-                                                <br>
-                                                <img style="max-height: 350px; width: 100%;"
-                                                     src="storage/products/<?php echo $product->image; ?>"
-                                                     class="img-responsive">
-                                            <?php endif; ?>
+                                            <input type="file" multiple="" <?php if(count($imagenes) == 6): echo "disabled"; endif;?> onchange="validateFiles(<?php echo count($imagenes);?>)" <?php if ($workshop == 1): echo "disabled"; endif; ?>
+                                                   name="image[]" id="image[]" placeholder="">
+
+                                            <br>
+                                            <div class="row">
+                                                <?php foreach ($imagenes as $img) : ?>
+                                                <input type="hidden" id="img_id" value="<?php echo $img->id;?>">
+
+                                                    <div class="col-md-2">
+                                                        <div class="container">
+                                                            <img style="max-height: 350px; width: 100%;"
+                                                                 src="storage/products/<?php echo $img->img; ?>"
+                                                                 class="img-responsive">
+                                                            <button type="button" onclick="deleteImage(<?php echo $img->id; ?>)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+
+                                                        </div>
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            </div>
+
                                         </div>
                                     </div>
 
@@ -161,7 +205,7 @@
                                         <label for="inputEmail1" class="col-lg-3 control-label">Serie:</label>
                                         <div class="col-md-8">
                                             <input type="text"
-                                                   name="serie" <?php if ($workshop == 1): echo "disabled"; endif; ?>
+                                                   name="serie" disabled
                                                    value="<?php echo $product->serie; ?>" class="form-control"
                                                    id="serie"
                                                    placeholder="Serie">
@@ -301,117 +345,125 @@
                                     <?php else: ?>
                                     <?php endif; ?>
                                 </form>
-                                <?php if($workshop):?>
+                                <?php if ($workshop): ?>
                                     <hr>
                                     <h1 style="width: 100%; text-align: center;">Reparaciones</h1>
                                     <br>
-                                <div class="row">
-                                    <div class="col-md-2"></div>
-                                <form class="form-horizontal col-md-4" method="post" id="addproduct"
-                                      enctype="multipart/form-data" action="" role="form">
+                                    <div class="row">
+                                        <div class="col-md-2"></div>
+                                        <form class="form-horizontal col-md-4" method="post" id="addproduct"
+                                              enctype="multipart/form-data" action="" role="form">
 
-                                    <div class="form-group">
-                                        <label for="inputEmail1" class="col-lg-3 control-label">Reparación:</label>
+                                            <div class="form-group">
+                                                <label for="inputEmail1"
+                                                       class="col-lg-3 control-label">Reparación:</label>
+                                                <div class="col-md-8">
+                                                    <input type="text"
+                                                           name="reparation"
+                                                           class="form-control"
+                                                           id="reparation"
+                                                           placeholder="Reparación">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail1" class="col-lg-3 control-label">Horas
+                                                    consumidas:</label>
+                                                <div class="col-md-8">
+                                                    <input type="number"
+                                                           name="hours"
+                                                           class="form-control"
+                                                           id="hours"
+                                                           placeholder="Horas consumidas">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-lg-offset-3 col-lg-8">
+                                                    <input type="hidden" name="product_id"
+                                                           value="<?php echo $product->id; ?>">
+                                                    <button type="button" onclick="insertReparation()" id="addrep"
+                                                            class="btn btn-success">Agregar
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                        </form>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3"></div>
                                         <div class="col-md-8">
-                                            <input type="text"
-                                                   name="reparation"
-                                                   class="form-control"
-                                                   id="reparation"
-                                                   placeholder="Reparación">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputEmail1" class="col-lg-3 control-label">Horas consumidas:</label>
-                                        <div class="col-md-8">
-                                            <input type="number"
-                                                   name="hours"
-                                                   class="form-control"
-                                                   id="hours"
-                                                   placeholder="Horas consumidas">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-lg-offset-3 col-lg-8">
-                                            <input type="hidden" name="product_id"
-                                                   value="<?php echo $product->id; ?>">
-                                            <button type="button" onclick="insertReparation()" id="addrep" class="btn btn-success">Agregar
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                </form>
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3"></div>
-                                    <div class="col-md-8">
-                                        <table class="table table-sm">
-                                            <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Reparación</th>
-                                                <th scope="col">Horas consumidas</th>
-                                                <th scope="col">Borrar</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <?php if(empty($lista)):?>
-
+                                            <table class="table table-sm">
+                                                <thead>
                                                 <tr>
-                                                    <td></td>
-                                                    <td style="font-weight: bolder;">Aún no se han realizado reparaciones.</td>
-                                                    <td></td>
-                                                    <td></td>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Reparación</th>
+                                                    <th scope="col">Horas consumidas</th>
+                                                    <th scope="col">Borrar</th>
                                                 </tr>
-                                            <?php else:?>
-                                            <?php foreach ($lista as $l): ?>
+                                                </thead>
+                                                <tbody>
+                                                <?php if (empty($lista)): ?>
 
-                                            <tr>
-                                                <th scope="row"><?php echo $l->id;?></th>
-                                                <td><?php echo $l->reparation;?></td>
-                                                <td><?php echo $l->hours;?> Hrs.</td>
-                                                <td><a class="btn btn-xs btn-danger" onclick="deleteReparation(<?php echo $l->id;?>)"><i class="fa fa-trash"></i></a></td>
-                                            </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td style="font-weight: bolder;">Aún no se han realizado
+                                                            reparaciones.
+                                                        </td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                <?php else: ?>
+                                                    <?php foreach ($lista as $l): ?>
 
-                                            <?php endforeach;?>
-                                            <?php endif;?>
-                                            </tbody>
-                                        </table>
+                                                        <tr>
+                                                            <th scope="row"><?php echo $l->id; ?></th>
+                                                            <td><?php echo $l->reparation; ?></td>
+                                                            <td><?php echo $l->hours; ?> Hrs.</td>
+                                                            <td><a class="btn btn-xs btn-danger"
+                                                                   onclick="deleteReparation(<?php echo $l->id; ?>)"><i
+                                                                            class="fa fa-trash"></i></a></td>
+                                                        </tr>
+
+                                                    <?php endforeach; ?>
+                                                <?php endif; ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-md-2"></div>
+
                                     </div>
-                                    <div class="col-md-2"></div>
-
-                                </div>
                                     <hr>
                                     <h1 style="width: 100%; text-align: center;">Refacciones</h1>
                                     <br>
-                                <div class="row">
-                                <div class="col-md-2"></div>
-                                    <form class="form-horizontal col-md-4" method="post" id="addproduct"
-                                          enctype="multipart/form-data" action="index.php?view=" role="form">
+                                    <div class="row">
+                                        <div class="col-md-2"></div>
+                                        <form class="form-horizontal col-md-4" method="post" id="addproduct"
+                                              enctype="multipart/form-data" action="index.php?view=" role="form">
 
-                                        <div class="form-group">
-                                            <label for="inputEmail1" class="col-lg-3 control-label">Refacción:</label>
-                                            <div class="col-md-8">
-                                                <input type="text"
-                                                       name="refaccion"
-                                                       class="form-control"
-                                                       id="refaction"
-                                                       placeholder="Refacción">
+                                            <div class="form-group">
+                                                <label for="inputEmail1"
+                                                       class="col-lg-3 control-label">Refacción:</label>
+                                                <div class="col-md-8">
+                                                    <input type="text"
+                                                           name="refaccion"
+                                                           class="form-control"
+                                                           id="refaction"
+                                                           placeholder="Refacción">
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="form-group">
-                                            <div class="col-lg-offset-3 col-lg-8">
-                                                <input type="hidden" name="product_id"
-                                                       value="<?php echo $product->id; ?>">
-                                                <button type="button"  id="addref" class="btn btn-success">Agregar
-                                                </button>
+                                            <div class="form-group">
+                                                <div class="col-lg-offset-3 col-lg-8">
+                                                    <input type="hidden" name="product_id"
+                                                           value="<?php echo $product->id; ?>">
+                                                    <button type="button" id="addref" class="btn btn-success">Agregar
+                                                    </button>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                    </form>
-                                </div>
+                                        </form>
+                                    </div>
 
                                     <div class="row">
                                         <div class="col-md-3"></div>
@@ -425,24 +477,28 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <?php if($list2 == ""):?>
+                                                <?php if ($list2 == ""): ?>
 
                                                     <tr>
                                                         <td></td>
-                                                        <td style="font-weight: bolder;">Aún no se han agregado refacciones.</td>
+                                                        <td style="font-weight: bolder;">Aún no se han agregado
+                                                            refacciones.
+                                                        </td>
                                                         <td></td>
                                                     </tr>
-                                                <?php else:?>
+                                                <?php else: ?>
                                                     <?php foreach ($list2 as $l): ?>
 
                                                         <tr>
-                                                            <th scope="row"><?php echo $l->id;?></th>
-                                                            <td><?php echo $l->refaction;?></td>
-                                                            <td><a class="btn btn-xs btn-danger" onclick="deleteRefaction(<?php echo $l->id;?>)"><i class="fa fa-trash"></i></a></td>
+                                                            <th scope="row"><?php echo $l->id; ?></th>
+                                                            <td><?php echo $l->refaction; ?></td>
+                                                            <td><a class="btn btn-xs btn-danger"
+                                                                   onclick="deleteRefaction(<?php echo $l->id; ?>)"><i
+                                                                            class="fa fa-trash"></i></a></td>
                                                         </tr>
 
-                                                    <?php endforeach;?>
-                                                <?php endif;?>
+                                                    <?php endforeach; ?>
+                                                <?php endif; ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -453,7 +509,7 @@
                                     <a href="./?view=products" class="btn btn-danger">Regresar</a>
 
 
-                                <?php endif;?>
+                                <?php endif; ?>
                             </td>
                         </tr>
                     </table>

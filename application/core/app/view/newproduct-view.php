@@ -18,7 +18,7 @@
                                 <div class="form-group">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Imagen</label>
                                     <div class="col-md-6">
-                                        <input type="file" name="image" id="image" placeholder="">
+                                        <input type="file" onchange="validarArchivos()" multiple="" name="image[]" id="image[]" placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group" style="display: none;">
@@ -107,7 +107,7 @@
                                 <div class="form-group" >
                                     <label for="inputEmail1" class="col-lg-2 control-label">Serie:</label>
                                     <div class="col-md-6">
-                                        <input type="text" name="serie" class="form-control" id="serie"
+                                        <input type="text" required name="serie" class="form-control" id="serie"
                                                placeholder="Serie">
                                     </div>
                                 </div>
@@ -121,21 +121,21 @@
                                 <div class="form-group" >
                                     <label for="inputEmail1" class="col-lg-2 control-label">Altura:</label>
                                     <div class="col-md-6">
-                                        <input type="text" name="altura" class="form-control" id="altura"
+                                        <input type="number" name="altura" class="form-control" id="altura"
                                                placeholder="Altura">
                                     </div>
                                 </div>
                                 <div class="form-group" >
                                     <label for="inputEmail1" class="col-lg-2 control-label">Combustible:</label>
                                     <div class="col-md-6">
-                                        <input type="text" name="combustible" class="form-control" id="combustible"
+                                        <input type="number" name="combustible" class="form-control" id="combustible"
                                                placeholder="Combustible">
                                     </div>
                                 </div>
                                 <div class="form-group" >
                                     <label for="inputEmail1" class="col-lg-2 control-label">Fecha de ingreso:</label>
                                     <div class="col-md-6">
-                                        <input type="date" name="fechaingreso" class="form-control" id="fechaingreso"
+                                        <input type="date" value="NOW()" name="fechaingreso" class="form-control" id="fechaingreso"
                                                placeholder="">
                                     </div>
                                 </div>
@@ -179,6 +179,23 @@
     </div>
 
     <script>
+        function validarArchivos() {
+            var files = document.getElementById('image[]');
+            if (files.files.length > 6) {
+                files.value = '';
+                alert('Por favor, seleccione 6 o menos archivos para enviar como evidencia');
+            }
+            for (var i = 0; i <= files.files.length - 1; i++) {
+
+                var fsize = files.files.item(i).size;      // THE SIZE OF THE FILE.
+
+            }
+            if (fsize > 4000000) {
+                files.value = '';
+                alert('No se pueden subir archivos con pesos mayores a 4MB');
+            }
+
+        }
         $(document).ready(function () {
             $("#product_code").keydown(function (e) {
                 if (e.which == 17 || e.which == 74) {

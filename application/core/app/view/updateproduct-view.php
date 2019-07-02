@@ -45,19 +45,61 @@ if(count($_POST)>0){
 	$product->user_id = $_SESSION["user_id"];
 	$product->update();
 
-	if(isset($_FILES["image"])){
-		$image = new Upload($_FILES["image"]);
-		if($image->uploaded){
-			$image->Process("storage/products/");
-			if($image->processed){
-				$product->image = $image->file_dst_name;
-				$product->update_image();
-			}
-		}
-	}
+    if (isset($_FILES["image"])) {
+
+        foreach ($_FILES as $key => $name) {
+            for ($i = 0; $i < count($_FILES['image']['name']); $i++) {
+                $nombre_tmp = $_FILES['image']['tmp_name'][$i];
+                $nombre = $_FILES['image']['name'][$i];
+                move_uploaded_file($_FILES['image']['tmp_name'][$i], "storage/products/".$nombre);
+                $product->image = $nombre;
+                $product->serie = $_POST["serie"];
+                if($nombre != ""){
+                    $prod = $product->product_images();
+
+                }
+
+            }
+        }
+        $prod = $product->add();
+
+    } else {
+        $prod = $product->add();
+
+    }
+
+
+//    if (isset($_FILES["image"])) {
+//        foreach ($_FILES as $key => $name) {
+//            for ($i = 0; $i < count($_FILES['image']['name']); $i++) {
+//                $nombre_tmp = $_FILES['image']['tmp_name'][$i];
+//                $nombre = $_FILES['image']['name'][$i];
+//                move_uploaded_file($_FILES['image']['tmp_name'][$i], "storage/products/".$nombre);
+//                $product->image = $nombre;
+//                $product->serie = $_POST["serie"];
+//                $prod = $product->update_image();
+//
+//            }
+//        }
+//        //$prod = $product->add();
+//
+//    } else {
+//        //$prod = $product->add();
+//
+//    }
+//	if(isset($_FILES["image"])){
+//		$image = new Upload($_FILES["image"]);
+//		if($image->uploaded){
+//			$image->Process("storage/products/");
+//			if($image->processed){
+//				$product->image = $image->file_dst_name;
+//				$product->update_image();
+//			}
+//		}
+//	}
 
 	setcookie("prdupd","true");
-	print "<script>window.location='index.php?view=editproduct&id=$_POST[product_id]';</script>";
+	print "<script>window.location='index.php?view=editproduct&id=$_POST[product_id]&serie=$_POST[serie]';</script>";
 
 
 }

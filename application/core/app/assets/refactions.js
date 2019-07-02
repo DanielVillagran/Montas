@@ -87,6 +87,38 @@ function deleteReparation(id){
         , function(){ alertify.error('No se realizo ninguna acción.')});
 
 }
+function validateFiles(qty) {
+    var files = document.getElementById('image[]');
+    var cargados = files.files.length;
+
+    if(cargados+ qty > 6){
+        alertify.error('No se pueden cargar mas de 6 imágenes.')
+        files.value = '';
+    }else{
+
+    }
+}
+function deleteImage(id){
+    alertify.confirm('Desea eliminar la imagen?', 'Si la elimina, no se podrá recuperar', function(){
+
+            $.ajax({
+                url:"../application/core/app/view/deleteImage.php",
+                type:'POST',
+                data: {
+                    'id': id,
+
+                },
+                success(data) {
+                    alertify.success('Imagen eliminada') ;
+                    location.reload();
+                }
+            });
+
+
+        }
+        , function(){ alertify.error('No se realizo ninguna acción.')});
+
+}
 function deleteRefaction(id){
     alertify.confirm('Desea eliminar el registro?', 'Si lo elimina, no se podrá recuperar', function(){
 

@@ -56,22 +56,23 @@ if (count($_POST) > 0) {
 
 
     if (isset($_FILES["image"])) {
-        $image = new Upload($_FILES["image"]);
-        if ($image->uploaded) {
-            $image->Process("storage/products/");
-            if ($image->processed) {
-                $product->image = $image->file_dst_name;
-                $prod = $product->add_with_image();
-            }
-        } else {
+        foreach ($_FILES as $key => $name) {
+            for ($i = 0; $i < count($_FILES['image']['name']); $i++) {
+                $nombre_tmp = $_FILES['image']['tmp_name'][$i];
+                $nombre = $_FILES['image']['name'][$i];
+                move_uploaded_file($_FILES['image']['tmp_name'][$i], "storage/products/".$nombre);
+                    $product->image = $nombre;
+                    $product->serie = $_POST["serie"];
+                    $prod = $product->product_images();
 
-            $prod = $product->add();
+                }
         }
+        $prod = $product->add();
+
     } else {
         $prod = $product->add();
 
     }
-
 
     if ($_POST["q"] != "" || $_POST["q"] != "0") {
         $op = new OperationData();
