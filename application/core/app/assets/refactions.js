@@ -119,6 +119,27 @@ function deleteImage(id){
         , function(){ alertify.error('No se realizo ninguna acción.')});
 
 }
+function deleteAllImage(id){
+    alertify.confirm('Desea eliminar todas las imagenes?', 'Si las elimina, no se podrán recuperar', function(){
+
+            $.ajax({
+                url:"../application/core/app/view/deleteAllImage.php",
+                type:'POST',
+                data: {
+                    'id': id,
+
+                },
+                success(data) {
+                    alertify.success('Imagenes eliminadas') ;
+                    location.reload();
+                }
+            });
+
+
+        }
+        , function(){ alertify.error('No se realizo ninguna acción.')});
+
+}
 function deleteRefaction(id){
     alertify.confirm('Desea eliminar el registro?', 'Si lo elimina, no se podrá recuperar', function(){
 
@@ -138,5 +159,57 @@ function deleteRefaction(id){
 
         }
         , function(){ alertify.error('No se realizo ninguna acción.')});
+
+}
+
+function liberate_product(id) {
+    alertify.confirm('Desea terminar el producto?', 'Si lo termina, no se podrán revertir los cambios',
+function () {
+
+        $.ajax({
+            url: "../application/core/app/view/tosell.php",
+            type: 'POST',
+            data: {
+                'id': id
+
+            },
+            success(data) {
+                alertify.success('Se terminó correctamente.');
+                location.reload();
+            }
+
+
+
+
+        });
+    }, function () {
+        alertify.error('No se realizo ninguna acción.')
+    });
+
+}
+function activate_product(id) {
+    alertify.confirm('Desea activar el producto?', '',
+        function () {
+
+            $.ajax({
+                url: "../application/core/app/view/toactive.php",
+                type: 'POST',
+                data: {
+                    'id': id
+
+                },
+                success(data) {
+                    alertify.success('Se activó correctamente.');
+                    location.reload();
+                }
+
+
+
+
+            });
+        },
+        function () {
+            alertify.error('No se realizo ninguna acción.')
+        });
 
 }

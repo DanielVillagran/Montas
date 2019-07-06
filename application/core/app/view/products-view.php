@@ -5,7 +5,14 @@ if(isset($_GET["is_workshop"])){
 }else{
     $workshop = false;
 }
+if(isset($_GET["is_ended"])){
+    $ended = true;
+}else{
+    $ended = false;
+}
 ?>
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/alertify.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/css/alertify.min.css" />
 <section class="content-header">
     <h1>
         Productos
@@ -22,9 +29,9 @@ if(isset($_GET["is_workshop"])){
     <div class="row">
         <div class="col-md-12">
             <div class="btn-group  pull-right">
-                <?php if($workshop): ?>
+                <?php if($workshop || $ended): ?>
                 <?php else:?>
-                    <a  href="index.php?view=newproduct" class="btn btn-default">Agregar Producto</a>
+                <a href="index.php?view=newproduct" class="btn btn-default">Agregar Producto</a>
 
                 <?php endif;?>
                 <div class="btn-group pull-right">
@@ -45,20 +52,24 @@ if(isset($_GET["is_workshop"])){
             <?php
             if($workshop){
                 $products = ProductData::getWorkshop();
+            }else if($ended){
+                $products = ProductData::getFinished();
+
             }else{
-                $products = ProductData::getAll();
+                $products = ProductData::getWorkshop();
+
             }
             if (count($products) > 0) {
                 ?>
-                <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title">Productos</h3>
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Productos</h3>
 
-                    </div><!-- /.box-header -->
-                    <div class="box-body no-padding">
-                        <div class="box-body">
-                            <table class="table table-bordered datatable table-hover">
-                                <thead>
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <div class="box-body">
+                        <table class="table table-bordered datatable table-hover">
+                            <thead>
                                 <th>ID</th>
                                 <th>Imagen</th>
                                 <th>Modelo</th>
@@ -70,83 +81,97 @@ if(isset($_GET["is_workshop"])){
 
                                 <th>Activo</th>
                                 <th></th>
-                                </thead>
-                                <?php foreach ($products as $product): ?>
-                                    <tr>
-                                        <td><?php echo $product->id; ?></td>
+                            </thead>
+                            <?php foreach ($products as $product): ?>
+                            <tr>
+                                <td><?php echo $product->id; ?></td>
 
-                                        <td>
+                                <td>
 
-                                            <?php
+                                    <?php
                                             $serie = $product->serie;
                                             $imagenes = ProductData::getBySerie($serie);
                                             ?>
 
-                                            <?php foreach ($imagenes as $i): ?>
-                                                <a href="storage/products/<?php echo $i->img; ?>" target="_blank">
-                                                <div class="col-md-2">
-                                                <img src="storage/products/<?php echo $i->img; ?>"
-                                                     style="width:64px;">
-                                            </div>
-                                                </a>
-                                            <?php endforeach; ?>
-                                        </td>
-                                        <td><?php echo $product->model; ?></td>
-                                        <td><?php echo $product->serie; ?></td>
-                                        <td><?php echo $product->capacity; ?></td>
-                                        <td style="display: none;">$ <?php echo number_format($product->price_out, 2, '.', ','); ?></td>
-                                        <td><?php if ($product->category_id != null) {
+                                    <?php foreach ($imagenes as $i): ?>
+                                    <a href="storage/products/<?php echo $i->img; ?>" target="_blank">
+                                        <div class="col-md-2">
+                                            <img src="storage/products/<?php echo $i->img; ?>" style="width:64px;">
+                                        </div>
+                                    </a>
+                                    <?php endforeach; ?>
+                                </td>
+                                <td><?php echo $product->model; ?></td>
+                                <td><?php echo $product->serie; ?></td>
+                                <td><?php echo $product->capacity; ?></td>
+                                <td style="display: none;">$
+                                    <?php echo number_format($product->price_out, 2, '.', ','); ?></td>
+                                <td><?php if ($product->category_id != null) {
                                                 echo $product->getCategory()->name;
                                             } else {
                                                 echo "<center>----</center>";
                                             } ?></td>
-                                        <td><?php echo $product->type; ?></td>
-                                        <td style="text-align: center; font-size: 30px;">
-                                            <?php if ($product->is_active): ?>
-                                                <i class="fa fa-check"></i>
-                                            <?php else:?>
-                                                <i class="fa fa-times"></i>
+                                <td><?php echo $product->type; ?></td>
+                                <td style="text-align: center; font-size: 30px;">
+                                    <?php if ($product->is_active == 1): ?>
+                                    <i class="fa fa-check"></i>
+                                    <?php else:?>
+                                    <i class="fa fa-times"></i>
 
-                                            <?php endif; ?>
-                                        </td>
+                                    <?php endif; ?>
+                                </td>
 
-                                        <?php if(!$workshop): ?>
-                                        <td style="width:90px;">
-                                            <a target="_blank"
-                                               href="index.php?action=productqr&id=<?php echo $product->id; ?>"
-                                               class="btn btn-xs btn-default"><i class="fa fa-qrcode"></i></a>
-                                            <a href="index.php?view=editproduct&id=<?php echo $product->id; ?>&serie=<?php echo $product->serie; ?>"
-                                               class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-pencil"></i></a>
-                                            <a style="display: none" href="index.php?view=refaproduct&id=<?php echo $product->id; ?>"
-                                               class="btn btn-xs btn-success"><i class="glyphicon glyphicon-wrench"></i></a>
-                                            <a href="index.php?view=delproduct&id=<?php echo $product->id; ?>"
-                                               class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>
-                                        </td>
-                    <?php else:?>
-                                            <td style="width:90px;">
+                                <?php if($ended): ?>
+                                <td style="width:90px;">
 
-                                                <a href="index.php?view=editproduct&id=<?php echo $product->id; ?>&is_workshop=1"
-                                                   class="btn btn-xs btn-success"><i class="glyphicon glyphicon-wrench"></i></a>
+                                    <a href="index.php?view=editproduct&id=<?php echo $product->id; ?>&finished=1&serie=<?php echo $product->serie; ?>"
+                                        class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
+                                    <a onclick="activate_product(<?php echo $product->id; ?>)"
+                                        class="btn btn-xs btn-success"><i class="glyphicon glyphicon-check"></i></a>
 
-                                            </td>
-                    <?php endif;?>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </table>
-                        </div>
-                    </div><!-- /.box-body -->
-                </div><!-- /.box -->
+                                </td>
+
+                                <?php elseif($workshop):?>
+                                <td style="width:90px;">
+
+                                    <a href="index.php?view=editproduct&id=<?php echo $product->id; ?>&is_workshop=1&serie=<?php echo $product->serie; ?>"
+                                        class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-wrench"></i></a>
+                                    <a onclick="liberate_product(<?php echo $product->id; ?>)"
+                                        class="btn btn-xs btn-success"><i class="glyphicon glyphicon-usd"></i></a>
+
+                                </td>
+                                <?php else:?>
+                                <td style="width:90px;">
+                                    <a target="_blank" href="index.php?action=productqr&id=<?php echo $product->id; ?>"
+                                        class="btn btn-xs btn-default"><i class="fa fa-qrcode"></i></a>
+                                    <a href="index.php?view=editproduct&id=<?php echo $product->id; ?>&serie=<?php echo $product->serie; ?>"
+                                        class="btn btn-xs btn-warning"><i class="glyphicon glyphicon-pencil"></i></a>
+                                    <a style="display: none"
+                                        href="index.php?view=refaproduct&id=<?php echo $product->id; ?>"
+                                        class="btn btn-xs btn-success"><i class="glyphicon glyphicon-wrench"></i></a>
+                                    <a href="index.php?view=delproduct&id=<?php echo $product->id; ?>"
+                                        class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></a>
+                                </td>
+
+                                <?php endif;?>
+                            </tr>
+                            <?php endforeach; ?>
+                        </table>
+                    </div>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
 
 
-                <?php
+            <?php
             } else {
                 ?>
-                <div class="alert alert-info">
-                    <h2>No hay productos</h2>
-                    <p>No se han agregado productos a la base de datos, puedes agregar uno dando click en el boton <b>"Agregar
-                            Producto"</b>.</p>
-                </div>
-                <?php
+            <div class="alert alert-info">
+                <h2>No hay productos</h2>
+                <p>No se han agregado productos a la base de datos, puedes agregar uno dando click en el boton
+                    <b>"Agregar
+                        Producto"</b>.</p>
+            </div>
+            <?php
             }
 
             ?>
@@ -155,64 +180,89 @@ if(isset($_GET["is_workshop"])){
     </div>
 </section><!-- /.content -->
 
+<script src="../application/core/app/assets/refactions.js"></script>
 
 <script type="text/javascript">
-
+ 
     function thePDF() {
         var doc = new jsPDF('p', 'pt');
         doc.setFontSize(26);
-        doc.text("<?php echo ConfigurationData::getByPreffix("company_name")->val;?>", 40, 65);
+        doc.text("<?php echo ConfigurationData::getByPreffix("
+            company_name ")->val;?>", 40, 65);
         doc.setFontSize(18);
         doc.text("LISTADO DE PRODUCTOS", 40, 80);
         doc.setFontSize(12);
-        doc.text("Usuario: <?php echo Core::$user->name . " " . Core::$user->lastname; ?>  -  Fecha: <?php echo date("d-m-Y h:i:s");?> ", 40, 90);
-        var columns = [
-            {title: "Id", dataKey: "id"},
-            {title: "Codigo", dataKey: "code"},
-            {title: "Nombre del Producto", dataKey: "name"},
-            {title: "Precio de entrada", dataKey: "price_in"},
-            {title: "Precio de Salida", dataKey: "price_in"},
-        ];
-        var rows = [
-            <?php foreach($products as $product):
-            ?>
+        doc.text("Usuario: <?php echo Core::$user->name . "
+            " . Core::$user->lastname; ?>  -  Fecha: <?php echo date("
+            d - m - Y h: i: s ");?> ", 40, 90);
+        var columns = [{
+                title: "Id",
+                dataKey: "id"
+            },
             {
+                title: "Codigo",
+                dataKey: "code"
+            },
+            {
+                title: "Nombre del Producto",
+                dataKey: "name"
+            },
+            {
+                title: "Precio de entrada",
+                dataKey: "price_in"
+            },
+            {
+                title: "Precio de Salida",
+                dataKey: "price_in"
+            },
+        ];
+        var rows = [ <
+            ? php foreach($products as $product) :
+            ?
+            > {
                 "id": "<?php echo $product->id; ?>",
                 "code": "<?php echo $product->barcode; ?>",
                 "name": "<?php echo $product->name; ?>",
                 "price_in": "$ <?php echo number_format($product->price_in, 2, '.', ',');?>",
                 "price_out": "$ <?php echo number_format($product->price_out, 2, '.', ',');?>",
-            },
-            <?php endforeach; ?>
+            }, <
+            ? php endforeach; ? >
         ];
         doc.autoTable(columns, rows, {
             theme: 'grid',
             overflow: 'linebreak',
             styles: {
-                fillColor: <?php echo Core::$pdf_table_fillcolor;?>
+                fillColor: < ? php echo Core::$pdf_table_fillcolor; ? >
             },
             columnStyles: {
-                id: {fillColor: <?php echo Core::$pdf_table_column_fillcolor;?>}
+                id: {
+                    fillColor: < ? php echo Core::$pdf_table_column_fillcolor; ? >
+                }
             },
-            margin: {top: 100},
-            afterPageContent: function (data) {
-            }
+            margin: {
+                top: 100
+            },
+            afterPageContent: function (data) {}
         });
         doc.setFontSize(12);
-        doc.text("<?php echo Core::$pdf_footer;?>", 40, doc.autoTableEndPosY() + 25);
-        <?php
+        doc.text("<?php echo Core::$pdf_footer;?>", 40, doc.autoTableEndPosY() + 25); <
+        ? php
         $con = ConfigurationData::getByPreffix("report_image");
-        if($con != null && $con->val != ""):
-        ?>
-        var img = new Image();
+        if ($con != null && $con - > val != ""):
+            ?
+            >
+            var img = new Image();
         img.src = "storage/configuration/<?php echo $con->val;?>";
         img.onload = function () {
-            doc.addImage(img, 'PNG', 495, 20, 60, 60, 'mon');
-            doc.save('products-<?php echo date("d-m-Y h:i:s", time()); ?>.pdf');
-        }
-        <?php else:?>
-        doc.save('products-<?php echo date("d-m-Y h:i:s", time()); ?>.pdf');
-        <?php endif; ?>
+                doc.addImage(img, 'PNG', 495, 20, 60, 60, 'mon');
+                doc.save('products-<?php echo date("d-m-Y h:i:s", time()); ?>.pdf');
+            } <
+            ? php
+        else : ? >
+            doc.save('products-<?php echo date("d-m-Y h:i:s", time()); ?>.pdf'); <
+        ? php endif; ? >
     }
-</script>
 
+
+
+</script>

@@ -98,6 +98,11 @@ class ProductData {
         $query = Executor::doit($sql);
         return Model::many($query[0],new ProductData());
     }
+    public static function getFinished(){
+        $sql = "select * from ".self::$tablename." where status=1";;
+        $query = Executor::doit($sql);
+        return Model::many($query[0],new ProductData());
+    }
 
 	public static function getAllByCategoryId($id){
 		$sql = "select * from ".self::$tablename." where category_id=$id";

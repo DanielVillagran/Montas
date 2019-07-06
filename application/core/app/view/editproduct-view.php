@@ -52,6 +52,12 @@
     } else {
         $workshop = 0;
     }
+    if (isset($_GET["finished"])) {
+        $finished = $_GET["finished"];
+
+    } else {
+        $finished = 0;
+    }
     $categories = CategoryData::getAll();
     $imagenes = ProductData::getBySerie($_GET["serie"]);
 
@@ -90,7 +96,7 @@
                                                             <img style="max-height: 350px; width: 100%;"
                                                                  src="storage/products/<?php echo $img->img; ?>"
                                                                  class="img-responsive">
-                                                            <button type="button" onclick="deleteImage(<?php echo $img->id; ?>)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                            <button type="button" onclick="deleteImage(<?php echo $img->id; ?>)" class="btn btn-danger"><i class="fa fa-times"></i></button>
 
                                                         </div>
                                                     </div>
@@ -122,7 +128,7 @@
                                         <label for="inputEmail1" class="col-lg-3 control-label">Categoria</label>
                                         <div class="col-md-8">
                                             <select name="category_id"
-                                                    class="form-control" <?php if ($workshop == 1): echo "disabled"; endif; ?>>
+                                                    class="form-control" <?php if ($workshop == 1 || $finished == 1): echo "disabled"; endif; ?>>
                                                 <option value="">-- NINGUNA --</option>
                                                 <?php foreach ($categories as $category): ?>
                                                     <option value="<?php echo $category->id; ?>" <?php if ($product->category_id != null && $product->category_id == $category->id) {
@@ -146,7 +152,7 @@
                                             Entrada*</label>
                                         <div class="col-md-8">
                                             <input type="text"
-                                                   name="price_in" <?php if ($workshop == 1): echo "disabled"; endif; ?>
+                                                   name="price_in" <?php if ($workshop == 1 || $finished == 1): echo "disabled"; endif; ?>
                                                    class="form-control" value="<?php echo $product->price_in; ?>"
                                                    id="price_in" placeholder="Precio de entrada">
                                         </div>
@@ -156,7 +162,7 @@
                                             Salida*</label>
                                         <div class="col-md-8">
                                             <input type="text"
-                                                   name="price_out" <?php if ($workshop == 1): echo "disabled"; endif; ?>
+                                                   name="price_out" <?php if ($workshop == 1 || $finished == 1): echo "disabled"; endif; ?>
                                                    class="form-control" id="price_out"
                                                    value="<?php echo $product->price_out; ?>"
                                                    placeholder="Precio de salida">
@@ -166,7 +172,7 @@
                                         <label for="inputEmail1" class="col-lg-3 control-label">Unidad*</label>
                                         <div class="col-md-8">
                                             <input type="text"
-                                                   name="unit" <?php if ($workshop == 1): echo "disabled"; endif; ?>
+                                                   name="unit" <?php if ($workshop == 1 || $finished == 1): echo "disabled"; endif; ?>
                                                    class="form-control" id="unit" value="<?php echo $product->unit; ?>"
                                                    placeholder="Unidad del Producto">
                                         </div>
@@ -186,7 +192,7 @@
                                             inventario:</label>
                                         <div class="col-md-8">
                                             <input type="text"
-                                                   name="inventary_min" <?php if ($workshop == 1): echo "disabled"; endif; ?>
+                                                   name="inventary_min" <?php if ($workshop == 1 || $finished == 1): echo "disabled"; endif; ?>
                                                    class="form-control" value="<?php echo $product->inventary_min; ?>"
                                                    id="inputEmail1" placeholder="Minima en Inventario (Default 10)">
                                         </div>
@@ -195,7 +201,7 @@
                                         <label for="inputEmail1" class="col-lg-3 control-label">Modelo:</label>
                                         <div class="col-md-8">
                                             <input type="text"
-                                                   name="modelo" <?php if ($workshop == 1): echo "disabled"; endif; ?>
+                                                   name="modelo" <?php if ($workshop == 1 || $finished == 1): echo "disabled"; endif; ?>
                                                    class="form-control" value="<?php echo $product->model; ?>"
                                                    id="modelo" value=""
                                                    placeholder="Modelo">
@@ -205,7 +211,7 @@
                                         <label for="inputEmail1" class="col-lg-3 control-label">Serie:</label>
                                         <div class="col-md-8">
                                             <input type="text"
-                                                   name="serie" disabled
+                                                   name="serie" readonly
                                                    value="<?php echo $product->serie; ?>" class="form-control"
                                                    id="serie"
                                                    placeholder="Serie">
@@ -215,7 +221,7 @@
                                         <label for="inputEmail1" class="col-lg-3 control-label">Capacidad:</label>
                                         <div class="col-md-8">
                                             <input type="number"
-                                                   name="capacidad" <?php if ($workshop == 1): echo "disabled"; endif; ?>
+                                                   name="capacidad" <?php if ($workshop == 1 || $finished == 1): echo "disabled"; endif; ?>
                                                    value="<?php echo $product->capacity; ?>" class="form-control"
                                                    id="capacidad"
                                                    placeholder="Capacidad">
@@ -225,7 +231,7 @@
                                         <label for="inputEmail1" class="col-lg-3 control-label">Altura:</label>
                                         <div class="col-md-8">
                                             <input type="text"
-                                                   name="altura" <?php if ($workshop == 1): echo "disabled"; endif; ?>
+                                                   name="altura" <?php if ($workshop == 1 || $finished == 1): echo "disabled"; endif; ?>
                                                    value="<?php echo $product->height; ?>" class="form-control"
                                                    id="altura"
                                                    placeholder="Altura">
@@ -235,7 +241,7 @@
                                         <label for="inputEmail1" class="col-lg-3 control-label">Combustible:</label>
                                         <div class="col-md-8">
                                             <input type="text"
-                                                   name="combustible" <?php if ($workshop == 1): echo "disabled"; endif; ?>
+                                                   name="combustible" <?php if ($workshop == 1 || $finished == 1): echo "disabled"; endif; ?>
                                                    value="<?php echo $product->fuel; ?>" class="form-control"
                                                    id="combustible"
                                                    placeholder="Combustible">
@@ -246,7 +252,7 @@
                                             ingreso:</label>
                                         <div class="col-md-8">
                                             <input type="date"
-                                                   name="fechaingreso" <?php if ($workshop == 1): echo "disabled"; endif; ?>
+                                                   name="fechaingreso" <?php if ($workshop == 1 || $finished == 1): echo "disabled"; endif; ?>
                                                    value="<?php echo $product->admissiondate; ?>" class="form-control"
                                                    id="fechaingreso"
                                                    placeholder="">
@@ -256,7 +262,7 @@
                                         <label for="inputEmail1" class="col-lg-3 control-label">Horometro:</label>
                                         <div class="col-md-8">
                                             <input type="text"
-                                                   name="horometro" <?php if ($workshop == 1): echo "disabled"; endif; ?>
+                                                   name="horometro" <?php if ($workshop == 1 || $finished == 1): echo "disabled"; endif; ?>
                                                    class="form-control" value="<?php echo $product->horometer; ?>"
                                                    id="horometro"
                                                    placeholder="Horometro">
@@ -266,7 +272,7 @@
                                         <label for="inputEmail1" class="col-lg-3 control-label">Observacion:</label>
                                         <div class="col-md-8">
                                             <input type="text"
-                                                   name="observacion" <?php if ($workshop == 1): echo "disabled"; endif; ?>
+                                                   name="observacion" <?php if ($workshop == 1 || $finished == 1): echo "disabled"; endif; ?>
                                                    class="form-control" value="<?php echo $product->observation; ?>"
                                                    id="observacion"
                                                    placeholder="observacion">
@@ -276,7 +282,7 @@
                                         <label for="inputEmail1" class="col-lg-3 control-label">Tipo</label>
                                         <div class="col-md-8">
                                             <select name="tipo"
-                                                    class="form-control" <?php if ($workshop == 1): echo "disabled"; endif; ?>>
+                                                    class="form-control" <?php if ($workshop == 1 || $finished == 1): echo "disabled"; endif; ?>>
                                                 <?php if ($product->type == "Venta"): ?>
                                                     <option value="<?php echo $product->type; ?>"
                                                             selected><?php echo $product->type; ?></option>
@@ -345,10 +351,12 @@
                                     <?php else: ?>
                                     <?php endif; ?>
                                 </form>
-                                <?php if ($workshop): ?>
-                                    <hr>
+                                <?php if ($workshop || $finished): ?>
+                                <hr>
                                     <h1 style="width: 100%; text-align: center;">Reparaciones</h1>
                                     <br>
+                                <?php if($workshop):?>
+                                    
                                     <div class="row">
                                         <div class="col-md-2"></div>
                                         <form class="form-horizontal col-md-4" method="post" id="addproduct"
@@ -376,7 +384,7 @@
                                                            placeholder="Horas consumidas">
                                                 </div>
                                             </div>
-
+                                            
                                             <div class="form-group">
                                                 <div class="col-lg-offset-3 col-lg-8">
                                                     <input type="hidden" name="product_id"
@@ -386,10 +394,11 @@
                                                     </button>
                                                 </div>
                                             </div>
-
                                         </form>
 
                                     </div>
+                                                <?php endif;?>
+                                    <?php if($workshop || $finished):?>
                                     <div class="row">
                                         <div class="col-md-3"></div>
                                         <div class="col-md-8">
@@ -430,12 +439,15 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                        <?php endif;?>
+
                                         <div class="col-md-2"></div>
 
                                     </div>
                                     <hr>
                                     <h1 style="width: 100%; text-align: center;">Refacciones</h1>
                                     <br>
+                                    <?php if($workshop):?>
                                     <div class="row">
                                         <div class="col-md-2"></div>
                                         <form class="form-horizontal col-md-4" method="post" id="addproduct"
@@ -464,6 +476,8 @@
 
                                         </form>
                                     </div>
+                                                <?php endif;?>
+                                    <?php if($workshop || $finished):?>
 
                                     <div class="row">
                                         <div class="col-md-3"></div>
@@ -516,6 +530,7 @@
                 </div>
             </div>
         </div>
+                                                <?php endif;?>
     <?php endif; ?>
 </section>
 <script src="../application/core/app/assets/refactions.js"></script>
