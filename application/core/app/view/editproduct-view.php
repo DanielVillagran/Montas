@@ -88,8 +88,17 @@
 
                                             <br>
                                             <div class="row">
+<?php if($workshop):?>
+<input type="hidden" id="type" name="type" value="is_workshop=1">
+<?php elseif($finished):?>
+<input type="hidden" id="type" name="type" value="finished=1">
+    <?php else:?>
+<input type="hidden" id="type" name="type" value="">
+    <?php endif;?>
+
+
+
                                                 <?php foreach ($imagenes as $img) : ?>
-                                                <input type="hidden" id="img_id" value="<?php echo $img->id;?>">
 
                                                     <div class="col-md-2">
                                                         <div class="container">

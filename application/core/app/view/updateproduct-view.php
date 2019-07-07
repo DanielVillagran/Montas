@@ -99,7 +99,7 @@ if(count($_POST)>0){
 //	}
 
 	setcookie("prdupd","true");
-	print "<script>window.location='index.php?view=editproduct&id=$_POST[product_id]&serie=$_POST[serie]';</script>";
+	print "<script>window.location='index.php?view=editproduct&id=$_POST[product_id]&serie=$_POST[serie]&$_POST[type]';</script>";
 
 
 }
