@@ -520,10 +520,17 @@
 
                                     </div>
                                     <div class="col-md-2"></div>
-                                    <a href="./?view=products" class="btn btn-danger">Regresar</a>
 
 
                                 <?php endif; ?>
+                                <?php if($workshop):?>
+                                <a href="./?view=products&is_workshop=1" class="btn btn-danger">Regresar</a>
+
+                                <?php elseif($finished):?>
+                                <a href="./?view=products&is_ended=1" class="btn btn-danger">Regresar</a>
+                                                <?php else:?>
+                                                <a href="./?view=products" class="btn btn-danger">Regresar</a>
+                                                <?php endif;?>
                             </td>
                         </tr>
                     </table>
