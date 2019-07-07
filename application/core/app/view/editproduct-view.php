@@ -96,8 +96,11 @@
                                                             <img style="max-height: 350px; width: 100%;"
                                                                  src="storage/products/<?php echo $img->img; ?>"
                                                                  class="img-responsive">
-                                                            <button type="button" onclick="deleteImage(<?php echo $img->id; ?>)" class="btn btn-danger"><i class="fa fa-times"></i></button>
+                                                                 <?php if($workshop):?>
+    <?php else:?>
+    <button type="button" onclick="deleteImage(<?php echo $img->id; ?>)" class="btn btn-danger"><i class="fa fa-times"></i></button>
 
+    <?php endif;?>
                                                         </div>
                                                     </div>
                                                 <?php endforeach; ?>
