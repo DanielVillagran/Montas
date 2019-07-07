@@ -411,7 +411,10 @@
                                                     <th scope="col">#</th>
                                                     <th scope="col">Reparación</th>
                                                     <th scope="col">Horas consumidas</th>
+                                                    <?php if($workshop):?>
                                                     <th scope="col">Borrar</th>
+                                                    <?php else:?>
+                                                <?php endif;?>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -432,9 +435,13 @@
                                                             <th scope="row"><?php echo $l->id; ?></th>
                                                             <td><?php echo $l->reparation; ?></td>
                                                             <td><?php echo $l->hours; ?> Hrs.</td>
+                                                            <?php if($workshop):?>
+
                                                             <td><a class="btn btn-xs btn-danger"
                                                                    onclick="deleteReparation(<?php echo $l->id; ?>)"><i
                                                                             class="fa fa-trash"></i></a></td>
+                                                                            <?php else:?>
+                                                <?php endif;?>
                                                         </tr>
 
                                                     <?php endforeach; ?>
@@ -490,7 +497,10 @@
                                                 <tr>
                                                     <th scope="col">#</th>
                                                     <th scope="col">Refacción</th>
+                                                    <?php if($workshop):?>
                                                     <th scope="col">Borrar</th>
+                                                    <?php else:?>
+                                                <?php endif;?>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -509,9 +519,13 @@
                                                         <tr>
                                                             <th scope="row"><?php echo $l->id; ?></th>
                                                             <td><?php echo $l->refaction; ?></td>
+                                                            <?php if($workshop):?>
+
                                                             <td><a class="btn btn-xs btn-danger"
                                                                    onclick="deleteRefaction(<?php echo $l->id; ?>)"><i
                                                                             class="fa fa-trash"></i></a></td>
+                                                                            <?php else:?>
+                                                <?php endif;?>
                                                         </tr>
 
                                                     <?php endforeach; ?>
