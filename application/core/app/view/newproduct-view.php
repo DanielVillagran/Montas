@@ -149,7 +149,7 @@
                                 <div class="form-group" >
                                     <label for="inputEmail1" class="col-lg-2 control-label">Observacion:</label>
                                     <div class="col-md-6">
-                                        <input type="text" required name="observacion" class="form-control" id="observacion"
+                                        <input type="text"  name="observacion" class="form-control" id="observacion"
                                                placeholder="observacion">
                                     </div>
                                 </div>
