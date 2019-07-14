@@ -32,12 +32,12 @@ class ProductData {
 
 	public function add(){
 		$sql = "insert into ".self::$tablename." (barcode,name,description,price_in,price_out,user_id,presentation,unit,category_id,inventary_min,created_at,is_rent,model,serie,capacity,height,fuel,admissiondate,horometer,observation,type,status) ";
-		$sql .= "value (\"$this->barcode\",\"$this->name\",\"$this->description\",0.0,0.0,$this->user_id,\"$this->presentation\",\"$this->unit\",$this->category_id,$this->inventary_min,NOW(),\"$this->is_rent\",\"$this->model\",\"$this->serie\",$this->capacity,$this->height,$this->fuel,\"$this->admissiondate\",$this->horometer,\"$this->observation\",\"$this->type\", $this->status)";
+		$sql .= "value (\"$this->barcode\",\"$this->name\",\"$this->description\",0.0,0.0,$this->user_id,\"$this->presentation\",\"$this->unit\",$this->category_id,$this->inventary_min,NOW(),\"$this->is_rent\",\"$this->model\",\"$this->serie\",\"$this->capacity\",\"$this->height\",\"$this->fuel\",\"$this->admissiondate\",\"$this->horometer\",\"$this->observation\",\"$this->type\", $this->status)";
 		return Executor::doit($sql);
 	}
 	public function add_with_image(){
 		$sql = "insert into ".self::$tablename." (barcode,image,name,description,price_in,price_out,user_id,presentation,unit,category_id,inventary_min,is_rent,model,serie,capacity,height,fuel,admissiondate,horometer,observation,type,status) ";
-		$sql .= "value (\"$this->barcode\",\"$this->image\",\"$this->name\",\"$this->description\",0.0,0.0,$this->user_id,\"$this->presentation\",\"$this->unit\",$this->category_id,$this->inventary_min,\"$this->is_rent\",\"$this->model\",\"$this->serie\",$this->capacity,$this->height,$this->fuel,\"$this->admissiondate\",$this->horometer,\"$this->observation\",\"$this->type\", $this->status)";
+		$sql .= "value (\"$this->barcode\",\"$this->image\",\"$this->name\",\"$this->description\",0.0,0.0,$this->user_id,\"$this->presentation\",\"$this->unit\",$this->category_id,$this->inventary_min,\"$this->is_rent\",\"$this->model\",\"$this->serie\",\"$this->capacity\",\"$this->height\",\"$this->fuel\",\"$this->admissiondate\",\"$this->horometer\",\"$this->observation\",\"$this->type\", $this->status)";
 		return Executor::doit($sql);
 	}
     public function product_images(){

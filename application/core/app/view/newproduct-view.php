@@ -38,7 +38,7 @@
                                 <div class="form-group">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Categoria</label>
                                     <div class="col-md-6">
-                                        <select name="category_id" class="form-control">
+                                        <select name="category_id" required class="form-control">
                                             <option value="">-- NINGUNA --</option>
                                             <?php foreach ($categories as $category): ?>
                                                 <option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
@@ -48,7 +48,7 @@
                                 <div class="form-group">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Descripcion</label>
                                     <div class="col-md-6">
-                                        <textarea name="description" class="form-control" id="description"
+                                        <textarea required name="description" class="form-control" id="description"
                                                   placeholder="Descripcion del Producto"></textarea>
                                     </div>
                                 </div>
@@ -100,7 +100,7 @@
                                 <div class="form-group">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Modelo:</label>
                                     <div class="col-md-6">
-                                        <input type="text" name="modelo" class="form-control" id="modelo" value=""
+                                        <input type="text" required name="modelo" class="form-control" id="modelo" value=""
                                                placeholder="Modelo">
                                     </div>
                                 </div>
@@ -114,49 +114,49 @@
                                 <div class="form-group" >
                                     <label for="inputEmail1" class="col-lg-2 control-label">Capacidad:</label>
                                     <div class="col-md-6">
-                                        <input type="number" name="capacidad" class="form-control" id="capacidad"
+                                        <input type="text" required name="capacidad" class="form-control" id="capacidad"
                                                placeholder="Capacidad">
                                     </div>
                                 </div>
                                 <div class="form-group" >
                                     <label for="inputEmail1" class="col-lg-2 control-label">Altura:</label>
                                     <div class="col-md-6">
-                                        <input type="number" name="altura" class="form-control" id="altura"
+                                        <input type="text" required name="altura" class="form-control" id="altura"
                                                placeholder="Altura">
                                     </div>
                                 </div>
                                 <div class="form-group" >
                                     <label for="inputEmail1" class="col-lg-2 control-label">Combustible:</label>
                                     <div class="col-md-6">
-                                        <input type="number" name="combustible" class="form-control" id="combustible"
+                                        <input required type="text" name="combustible" class="form-control" id="combustible"
                                                placeholder="Combustible">
                                     </div>
                                 </div>
                                 <div class="form-group" >
                                     <label for="inputEmail1" class="col-lg-2 control-label">Fecha de ingreso:</label>
                                     <div class="col-md-6">
-                                        <input type="date" value="NOW()" name="fechaingreso" class="form-control" id="fechaingreso"
+                                        <input type="date" value="<?php echo date('Y-m-d')?>" name="fechaingreso" class="form-control" id="fechaingreso"
                                                placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group" >
                                     <label for="inputEmail1" class="col-lg-2 control-label">Horometro:</label>
                                     <div class="col-md-6">
-                                        <input type="text" name="horometro" class="form-control" id="horometro"
+                                        <input type="text" required name="horometro" class="form-control" id="horometro"
                                                placeholder="Horometro">
                                     </div>
                                 </div>
                                 <div class="form-group" >
                                     <label for="inputEmail1" class="col-lg-2 control-label">Observacion:</label>
                                     <div class="col-md-6">
-                                        <input type="text" name="observacion" class="form-control" id="observacion"
+                                        <input type="text" required name="observacion" class="form-control" id="observacion"
                                                placeholder="observacion">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Tipo</label>
                                     <div class="col-md-6">
-                                        <select name="tipo" class="form-control">
+                                        <select required name="tipo" class="form-control">
                                             <option value="">-- NINGUNA --</option>
                                                 <option value="Venta">Venta</option>
                                                 <option value="Renta">Renta</option>

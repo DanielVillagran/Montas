@@ -232,7 +232,7 @@
                                     <div class="form-group">
                                         <label for="inputEmail1" class="col-lg-3 control-label">Capacidad:</label>
                                         <div class="col-md-8">
-                                            <input type="number"
+                                            <input type="text"
                                                    name="capacidad" <?php if ($workshop == 1 || $finished == 1): echo "disabled"; endif; ?>
                                                    value="<?php echo $product->capacity; ?>" class="form-control"
                                                    id="capacidad"
