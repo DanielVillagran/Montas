@@ -368,7 +368,7 @@
                                     <h1 style="width: 100%; text-align: center;">Reparaciones</h1>
                                     <br>
                                 <?php if($workshop):?>
-                                    
+
                                     <div class="row">
                                         <div class="col-md-2"></div>
                                         <form class="form-horizontal col-md-4" method="post" id="addproduct"
@@ -396,7 +396,7 @@
                                                            placeholder="Horas consumidas">
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="form-group">
                                                 <div class="col-lg-offset-3 col-lg-8">
                                                     <input type="hidden" name="product_id"
@@ -451,12 +451,18 @@
                                                                             class="fa fa-trash"></i></a></td>
                                                                             <?php else:?>
                                                 <?php endif;?>
+                                                <?php if($finished): ?>
+                                                <td><input type="number" name="" id="costoR_<?php echo $l->id;?>" class="form-control costoR" placeholder="precio" value="<?php echo $l->cost;?>"></td>
+                                              <?php endif;?>
                                                         </tr>
 
                                                     <?php endforeach; ?>
                                                 <?php endif; ?>
                                                 </tbody>
                                             </table>
+                                            <?php if($finished): ?>
+                                          <button type="button" style="float:right" class="btn btn-success" onclick="addCostReparation()" name="button">Guardar</button>
+                                          <?php endif;?>
                                         </div>
                                         <?php endif;?>
 
@@ -535,12 +541,18 @@
                                                                             class="fa fa-trash"></i></a></td>
                                                                             <?php else:?>
                                                 <?php endif;?>
+                                                <?php if($finished): ?>
+                                                <td style="width: 28%; "><input type="text" id="costoF_<?php echo $l->id;?>" class="form-control costoF" style=""  name="" placeholder="Precio" value="<?php echo $l->cost;?>"></td>
+                                              <?php endif;?>
                                                         </tr>
 
                                                     <?php endforeach; ?>
                                                 <?php endif; ?>
                                                 </tbody>
                                             </table>
+                                            <?php if($finished): ?>
+                                          <button type="button" style="float:right" class="btn btn-success" onclick="addCostRefaction()" name="button">Guardar</button>
+                                          <?php endif;?>
                                         </div>
                                         <div class="col-md-2"></div>
 

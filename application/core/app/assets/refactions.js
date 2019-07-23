@@ -98,6 +98,62 @@ function validateFiles(qty) {
 
     }
 }
+function addCostReparation(){
+  var costos = $('.costoR').map(function() {
+    return [[this.id, this.value]];
+}).get();
+
+$.each(costos, function( index, value ) {
+  let idtxt = value[0];
+  let id = idtxt.replace("costoR_", "");
+  let costo = value[1];
+
+  $.ajax({
+      url:"../application/core/app/view/updateCostReparations.php",
+      type:'POST',
+      data: {
+          'id': id,
+          'cost': costo,
+
+      },
+      success(data) {
+          alertify.success('Costos agregados') ;
+          location.reload();
+      }
+  });
+
+});
+
+
+}
+function addCostRefaction(){
+  var costos = $('.costoF').map(function() {
+    return [[this.id, this.value]];
+}).get();
+
+$.each(costos, function( index, value ) {
+  let idtxt = value[0];
+  let id = idtxt.replace("costoF_", "");
+  let costo = value[1];
+
+  $.ajax({
+      url:"../application/core/app/view/updateCostRefactions.php",
+      type:'POST',
+      data: {
+          'id': id,
+          'cost': costo,
+
+      },
+      success(data) {
+          alertify.success('Costos agregados') ;
+          location.reload();
+      }
+  });
+
+});
+
+
+}
 function deleteImage(id){
     alertify.confirm('Desea eliminar la imagen?', 'Si la elimina, no se podrá recuperar', function(){
 
@@ -188,25 +244,31 @@ function () {
 
 }
 function activate_product(id) {
-    alertify.confirm('Desea activar el producto?', '',
-        function () {
+    alertify.prompt('Ingrese el valor del producto', "",
+        function (evt, val) {
+
+          if(val != ''){
 
             $.ajax({
                 url: "../application/core/app/view/toactive.php",
-                type: 'POST',
+                type: 'GET',
                 data: {
-                    'id': id
+                    'id': id,
+                    'val' : val
 
                 },
                 success(data) {
                     alertify.success('Se activó correctamente.');
-                    location.reload();
+                    //location.reload();
                 }
 
 
 
 
             });
+          }else{
+              alertify.error('El valor no puede ser vacio.')
+          }
         },
         function () {
             alertify.error('No se realizo ninguna acción.')

@@ -50,13 +50,24 @@ if(isset($_GET["is_ended"])){
             <br>
 
             <?php
+            $showStatus = false;
             if($workshop){
                 $products = ProductData::getWorkshop();
+                $showStatus = false;
+                $showPrice = false;
+
+
             }else if($ended){
                 $products = ProductData::getFinished();
+                $showStatus = false;
+                $showPrice = true;
+
 
             }else{
-                $products = ProductData::getWorkshop();
+                $products = ProductData::getAll();
+                $showStatus = true;
+                $showPrice = true;
+
 
             }
             if (count($products) > 0) {
@@ -78,6 +89,12 @@ if(isset($_GET["is_ended"])){
                                 <th style="display: none;">Precio Salida</th>
                                 <th>Categoria</th>
                                 <th>Tipo</th>
+                                <?php if($showStatus) :?>
+                                <th>Estatus</th>
+                              <?php endif;?>
+                              <?php if($showPrice) :?>
+                              <th>Precio</th>
+                            <?php endif;?>
 
                                 <th>Activo</th>
                                 <th></th>
@@ -112,6 +129,18 @@ if(isset($_GET["is_ended"])){
                                                 echo "<center>----</center>";
                                             } ?></td>
                                 <td><?php echo $product->type; ?></td>
+                                <?php if($showStatus): ?>
+                                  <?php if($product->status == 0):?>
+                                    <td>Taller</td>
+                                  <?php else:?>
+                                    <td>Terminado</td>
+                                  <?php endif;?>
+                              <?php endif;?>
+                              <?php if($showPrice) :?>
+                              <th><?php echo number_format($product->price_out,2, '.',','); ?></th>
+                            <?php endif;?>
+
+
                                 <td style="text-align: center; font-size: 30px;">
                                     <?php if ($product->is_active == 1): ?>
                                     <i class="fa fa-check"></i>
@@ -183,7 +212,7 @@ if(isset($_GET["is_ended"])){
 <script src="../application/core/app/assets/refactions.js"></script>
 
 <script type="text/javascript">
- 
+
     function thePDF() {
         var doc = new jsPDF('p', 'pt');
         doc.setFontSize(26);
