@@ -259,7 +259,7 @@ function activate_product(id) {
                 },
                 success(data) {
                     alertify.success('Se activó correctamente.');
-                    //location.reload();
+                    location.reload();
                 }
 
 
