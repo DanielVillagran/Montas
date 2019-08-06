@@ -17,7 +17,7 @@ class OperationData {
 
 	public function add(){
 		$sql = "insert into ".self::$tablename." (price_in,price_out,stock_id,product_id,q,operation_type_id,sell_id,created_at) ";
-		$sql .= "value ($this->price_in,$this->price_out,$this->stock_id,\"$this->product_id\",\"$this->q\",$this->operation_type_id,$this->sell_id,$this->created_at)";
+		$sql .= "value (0,0,$this->stock_id,\"$this->product_id\",\"$this->q\",$this->operation_type_id,$this->sell_id,$this->created_at)";
 		return Executor::doit($sql);
 	}
 

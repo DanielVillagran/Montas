@@ -93,7 +93,7 @@
                                 <div class="form-group" style="display: none;">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Inventario inicial:</label>
                                     <div class="col-md-6">
-                                        <input type="text" name="q" class="form-control" id="inputEmail1" value="1"
+                                        <input type="text" name="q" class="form-control" id="inputEmail1" value="3"
                                                placeholder="Inventario inicial">
                                     </div>
                                 </div>

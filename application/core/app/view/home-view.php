@@ -41,7 +41,7 @@ for($i=$sd;$i<=$ed;$i+=(60*60*24)){
           <div class="info-box">
             <span class="info-box-icon bg-aqua"><i class="fa fa-glass"></i></span>
 
-            <div class="info-box-content">
+            <div class="info-box-content" onclick="window.location.href='./?view=products'">
               <span class="info-box-text">Productos</span>
               <span class="info-box-number"><?php echo count(ProductData::getAll()); ?><small></small></span>
             </div>

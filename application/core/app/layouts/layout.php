@@ -178,6 +178,16 @@ $msgs = MessageData::getUnreadedByUserId($_SESSION["user_id"]);
             <li><a href="./?view=products"><i class='fa fa-database'></i>Almacen</a></li>
             <li><a href="./?view=products&is_workshop=1"><i class='fa fa-database'></i>Taller</a></li>
             <li><a href="./?view=products&is_ended=1"><i class='fa fa-database'></i>Terminados</a></li>
+            <li class="treeview">
+              <a href="#"><i class='fa fa-cog'></i> <span>Administracion</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="./?view=users">Usuarios</a></li>
+                <li><a href="./?view=settings">Configuracion</a></li>
+                <li><a href="./?view=import">Importar Datos</a></li>
+
+
+              </ul>
+            </li>
 
 <!-- 
             <?php if(Core::$user->kind==1):?>

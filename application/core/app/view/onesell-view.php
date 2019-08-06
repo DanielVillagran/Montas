@@ -73,9 +73,9 @@ $user = $sell->getUser();
 <tr>
   <td><?php echo $product->id ;?></td>
   <td><?php echo $operation->q ;?></td>
-  <td><?php echo $product->name ;?></td>
-  <td>$ <?php echo number_format($operation->price_out,2,".",",") ;?></td>
-  <td><b>$ <?php echo number_format($operation->q*$operation->price_out,2,".",",");$total+=$operation->q*$operation->price_out;?></b></td>
+  <td><?php echo $product->description ;?></td>
+  <td>$ <?php echo number_format($product->price_out,2,".",",") ;?></td>
+  <td><b>$ <?php echo number_format($product->price_out,2,".",",");$total+=$product->price_out;?></b></td>
 </tr>
 <?php
   }
@@ -156,9 +156,9 @@ var rows = [
     {
       "code": "<?php echo $product->id; ?>",
       "q": "<?php echo $operation->q; ?>",
-      "product": "<?php echo $product->name; ?>",
-      "pu": "$ <?php echo number_format($operation->price_out,2,".",","); ?>",
-      "total": "$ <?php echo number_format($operation->q*$operation->price_out,2,".",","); ?>",
+      "product": "<?php echo $product->description; ?>",
+      "pu": "$ <?php echo number_format($product->price_out,2,".",","); ?>",
+      "total": "$ <?php echo number_format($product->price_out,2,".",","); ?>",
       },
  <?php endforeach; ?>
 ];
@@ -254,13 +254,16 @@ doc.autoTable(columns2, rows2, {
 });
 //doc.setFontsize
 img = new Image();
-img.src = "storage/configuration/logo.png";
-
+img.src = "logo.png";
+img.onload = function(){
 doc.addImage(img, 'PNG', 495, 20, 60, 60,'mon');  // Cache the image using the alias 'monkey'
 doc.setFontSize(20);
 doc.setFontSize(12);
-doc.text("Montacargas Azteca, agradece su visita. ", 40, doc.autoTableEndPosY()+25);
+doc.text("Firma de recepción conforme. ", 40, doc.autoTableEndPosY()+50);
+doc.setFillColor(255,255,200);
+doc.rect(40, doc.autoTableEndPosY()+90, 500, 100, 'F');
 doc.save('sell-<?php echo date("d-m-Y h:i:s",time()); ?>.pdf');
+};
 //doc.output("datauri");
 
         }
