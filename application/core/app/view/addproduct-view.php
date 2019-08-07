@@ -69,6 +69,7 @@ if (count($_POST) > 0) {
         }
         $prod = $product->add();
 
+
     } else {
         $prod = $product->add();
 

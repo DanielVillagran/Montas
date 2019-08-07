@@ -10,10 +10,15 @@ $precio = $_GET['val'];
 $total = $reparaciones+ $refacciones + $precio;
 
 $product = R::dispense( 'product' );
+$alerts = R::dispense('alerts');
+
 $product->is_active=true;
 $product->id=$id;
 $product->price_out= $total;
 $id=R::store($product);
+$alerts->product_id = $_POST['id'];
+$alerts->type =4;
+$ale=R::store($alerts);
 
 if($id != null){
     echo true;
