@@ -75,7 +75,10 @@ foreach ($pdatos as $p){
 
                             </div>
                             <div class="col-md-4">
-                                <h3 style="width: 100%;" class="box-title"><b>Fecha: </b><?php echo date("F j, Y, g:i a", strtotime($alerta['created']));?></h3>
+                                <h3 style="width: 100%;" class="box-title"><b>Fecha: </b><?php
+                                    setlocale(LC_TIME, 'es_MX.UTF-8');
+
+                                    echo date("F j, Y, g:i a", strtotime($alerta['created']));?></h3>
 
                             </div>
                         </div>
@@ -105,7 +108,10 @@ foreach ($pdatos as $p){
 
                             </div>
                             <div class="col-md-4">
-                                <h3 style="width: 100%;" class="box-title"><b>Fecha: </b><?php echo date("F j, Y, g:i a", strtotime($alerta['created']));?></h3>
+                               <h3 style="width: 100%;" class="box-title"><b>Fecha: </b><?php
+                                    setlocale(LC_TIME, 'es_MX.UTF-8');
+                                    date_default_timezone_set ('America/Mexico_City');
+                                    echo strftime("%A, %d de %B de %Y %H:%M", strtotime($alerta['created']));?></h3>
 
                             </div>
                         </div>
@@ -135,7 +141,10 @@ foreach ($pdatos as $p){
 
                             </div>
                             <div class="col-md-4">
-                                <h3 style="width: 100%;" class="box-title"><b>Fecha: </b><?php echo date("F j, Y, g:i a", strtotime($alerta['created']));?></h3>
+                                <h3 style="width: 100%;" class="box-title"><b>Fecha: </b><?php
+                                    setlocale(LC_TIME, 'es_MX.UTF-8');
+                                    date_default_timezone_set ('America/Mexico_City');
+                                    echo strftime("%A, %d de %B de %Y %H:%M", strtotime($alerta['created']));?></h3>
 
                             </div>
                         </div>
