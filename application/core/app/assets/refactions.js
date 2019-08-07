@@ -275,3 +275,20 @@ function activate_product(id) {
         });
 
 }
+function closeAlert(id){
+    $.ajax({
+        url: "../application/core/app/view/closeAlert.php",
+        type: 'POST',
+        data: {
+            'id': id
+
+        },
+        success(data) {
+            location.reload();
+        }
+
+
+
+
+    });
+}
