@@ -16,7 +16,7 @@ $product->is_active=true;
 $product->id=$id;
 $product->price_out= $total;
 $id=R::store($product);
-$alerts->product_id = $_POST['id'];
+$alerts->product_id = $_GET['id'];
 $alerts->type =4;
 $ale=R::store($alerts);
 
