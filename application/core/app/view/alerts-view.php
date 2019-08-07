@@ -24,6 +24,7 @@ $alertas = R::getAll( 'SELECT * FROM alerts where status = 1' );
 <div class="clearfix"></div>
 <br>
 <?php
+if(!empty($alertas)):
 foreach ($alertas as $alerta):
 
 $pdatos = R::find('product', ' id =  "' . $alerta['product_id'] . '"');
@@ -154,7 +155,14 @@ foreach ($pdatos as $p){
         </div><!-- /.box -->
     <?php endif;?>
 <?php } ?>
+
 <?php endforeach;?>
+<?php else:?>
+    <div class="jumbotron">
+        <h2>No hay alertas</h2>
+        <p>Por el momento no hay alertas, estas se muestran cuando existe algun movimiento de los productos.</p>
+    </div>
+<?php endif;?>
 
 <div class="clearfix"></div>
 
