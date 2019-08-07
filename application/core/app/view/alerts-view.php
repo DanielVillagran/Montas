@@ -50,7 +50,7 @@ foreach ($pdatos as $p){
           </div>
       </div>
       <div class="col-md-1">
-        <span style="background-color: darkviolet !important;" class="badge">Cerrar</span>
+        <span style="background-color: darkviolet !important;" class="badge" onclick="closeAlert(<?php echo $alerta['id']?>)">Cerrar</span>
       </div>
     </div>
   </div><!-- /.box-header -->
@@ -80,7 +80,7 @@ foreach ($pdatos as $p){
                         </div>
                     </div>
                     <div class="col-md-1">
-                        <span style="background-color: blue !important;" class="badge">Cerrar</span>
+                        <span style="background-color: blue !important;" class="badge" onclick="closeAlert(<?php echo $alerta['id']?>)">Cerrar</span>
                     </div>
                 </div>
             </div><!-- /.box-header -->
@@ -110,7 +110,7 @@ foreach ($pdatos as $p){
                         </div>
                     </div>
                     <div class="col-md-1">
-                        <span style="background-color: brown !important;" class="badge">Cerrar</span>
+                        <span style="background-color: brown !important;" class="badge" onclick="closeAlert(<?php echo $alerta['id']?>)">Cerrar</span>
                     </div>
                 </div>
             </div><!-- /.box-header -->
@@ -140,7 +140,7 @@ foreach ($pdatos as $p){
                         </div>
                     </div>
                     <div class="col-md-1">
-                        <span style="background-color: green !important;" class="badge">Cerrar</span>
+                        <span style="background-color: green !important;" class="badge" onclick="closeAlert(<?php echo $alerta['id']?>)">Cerrar</span>
                     </div>
                 </div>
             </div><!-- /.box-header -->
@@ -162,3 +162,5 @@ foreach ($pdatos as $p){
   </div>
 </div>
         </section><!-- /.content -->
+<script src="../application/core/app/assets/refactions.js"></script>
+<script src="../application/core/app/assets/alertify.js"></script>
