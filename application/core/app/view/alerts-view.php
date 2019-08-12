@@ -48,7 +48,7 @@ foreach ($pdatos as $p){
                   <h3 style="width: 100%;" class="box-title"><b>Fecha: </b><?php
                       setlocale(LC_TIME, 'es_MX.UTF-8');
                       date_default_timezone_set ('America/Mexico_City');
-                      echo strftime("%A, %d de %B de %Y %H:%M", strtotime($alerta['created']));?></h3>
+                      echo strftime("%d de %B de %Y a las %H:%M", strtotime($alerta['created']));?></h3>
 
               </div>
           </div>
@@ -79,9 +79,9 @@ foreach ($pdatos as $p){
                             </div>
                             <div class="col-md-4">
                                 <h3 style="width: 100%;" class="box-title"><b>Fecha: </b><?php
-                                    setlocale(LC_TIME, 'es_MX.UTF-8');
-                                    date_default_timezone_set ('America/Mexico_City');
-                                    echo strftime("%A, %d de %B de %Y %H:%M", strtotime($alerta['created']));?></h3>
+                      setlocale(LC_TIME, 'es_MX.UTF-8');
+                      date_default_timezone_set ('America/Mexico_City');
+                      echo strftime("%d de %B de %Y a las %H:%M", strtotime($alerta['created']));?></h3>
 
                             </div>
                         </div>
@@ -112,9 +112,9 @@ foreach ($pdatos as $p){
                             </div>
                             <div class="col-md-4">
                                <h3 style="width: 100%;" class="box-title"><b>Fecha: </b><?php
-                                    setlocale(LC_TIME, 'es_MX.UTF-8');
-                                    date_default_timezone_set ('America/Mexico_City');
-                                    echo strftime("%A, %d de %B de %Y %H:%M", strtotime($alerta['created']));?></h3>
+                      setlocale(LC_TIME, 'es_MX.UTF-8');
+                      date_default_timezone_set ('America/Mexico_City');
+                      echo strftime("%d de %B de %Y a las %H:%M", strtotime($alerta['created']));?></h3>
 
                             </div>
                         </div>
@@ -145,9 +145,9 @@ foreach ($pdatos as $p){
                             </div>
                             <div class="col-md-4">
                                 <h3 style="width: 100%;" class="box-title"><b>Fecha: </b><?php
-                                    setlocale(LC_TIME, 'es_MX.UTF-8');
-                                    date_default_timezone_set ('America/Mexico_City');
-                                    echo strftime("%A, %d de %B de %Y %H:%M", strtotime($alerta['created']));?></h3>
+                      setlocale(LC_TIME, 'es_MX.UTF-8');
+                      date_default_timezone_set ('America/Mexico_City');
+                      echo strftime("%d de %B de %Y a las %H:%M", strtotime($alerta['created']));?></h3>
 
                             </div>
                         </div>

@@ -123,9 +123,15 @@ class ProductData {
 		return Model::many($query[0],new ProductData());
 	}
 
+    public static function getLikeSerie($p){
+        $sql = "select * from ".self::$tablename." where serie like '%$p%' or model like '%$p%' or id like '%$p%'";
+        $query = Executor::doit($sql);
+        return Model::many($query[0],new ProductData());
+    }
 
 
-	public static function getAllByUserId($user_id){
+
+    public static function getAllByUserId($user_id){
 		$sql = "select * from ".self::$tablename." where user_id=$user_id order by created_at desc";
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new ProductData());
