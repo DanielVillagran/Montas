@@ -12,6 +12,7 @@ $rent->cliente_name=$_GET['nombre'];
 $rent->cliente_address=$_GET['direccion'];
 $rent->cliente_phone=$_GET['telefono'];
 $rent->type=$_GET['tipo'];
+$rent->total=$_GET['total'];
 if(isset($_GET['f_start'])){
 
     $f_date =  $_GET['f_start'];
