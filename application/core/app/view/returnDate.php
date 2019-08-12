@@ -6,13 +6,12 @@ $rent = R::dispense( 'rent' );
 //$rent->product_id=$_GET['product_id'];
 
 //$ret = R::exec( 'UPDATE product SET is_rent= 0 WHERE id = '.$_GET['id'] );
-//$reg =R::exec( 'UPDATE rent SET status = 0 WHERE id = '.(int) $_GET['id'] );
-$rent->return_date = date("Y-m-d");
-$rent->id =(int) $_GET['id'];
-var_dump($rent);
-$reg = R::store($rent);
+$fecha = date("Y-m-d H:i:s");
+var_dump($fecha);
 
-//$id=R::store($rent);
+$reg =R::exec( 'UPDATE rent SET status = 0, return_date = "'.$fecha.'" WHERE product_id = '.$_GET['id']);
+//echo 'UPDATE rent SET status = 0, return_date = '.$fecha.' WHERE product_id = '.$_GET['id'];
+
 //var_dump($_GET['id']);
 if($reg != null){
     echo $reg;
