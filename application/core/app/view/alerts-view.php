@@ -32,6 +32,7 @@ $pdatos = R::find('product', ' id =  "' . $alerta['product_id'] . '"');
 foreach ($pdatos as $p){
 
 
+
 ?>
     <?php if($alerta['type'] == 1):?>
 <div class="box" style="border-top-color: darkviolet !important;">
@@ -163,6 +164,48 @@ foreach ($pdatos as $p){
 
 
             </div><!-- /.box-body -->
+
+        </div><!-- /.box -->
+    <?php elseif($alerta['type'] == 5):
+
+        $renta = R::getAll('SELECT * from rent where status = 1 and product_id = '.$alerta['product_id']);
+    for($i =0; $i < count($renta); $i++){
+
+
+        ?>
+        <div class="box" style="border-top-color: yellow !important;">
+            <div class="box-header">
+                <div class="row">
+                    <div class="col-md-11">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h3 style="width: 100%;" class="box-title"><b>Serie:</b> <?php echo $p->serie?></h3>
+                                <h3 style="width: 100%;" class="box-title"><b>Modelo:</b> <?php echo $p->model?></h3>
+
+                            </div>
+                            <div class="col-md-4">
+                                <h3 style="width: 100%;" class="box-title"><b>Fecha: </b><?php
+                                    setlocale(LC_TIME, 'es_MX.UTF-8');
+                                    date_default_timezone_set ('America/Mexico_City');
+                                    echo strftime("%d de %B de %Y a las %H:%M", strtotime($alerta['created']));?></h3>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <span style="background-color: yellow !important; color: black !important;" class="badge" onclick="closeAlert(<?php echo $alerta['id']?>)">Cerrar</span>
+                    </div>
+                </div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+<?php if($renta[$i]['type'] == 2):?>
+                El producto con número de serie <b><?php echo $p->serie?></b> y con modelo <b><?php echo $p->model?></b> se ha rentado a <b><?php echo strtoupper($renta[$i]['cliente_name'])?></b> el día <b><?php echo date("d/m/Y", strtotime($renta[$i]['date_start']))?></b> hasta el día <b><?php echo date("d/m/Y", strtotime($renta[$i]['date_end']))?></b>
+<?php else:?>
+        El producto con número de serie <b><?php echo $p->serie?></b> y con modelo <b><?php echo $p->model?></b> se ha rentado a <b><?php echo strtoupper($renta[$i]['cliente_name'])?></b> el día <b><?php echo date("d/m/Y", strtotime($renta[$i]['date_start']))?></b> de forma <b>indefinida</b>.
+<?php endif;?>
+<?php }
+    ?>
+        </div><!-- /.box-body -->
 
         </div><!-- /.box -->
     <?php endif;?>

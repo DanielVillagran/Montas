@@ -2,7 +2,10 @@
 require '../model/Conection.php';
 $rent = R::dispense( 'rent' );
 $up =R::exec( 'UPDATE product SET is_rent= 1 WHERE id = '.$_GET['product_id'] );
-
+$alerts = R::dispense('alerts');
+$alerts->product_id = $_GET['product_id'];
+$alerts->type =5;
+$ale=R::store($alerts);
 
 $rent->product_id=$_GET['product_id'];
 $rent->cliente_name=$_GET['nombre'];
