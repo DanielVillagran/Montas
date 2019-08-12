@@ -102,7 +102,11 @@ $lista = R::getAll('SELECT r.id,r.cliente_name, r.cliente_address, r.cliente_pho
 
                     <?php endif;?>
                     <th><?php echo date("d/m/Y", strtotime($l['date_start'])); ?></th>
-                    <th><?php echo date("d/m/Y", strtotime($l['date_end'])); ?></th>
+                    <th><?php
+                        if($l['date_end'] != ''){
+                                                    echo date("d/m/Y", strtotime($l['date_end']));
+
+                        }; ?></th>
 
 
                 </tr>
