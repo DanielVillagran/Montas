@@ -1,7 +1,7 @@
 <?php
 // $symbol = ConfigurationData::getByPreffix("currency")->val;
 require '../application/core/app/model/Conection.php';
-$lista = R::getAll('SELECT r.id,r.cliente_name, r.cliente_address, r.cliente_phone, r.type, r.date_start, r.date_end, p.serie, p.model FROM rent r inner join product p on p.id = r.product_id where p.is_rent = 1');
+$lista = R::getAll('SELECT r.id,r.cliente_name, r.cliente_address, r.cliente_phone, r.type, r.date_start, r.date_end, p.serie, p.model FROM rent r inner join product p on p.id = r.product_id where r.status = 1');
 ?>
 <style>
   
