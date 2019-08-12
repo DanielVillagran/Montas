@@ -35,7 +35,7 @@
                     <?php
                     if (true):?>
 
-                        <tr class="<?php if (!$q <= $product->is_rent) {
+                        <tr class="<?php if ($product->is_rent == 1) {
                             echo "danger";
                         } ?>">
                             <td style="width:80px;"><?php echo $product->id; ?></td>
