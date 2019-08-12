@@ -200,6 +200,8 @@
             $('#costos_' + id).show();
             $('#mes_' + id).val('');
             $('#flete_' + id).val('');
+            $('#meses_' + id).hide();
+
             $('#costo_' + id).val('');
             $('#total_' + id).val('');
             $('#f_start_' + id).val('');
@@ -263,22 +265,40 @@ var total;
         if(f_start != '' && f_end != ''){
             var d1 = f_start.split("-");
             var d2 = f_end.split("-");
-            var dias;
+            var total;
 
-            if(d2[2] < d1[2]){
-                alert("La fecha de fin no puede ser menor a la fecha de inicio");
+            var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+            var firstDate = new Date(f_start);
+            var secondDate = new Date(f_end);
+
+
+            var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+            console.log(diffDays);
+
+            // if(d2[2] < d1[2]){
+            //     alert("La fecha de fin no puede ser menor a la fecha de inicio");
+            //     $('#f_start_' + id).val('');
+            //     $('#f_end_' + id).val('');
+            // }else{
+            //
+            // }
+            // if(d1[2] == d2[2]){
+            //     dias  = 1;
+            // }else{
+            //     dias = d2[2] - d1[2];
+            // }
+
+            if(firstDate > secondDate){
+                alertify.error('La fecha de fin no puede ser menor a la fecha de inicio');
                 $('#f_start_' + id).val('');
                 $('#f_end_' + id).val('');
+
+
             }else{
+                total = parseInt(diffDays) * (parseFloat(flete) + parseFloat(costo));
 
             }
-            if(d1[2] == d2[2]){
-                dias  = 1;
-            }else{
-                dias = d2[2] - d1[2];
-            }
 
-            total = parseInt(dias) * (parseFloat(flete) + parseFloat(costo));
 
         }else{
             total = parseInt(meses) * (parseFloat(flete) + parseFloat(costo));

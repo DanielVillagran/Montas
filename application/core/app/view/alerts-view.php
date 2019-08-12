@@ -203,11 +203,11 @@ foreach ($pdatos as $p){
 <?php else:?>
         El producto con número de serie <b><?php echo $p->serie?></b> y con modelo <b><?php echo $p->model?></b> se ha rentado a <b><?php echo strtoupper($renta[$i]['cliente_name'])?></b> el día <b><?php echo date("d/m/Y", strtotime($renta[$i]['date_start']))?></b> de forma <b>indefinida</b>.
 <?php endif;?>
-<?php }
-    ?>
+
         </div><!-- /.box-body -->
 
         </div><!-- /.box -->
+    <?php } ?>
     <?php endif;?>
 <?php } ?>
 
