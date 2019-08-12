@@ -295,13 +295,13 @@ var total;
 
 
             }else{
-                total = parseInt(diffDays) * (parseFloat(flete) + parseFloat(costo));
+                total = (parseInt(diffDays) * parseFloat(costo)) + parseFloat(flete);
 
             }
 
 
         }else{
-            total = parseInt(meses) * (parseFloat(flete) + parseFloat(costo));
+            total = (parseInt(meses) * parseFloat(costo)) + parseFloat(flete);
         }
 
 
