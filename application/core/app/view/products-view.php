@@ -85,6 +85,7 @@ if(isset($_GET["is_ended"])){
                                 <th>Imagen</th>
                                 <th>Modelo</th>
                                 <th>Serie</th>
+                                <th>Marca</th>
                                 <th>Capacidad</th>
                                 <th style="display: none;">Precio Salida</th>
                                 <th>Categoria</th>
@@ -120,6 +121,7 @@ if(isset($_GET["is_ended"])){
                                 </td>
                                 <td><?php echo $product->model; ?></td>
                                 <td><?php echo $product->serie; ?></td>
+                                <td><?php echo $product->name; ?></td>
                                 <td><?php echo $product->capacity; ?></td>
                                 <td style="display: none;">$
                                     <?php echo number_format($product->price_out, 2, '.', ','); ?></td>

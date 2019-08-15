@@ -128,12 +128,12 @@
                                         </div>
                                     </div>
                                     <input type="hidden" id="product_id" value="<?php echo $product->id; ?>">
-                                    <div class="form-group" style="display: none">
-                                        <label for="inputEmail1" class="col-lg-3 control-label">Nombre*</label>
+                                    <div class="form-group" style="">
+                                        <label for="inputEmail1" class="col-lg-3 control-label">Marca</label>
                                         <div class="col-md-8">
                                             <input type="text" name="name" class="form-control" id="name"
                                                    value="<?php echo $product->name; ?>"
-                                                   placeholder="Nombre del Producto">
+                                                   placeholder="Marca del Producto">
                                         </div>
                                     </div>
                                     <div class="form-group">

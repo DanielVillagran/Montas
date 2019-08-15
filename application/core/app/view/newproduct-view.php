@@ -28,11 +28,11 @@
                                                id="barcode" placeholder="Codigo de Barras del Producto">
                                     </div>
                                 </div>
-                                <div class="form-group" style="display: none;">
-                                    <label for="inputEmail1" class="col-lg-2 control-label">Nombre*</label>
+                                <div class="form-group" style="">
+                                    <label for="inputEmail1" class="col-lg-2 control-label">Marca</label>
                                     <div class="col-md-6">
                                         <input type="text" name="name"  class="form-control" id="name"
-                                               placeholder="Nombre del Producto">
+                                               placeholder="Marca del Producto">
                                     </div>
                                 </div>
                                 <div class="form-group">
