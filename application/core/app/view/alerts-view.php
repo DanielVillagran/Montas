@@ -35,6 +35,131 @@ $alertas = R::getAll('SELECT * FROM alerts where status = 1');
 
 
                         ?>
+                        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+                             aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle" style="text-align: center;"><h4><b>BITÁCORA DE
+                                                    REVISIÓN DE MONTACARGAS DE RENTA</b></h4></h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="form" enctype="multipart/form-data">
+                                            <div class="form-group row">
+                                                <label for="staticEmail" class="col-sm-2 col-form-label">Marca</label>
+                                                <div class="col-sm-4">
+                                                    <input type="text" name="name" class="form-control" placeholder="Marca" id="marca" value="">
+                                                </div>
+                                                <label for="" class="col-sm-2 col-form-label">Modelo</label>
+                                                <div class="col-sm-4">
+                                                    <input type="text" name="model" class="form-control" id="modelo" placeholder="Modelo">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="staticEmail" class="col-sm-2 col-form-label">Serie</label>
+                                                <div class="col-sm-4">
+                                                    <input type="text" name="serie" class="form-control" id="serie" placeholder="Serie" value="">
+                                                </div>
+                                                <label for="inputPassword" class="col-sm-2 col-form-label">Horómetro</label>
+                                                <div class="col-sm-4">
+                                                    <input type="text" name="horometer" class="form-control" id="horo" placeholder="Horómetro">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="staticEmail" class="col-sm-2 col-form-label">Técnico</label>
+                                                <div class="col-sm-4">
+                                                    <input type="text" name="tecnico"  class="form-control" id="tec" readonly placeholder="Técnico" value="<?php echo $usuario?>">
+                                                </div>
+                                                <label for="inputPassword" class="col-sm-2 col-form-label">Cliente</label>
+                                                <div class="col-sm-4">
+                                                    <input type="text" name="cliente" class="form-control" id="cliente" readonly placeholder="Cliente">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="staticEmail" style="margin-top: 1%;" class="col-sm-3 col-form-label">Aceite
+                                                    Motor</label>
+                                                <div class="col-sm-1" style="margin-top: 1%;">
+                                                    <input type="checkbox" id="a1" value="">
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" id="ob1" placeholder="Observaciones">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="staticEmail" style="margin-top: 1%;" class="col-sm-3 col-form-label">Aceite
+                                                    Transmisión</label>
+                                                <div class="col-sm-1" style="margin-top: 1%;">
+                                                    <input type="checkbox" id="a2" value="">
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" id="ob2" placeholder="Observaciones">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="staticEmail" style="margin-top: 1%;" class="col-sm-3 col-form-label">Aceite
+                                                    Hidráulico</label>
+                                                <div class="col-sm-1" style="margin-top: 1%;">
+                                                    <input type="checkbox" id="a3" value="">
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" id="ob3" placeholder="Observaciones">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="staticEmail" style="margin-top: 1%;" class="col-sm-3 col-form-label">Anticongelante
+                                                    Radiador</label>
+                                                <div class="col-sm-1" style="margin-top: 1%;">
+                                                    <input type="checkbox" id="a4" value="">
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" id="ob4" placeholder="Observaciones">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="staticEmail" style="margin-top: 1%;" class="col-sm-3 col-form-label">Anticongelante
+                                                    Recuperador</label>
+                                                <div class="col-sm-1" style="margin-top: 1%;">
+                                                    <input type="checkbox" id="a5" value="">
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" id="ob5" placeholder="Observaciones">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="staticEmail" style="margin-top: 1%;" class="col-sm-6 col-form-label">Imágen Horómetro</label>
+                                                <label for="staticEmail" style="margin-top: 1%;" class="col-sm-6 col-form-label">Imágen Equipo</label>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-6">
+                                                    <input type="file" id="horom" class="">
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input type="file" id="equ" class="">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <div class="col-sm-6">
+                                                    <img src="#" id="img1" style="width: 100%; height: 200px;" alt="">
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <img src="#" id="img2" style="width: 100%; height: 200px;" alt="">
+                                                </div>
+                                            </div>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        <button type="button" id="" onclick="createReturn(<?php echo $p->id; ?>)" class="btn btn-primary" >Guardar</button>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                         <?php if ($alerta['type'] == 1): ?>
                             <div class="box" style="border-top-color: darkviolet !important;">
                                 <div class="box-header">
@@ -298,131 +423,7 @@ $alertas = R::getAll('SELECT * FROM alerts where status = 1');
         </div>
     </div>
 
-    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle" style="text-align: center;"><h4><b>BITÁCORA DE
-                                REVISIÓN DE MONTACARGAS DE RENTA</b></h4></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="form" enctype="multipart/form-data">
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">Marca</label>
-                            <div class="col-sm-4">
-                                <input type="text" name="name" class="form-control" placeholder="Marca" id="marca" value="">
-                            </div>
-                            <label for="" class="col-sm-2 col-form-label">Modelo</label>
-                            <div class="col-sm-4">
-                                <input type="text" name="model" class="form-control" id="modelo" placeholder="Modelo">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">Serie</label>
-                            <div class="col-sm-4">
-                                <input type="text" name="serie" class="form-control" id="serie" placeholder="Serie" value="">
-                            </div>
-                            <label for="inputPassword" class="col-sm-2 col-form-label">Horómetro</label>
-                            <div class="col-sm-4">
-                                <input type="text" name="horometer" class="form-control" id="horo" placeholder="Horómetro">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">Técnico</label>
-                            <div class="col-sm-4">
-                                <input type="text" name="tecnico"  class="form-control" id="tec" readonly placeholder="Técnico" value="<?php echo $usuario?>">
-                            </div>
-                            <label for="inputPassword" class="col-sm-2 col-form-label">Cliente</label>
-                            <div class="col-sm-4">
-                                <input type="text" name="cliente" class="form-control" id="cliente" readonly placeholder="Cliente">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="staticEmail" style="margin-top: 1%;" class="col-sm-3 col-form-label">Aceite
-                                Motor</label>
-                            <div class="col-sm-1" style="margin-top: 1%;">
-                                <input type="checkbox" id="a1" value="">
-                            </div>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="ob1" placeholder="Observaciones">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="staticEmail" style="margin-top: 1%;" class="col-sm-3 col-form-label">Aceite
-                                Transmisión</label>
-                            <div class="col-sm-1" style="margin-top: 1%;">
-                                <input type="checkbox" id="a2" value="">
-                            </div>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="ob2" placeholder="Observaciones">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="staticEmail" style="margin-top: 1%;" class="col-sm-3 col-form-label">Aceite
-                                Hidráulico</label>
-                            <div class="col-sm-1" style="margin-top: 1%;">
-                                <input type="checkbox" id="a3" value="">
-                            </div>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="ob3" placeholder="Observaciones">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="staticEmail" style="margin-top: 1%;" class="col-sm-3 col-form-label">Anticongelante
-                                Radiador</label>
-                            <div class="col-sm-1" style="margin-top: 1%;">
-                                <input type="checkbox" id="a4" value="">
-                            </div>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="ob4" placeholder="Observaciones">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="staticEmail" style="margin-top: 1%;" class="col-sm-3 col-form-label">Anticongelante
-                                Recuperador</label>
-                            <div class="col-sm-1" style="margin-top: 1%;">
-                                <input type="checkbox" id="a5" value="">
-                            </div>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="ob5" placeholder="Observaciones">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="staticEmail" style="margin-top: 1%;" class="col-sm-6 col-form-label">Imágen Horómetro</label>
-                            <label for="staticEmail" style="margin-top: 1%;" class="col-sm-6 col-form-label">Imágen Equipo</label>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-6">
-                                <input type="file" id="horom" class="">
-                            </div>
-                            <div class="col-sm-6">
-                                <input type="file" id="equ" class="">
-                            </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <div class="col-sm-6">
-                                <img src="#" id="img1" style="width: 100%; height: 200px;" alt="">
-                            </div>
-                            <div class="col-sm-6">
-                                <img src="#" id="img2" style="width: 100%; height: 200px;" alt="">
-                            </div>
-                        </div>
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" id="saveForm" class="btn btn-primary" >Guardar</button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
 </section><!-- /.content -->
 <script src="../application/core/app/assets/refactions.js"></script>
 <script src="../application/core/app/assets/alertify.js"></script>

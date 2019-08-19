@@ -359,15 +359,12 @@ $("#equ").change(function () {
 });
 
 
-$("#saveForm").on('click', function (eventObj){
-    eventObj.preventDefault();
+function createReturn(pid){
 
     var fd = new FormData();
     fd.append( 'img1', document.getElementById('horom').files[0]);
     fd.append( 'img2', document.getElementById('equ').files[0]);
-    fd.append( 'modelo', $('#modelo').val());
-    fd.append( 'serie', $('#serie').val());
-    fd.append( 'marca', $('#marca').val());
+    fd.append( 'id', pid);
     fd.append( 'cliente', $('#cliente').val());
     fd.append( 'horometro', $('#horo').val());
     fd.append( 'tecnico', $('#tec').val());
@@ -419,10 +416,15 @@ $("#saveForm").on('click', function (eventObj){
         contentType:false,
         processData:false,
         success: function (data) {
+            if(data){
+                location.reload();
 
+            }else {
+                alert("algo fallo");
+            }
         }
 
 
     });
 
-});
+}
