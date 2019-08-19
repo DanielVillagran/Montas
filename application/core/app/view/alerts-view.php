@@ -188,7 +188,7 @@ $alertas = R::getAll('SELECT * FROM alerts where status = 1');
 
                             </div><!-- /.box -->
                         <?php elseif ($alerta['type'] == 6): ?>
-                            <div class="box" style="border-top-color: green !important;">
+                            <div class="box" style="border-top-color: red !important;">
                                 <div class="box-header">
                                     <div class="row">
                                         <div class="col-md-11">
@@ -218,8 +218,7 @@ $alertas = R::getAll('SELECT * FROM alerts where status = 1');
                                 </div><!-- /.box-header -->
                                 <div class="box-body">
 
-                                    El producto con número de serie <b><?php echo $p->serie ?></b> y con modelo
-                                    <b><?php echo $p->model ?></b> se ha marcado como listo para la venta.
+                                    El producto ha cumplido 1 semana con el cliente, favor de dar seguimiento.
 
 
                                 </div><!-- /.box-body -->
