@@ -15,7 +15,7 @@ $return->obsAce2 = $_POST['ob2'];
 $return->obsAce3 = $_POST['ob3'];
 $return->obsR1 = $_POST['ob4'];
 $return->obsR2 = $_POST['ob5'];
-$hoy = date_create('now')->format('Y-m-d H:i:s'); // works in php 5.2 and higher
+$hoy = date_create('now')->format('YmdHis'); // works in php 5.2 and higher
 
 $nombre_tmp1 = $_FILES['img1']['tmp_name'];
 $nombre1 = $hoy .$_FILES['img1']['name'];
