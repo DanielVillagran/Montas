@@ -73,7 +73,7 @@ $user = $sell->getUser();
 <tr>
   <td><?php echo $product->id ;?></td>
   <td><?php echo $operation->q ;?></td>
-  <td><?php echo $product->description ;?></td>
+  <td><?php echo $product->name ;?> <?php echo $product->model ;?> <?php echo $product->serie ;?></td>
   <td>$ <?php echo number_format($product->price_out,2,".",",") ;?></td>
   <td><b>$ <?php echo number_format($product->price_out,2,".",",");$total+=$product->price_out;?></b></td>
 </tr>
@@ -129,14 +129,13 @@ $credit=PaymentData::sumByClientId($sell->person_id)->total;
 
 <script type="text/javascript">
         function thePDF() {
+var sale_type=<?php echo $sell->d_id; ?>;
 
 var columns = [
 //    {title: "Reten", dataKey: "reten"},
     {title: "Codigo", dataKey: "code"}, 
     {title: "Cantidad", dataKey: "q"}, 
-    {title: "Nombre del Producto", dataKey: "product"}, 
-    {title: "Precio unitario", dataKey: "pu"}, 
-    {title: "Total", dataKey: "total"}, 
+    {title: "Nombre del Producto", dataKey: "product"}
 //    ...
 ];
 
@@ -156,8 +155,8 @@ var rows = [
     {
       "code": "<?php echo $product->id; ?>",
       "q": "<?php echo $operation->q; ?>",
-      "product": "<?php echo $product->description; ?>",
-      "pu": "$ <?php echo number_format($product->price_out,2,".",","); ?>",
+      "product": "<?php echo $product->name ;?> <?php echo $product->model ;?> <?php echo $product->serie ;?>",
+      
       "total": "$ <?php echo number_format($product->price_out,2,".",","); ?>",
       },
  <?php endforeach; ?>
@@ -260,8 +259,24 @@ doc.addImage(img, 'PNG', 495, 20, 60, 60,'mon');  // Cache the image using the a
 doc.setFontSize(20);
 doc.setFontSize(12);
 doc.text("Firma de recepción conforme. ", 40, doc.autoTableEndPosY()+50);
+
 doc.setFillColor(255,255,200);
 doc.rect(40, doc.autoTableEndPosY()+90, 500, 100, 'F');
+if(sale_type!=2){
+  doc.text("___________________________________________________________________________", 40, doc.autoTableEndPosY()+220);
+  doc.text("PAGARE. ", 40, doc.autoTableEndPosY()+240);
+  doc.text("Bueno por:________________________________. ", 40, doc.autoTableEndPosY()+260);
+  doc.text("En_______________________a____de___________de________. ", 40, doc.autoTableEndPosY()+280);
+  doc.text("Debo(mos) y pagaré(mos) inconcidicionalemente este Pagaré a la orden de ______________", 40, doc.autoTableEndPosY()+300);
+  doc.text("_________________________ en_____________________ el________________________ ",40, doc.autoTableEndPosY()+320);
+  doc.text("La cantidad de:", 40, doc.autoTableEndPosY()+340);
+  doc.text("___________________________________________________________________________", 40, doc.autoTableEndPosY()+360);
+  doc.text("", 40, doc.autoTableEndPosY()+380);
+  doc.text("Nombre del deudor:___________________________________________________________", 40, doc.autoTableEndPosY()+400);
+  doc.text("Dirección del deudor:__________________________________________________________ ", 40, doc.autoTableEndPosY()+420);
+  doc.text("                                             _______________________________ ", 40, doc.autoTableEndPosY()+460);
+  doc.text("                                                                      Firma. ", 40, doc.autoTableEndPosY()+480);
+}
 doc.save('sell-<?php echo date("d-m-Y h:i:s",time()); ?>.pdf');
 };
 //doc.output("datauri");

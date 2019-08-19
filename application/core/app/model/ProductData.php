@@ -89,17 +89,17 @@ class ProductData {
 
 
 	public static function getAll(){
-		$sql = "select * from ".self::$tablename;
+		$sql = "select * from ".self::$tablename. " WHERE id not in(SELECT product_id from operation where operation_type_id=2)";
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new ProductData());
 	}
     public static function getWorkshop(){
-        $sql = "select * from ".self::$tablename." where status=0";;
+        $sql = "select * from ".self::$tablename." where status=0 AND id not in(SELECT product_id from operation where operation_type_id=2)";;
         $query = Executor::doit($sql);
         return Model::many($query[0],new ProductData());
     }
     public static function getFinished(){
-        $sql = "select * from ".self::$tablename." where status=1";;
+        $sql = "select * from ".self::$tablename." where status=1 AND id not in(SELECT product_id from operation where operation_type_id=2)";;
         $query = Executor::doit($sql);
         return Model::many($query[0],new ProductData());
     }
