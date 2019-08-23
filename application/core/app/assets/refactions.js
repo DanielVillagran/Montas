@@ -461,6 +461,8 @@ for (var i = 0; i < datos.length; i++) {
    $('#modelo').val(datos[i].model);
    $('#serie').val(datos[i].serie);
    $('#horo').val(datos[i].horometro);
+   $('#cliente').val(datos[i].cliente);
+
    $('#tec').val(datos[i].tecnico);
    $('#ob1').val(datos[i].obs_ace1);
    $('#ob2').val(datos[i].obs_ace2);
