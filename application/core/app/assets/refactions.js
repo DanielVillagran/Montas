@@ -416,13 +416,9 @@ function createReturn(pid){
         contentType:false,
         processData:false,
         success: function (data) {
-            if(data){
+          
                 location.reload();
-                //console.log(data);
 
-            }else {
-                alert("algo fallo");
-            }
         }
 
 
