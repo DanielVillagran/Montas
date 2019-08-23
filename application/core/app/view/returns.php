@@ -17,19 +17,23 @@ $return->obsR1 = $_POST['ob4'];
 $return->obsR2 = $_POST['ob5'];
 $hoy = date_create('now')->format('YmdHis'); // works in php 5.2 and higher
 
+
+if(!empty($_FILES['img1'])){
 $nombre_tmp1 = $_FILES['img1']['tmp_name'];
 $nombre1 = $hoy .$_FILES['img1']['name'];
 
-move_uploaded_file($_FILES['img1']['tmp_name'], "storage/products/".$nombre1);
-
-$nombre_tmp2 = $_FILES['img2']['tmp_name'];
-$nombre2 =   $hoy .$_FILES['img2']['name'];
-move_uploaded_file($_FILES['img2']['tmp_name'], "storage/products/".$nombre2);
-
-
-
+move_uploaded_file($_FILES['img1']['tmp_name'], "../../../storage/products/".$nombre1);
 $return->img1 = $nombre1;
-$return->img2 = $nombre2;
+
+}
+
+if(!empty($_FILES['img2'])){
+  $nombre_tmp2 = $_FILES['img2']['tmp_name'];
+  $nombre2 =   $hoy .$_FILES['img2']['name'];
+  move_uploaded_file($_FILES['img2']['tmp_name'], "../../../storage/products/".$nombre2);
+  $return->img2 = $nombre2;
+
+}
 
 
 $id = R::store($return);

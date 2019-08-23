@@ -418,6 +418,7 @@ function createReturn(pid){
         success: function (data) {
             if(data){
                 location.reload();
+                //console.log(data);
 
             }else {
                 alert("algo fallo");
@@ -427,4 +428,60 @@ function createReturn(pid){
 
     });
 
+}
+function getHistorial(id){
+  $('#historial').modal('show');
+  $.ajax({
+      url: "../application/core/app/view/getHistorial.php",
+      type: "GET",
+      data: {"id":id},
+      success: function (data) {
+        var datos = JSON.parse(data);
+      $('#fechas').empty();
+
+for (var i = 0; i < datos.length; i++) {
+  $('#fechas').append('<button type="button" style="width:100%; margin-bottom:2%;" class="btn btn-primary" onclick="showDatos('+datos[i].id+')" data-toggle="modal" data-target="#modal">'+datos[i].created+'</button><br> ');
+
+}
+
+      }
+
+
+  });
+}
+
+function showDatos(id){
+
+  $.ajax({
+      url: "../application/core/app/view/getReturns.php",
+      type: "GET",
+      data: {"id":id},
+      success: function (data) {
+        var datos  = JSON.parse(data);
+
+        $('#modal').modal('show');
+for (var i = 0; i < datos.length; i++) {
+   $('#marca').val(datos[i].name);
+   $('#modelo').val(datos[i].model);
+   $('#serie').val(datos[i].serie);
+   $('#tec').val(datos[i].tecnico);
+   $('#ob1').val(datos[i].obs_ace1);
+   $('#ob2').val(datos[i].obs_ace2);
+   $('#ob3').val(datos[i].obs_ace3);
+   $('#ob4').val(datos[i].obs_r1);
+   $('#ob5').val(datos[i].obs_r2);
+
+console.log(datos[i].aceite_motor);
+$("#img1").attr("src","storage/products/"+datos[i].img1);
+$("#img2").attr("src","storage/products/"+datos[i].img2);
+
+
+
+
+
+}
+
+
+      }
+  });
 }
