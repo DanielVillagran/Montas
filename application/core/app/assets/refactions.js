@@ -430,7 +430,7 @@ function getHistorial(id){
   $('#historial').modal('show');
   $.ajax({
       url: "../application/core/app/view/getHistorial.php",
-      type: "POST",
+      type: "GET",
       data: {"id":id},
       success: function (data) {
         var datos = JSON.parse(data);
