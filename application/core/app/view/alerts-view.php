@@ -149,7 +149,9 @@ $alertas = R::getAll('SELECT * FROM alerts where status = 1');
                                                     <img src="#" id="img2" style="width: 100%; height: 200px;" alt="">
                                                 </div>
                                             </div>
-                                            <p><?php echo $p->id; ?></p>
+                                            <input type="hidden" id="pid_<?php echo $p->id; ?>"
+                                                   value="<?php echo $p->id; ?>">
+                                            <p></p>
 
 
                                     </div>

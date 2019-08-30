@@ -364,7 +364,8 @@ function createReturn(pid){
     var fd = new FormData();
     fd.append( 'img1', document.getElementById('horom').files[0]);
     fd.append( 'img2', document.getElementById('equ').files[0]);
-    fd.append( 'id', pid);
+    var p_id = $('#pid_' + pid).val();
+    fd.append('id', p_id);
     fd.append( 'cliente', $('#cliente').val());
     fd.append( 'horometro', $('#horo').val());
     fd.append( 'tecnico', $('#tec').val());
@@ -429,7 +430,7 @@ function getHistorial(id){
   $('#historial').modal('show');
   $.ajax({
       url: "../application/core/app/view/getHistorial.php",
-      type: "GET",
+      type: "POST",
       data: {"id":id},
       success: function (data) {
         var datos = JSON.parse(data);
