@@ -149,6 +149,7 @@ $alertas = R::getAll('SELECT * FROM alerts where status = 1');
                                                     <img src="#" id="img2" style="width: 100%; height: 200px;" alt="">
                                                 </div>
                                             </div>
+                                            <p><?php echo $p->id; ?></p>
 
 
                                     </div>
@@ -336,7 +337,7 @@ $alertas = R::getAll('SELECT * FROM alerts where status = 1');
                                             </div>
                                         </div>
                                         <div class="col-md-1">
-                                            <span style="background-color: green !important;" class="badge"
+                                            <span style="background-color: red !important;" class="badge"
                                                   onclick="closeAlert2(<?php echo $alerta['id'] ?>,<?php echo $p->id ?>)">Cerrar</span>
                                         </div>
                                     </div>
