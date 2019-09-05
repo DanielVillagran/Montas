@@ -282,7 +282,7 @@ function activate_product(id) {
 
 }
 
-function closeAlert(id) {
+function closeAlert(pid) {
     $.ajax({
         url: "../application/core/app/view/closeAlert.php",
         type: 'POST',
@@ -319,6 +319,7 @@ function closeAlert2(id, pid) {
             $('#modelo').val(datos[0].model);
             $('#marca').val(datos[0].name);
             $('#cliente').val(datos[0].cliente_name);
+            $('#alert_id').val(id);
         }
 
 
@@ -409,6 +410,7 @@ function createReturn(pid){
     fd.append( 'ob3', $('#ob3').val());
     fd.append( 'ob4', $('#ob4').val());
     fd.append( 'ob5', $('#ob5').val());
+    fd.append('alert', $('#alert_id').val());
 
     $.ajax({
         url: "../application/core/app/view/returns.php",

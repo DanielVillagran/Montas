@@ -38,7 +38,7 @@ if(!empty($_FILES['img2'])){
 
 $id = R::store($return);
 
-$result = R::exec('UPDATE alerts set status = 0 where product_id ='.$_POST['id']);
+$result = R::exec('UPDATE alerts set status = 0 where id =' . $_POST['alert']);
 
 if($result == 1){
     echo true;
