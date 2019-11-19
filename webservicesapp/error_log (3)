@@ -1,0 +1,254 @@
+[28-Feb-2019 15:22:03 America/Chicago] PHP Fatal error:  Uncaught [23000] - SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`casamar5_chaps`.`operation`, CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`))
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1111): RedBeanPHP\Driver\RPDO->runQuery('insert into ope...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4154): RedBeanPHP\Driver\RPDO->Execute('insert into ope...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->exec('insert into ope...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12407): RedBeanPHP\Facade::query('exec', 'insert into ope...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/sale.php(31): RedBeanPHP\Facade::exec('insert into ope...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[28-Feb-2019 15:22:03 America/Chicago] PHP Fatal error:  Uncaught [23000] - SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`casamar5_chaps`.`operation`, CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`))
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1111): RedBeanPHP\Driver\RPDO->runQuery('insert into ope...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4154): RedBeanPHP\Driver\RPDO->Execute('insert into ope...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->exec('insert into ope...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12407): RedBeanPHP\Facade::query('exec', 'insert into ope...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/sale.php(31): RedBeanPHP\Facade::exec('insert into ope...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[28-Feb-2019 15:22:03 America/Chicago] PHP Fatal error:  Uncaught [23000] - SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`casamar5_chaps`.`operation`, CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`))
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1111): RedBeanPHP\Driver\RPDO->runQuery('insert into ope...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4154): RedBeanPHP\Driver\RPDO->Execute('insert into ope...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->exec('insert into ope...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12407): RedBeanPHP\Facade::query('exec', 'insert into ope...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/sale.php(31): RedBeanPHP\Facade::exec('insert into ope...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[28-Feb-2019 15:22:03 America/Chicago] PHP Fatal error:  Uncaught [23000] - SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`casamar5_chaps`.`operation`, CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`))
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1111): RedBeanPHP\Driver\RPDO->runQuery('insert into ope...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4154): RedBeanPHP\Driver\RPDO->Execute('insert into ope...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->exec('insert into ope...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12407): RedBeanPHP\Facade::query('exec', 'insert into ope...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/sale.php(31): RedBeanPHP\Facade::exec('insert into ope...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[28-Feb-2019 15:22:52 America/Chicago] PHP Fatal error:  Uncaught [23000] - SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`casamar5_chaps`.`operation`, CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`))
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1111): RedBeanPHP\Driver\RPDO->runQuery('insert into ope...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4154): RedBeanPHP\Driver\RPDO->Execute('insert into ope...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->exec('insert into ope...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12407): RedBeanPHP\Facade::query('exec', 'insert into ope...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/sale.php(31): RedBeanPHP\Facade::exec('insert into ope...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[28-Feb-2019 15:22:52 America/Chicago] PHP Fatal error:  Uncaught [23000] - SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`casamar5_chaps`.`operation`, CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`))
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1111): RedBeanPHP\Driver\RPDO->runQuery('insert into ope...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4154): RedBeanPHP\Driver\RPDO->Execute('insert into ope...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->exec('insert into ope...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12407): RedBeanPHP\Facade::query('exec', 'insert into ope...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/sale.php(31): RedBeanPHP\Facade::exec('insert into ope...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[28-Feb-2019 15:22:52 America/Chicago] PHP Fatal error:  Uncaught [23000] - SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`casamar5_chaps`.`operation`, CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`))
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1111): RedBeanPHP\Driver\RPDO->runQuery('insert into ope...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4154): RedBeanPHP\Driver\RPDO->Execute('insert into ope...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->exec('insert into ope...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12407): RedBeanPHP\Facade::query('exec', 'insert into ope...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/sale.php(31): RedBeanPHP\Facade::exec('insert into ope...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[28-Feb-2019 15:22:52 America/Chicago] PHP Fatal error:  Uncaught [23000] - SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`casamar5_chaps`.`operation`, CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`))
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1111): RedBeanPHP\Driver\RPDO->runQuery('insert into ope...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4154): RedBeanPHP\Driver\RPDO->Execute('insert into ope...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->exec('insert into ope...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12407): RedBeanPHP\Facade::query('exec', 'insert into ope...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/sale.php(31): RedBeanPHP\Facade::exec('insert into ope...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[28-Feb-2019 15:22:52 America/Chicago] PHP Fatal error:  Uncaught [23000] - SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`casamar5_chaps`.`operation`, CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`))
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1111): RedBeanPHP\Driver\RPDO->runQuery('insert into ope...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4154): RedBeanPHP\Driver\RPDO->Execute('insert into ope...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->exec('insert into ope...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12407): RedBeanPHP\Facade::query('exec', 'insert into ope...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/sale.php(31): RedBeanPHP\Facade::exec('insert into ope...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[28-Feb-2019 15:22:52 America/Chicago] PHP Fatal error:  Uncaught [23000] - SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`casamar5_chaps`.`operation`, CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`))
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1111): RedBeanPHP\Driver\RPDO->runQuery('insert into ope...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4154): RedBeanPHP\Driver\RPDO->Execute('insert into ope...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->exec('insert into ope...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12407): RedBeanPHP\Facade::query('exec', 'insert into ope...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/sale.php(31): RedBeanPHP\Facade::exec('insert into ope...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[28-Feb-2019 15:23:56 America/Chicago] PHP Fatal error:  Uncaught [23000] - SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`casamar5_chaps`.`operation`, CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`))
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1111): RedBeanPHP\Driver\RPDO->runQuery('insert into ope...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4154): RedBeanPHP\Driver\RPDO->Execute('insert into ope...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->exec('insert into ope...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12407): RedBeanPHP\Facade::query('exec', 'insert into ope...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/sale.php(31): RedBeanPHP\Facade::exec('insert into ope...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[28-Feb-2019 15:23:56 America/Chicago] PHP Fatal error:  Uncaught [23000] - SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`casamar5_chaps`.`operation`, CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`))
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1111): RedBeanPHP\Driver\RPDO->runQuery('insert into ope...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4154): RedBeanPHP\Driver\RPDO->Execute('insert into ope...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->exec('insert into ope...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12407): RedBeanPHP\Facade::query('exec', 'insert into ope...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/sale.php(31): RedBeanPHP\Facade::exec('insert into ope...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[28-Feb-2019 15:23:57 America/Chicago] PHP Fatal error:  Uncaught [23000] - SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`casamar5_chaps`.`operation`, CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`))
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1111): RedBeanPHP\Driver\RPDO->runQuery('insert into ope...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4154): RedBeanPHP\Driver\RPDO->Execute('insert into ope...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->exec('insert into ope...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12407): RedBeanPHP\Facade::query('exec', 'insert into ope...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/sale.php(31): RedBeanPHP\Facade::exec('insert into ope...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[28-Feb-2019 15:23:57 America/Chicago] PHP Fatal error:  Uncaught [23000] - SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`casamar5_chaps`.`operation`, CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`))
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1111): RedBeanPHP\Driver\RPDO->runQuery('insert into ope...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4154): RedBeanPHP\Driver\RPDO->Execute('insert into ope...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->exec('insert into ope...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12407): RedBeanPHP\Facade::query('exec', 'insert into ope...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/sale.php(31): RedBeanPHP\Facade::exec('insert into ope...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[28-Feb-2019 15:23:57 America/Chicago] PHP Fatal error:  Uncaught [23000] - SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`casamar5_chaps`.`operation`, CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`))
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1111): RedBeanPHP\Driver\RPDO->runQuery('insert into ope...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4154): RedBeanPHP\Driver\RPDO->Execute('insert into ope...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->exec('insert into ope...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12407): RedBeanPHP\Facade::query('exec', 'insert into ope...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/sale.php(31): RedBeanPHP\Facade::exec('insert into ope...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[28-Feb-2019 16:08:01 America/Chicago] PHP Fatal error:  Uncaught [23000] - SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`casamar5_chaps`.`operation`, CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`))
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1111): RedBeanPHP\Driver\RPDO->runQuery('insert into ope...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4154): RedBeanPHP\Driver\RPDO->Execute('insert into ope...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->exec('insert into ope...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12407): RedBeanPHP\Facade::query('exec', 'insert into ope...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/sale.php(31): RedBeanPHP\Facade::exec('insert into ope...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[28-Feb-2019 16:08:01 America/Chicago] PHP Fatal error:  Uncaught [23000] - SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`casamar5_chaps`.`operation`, CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`))
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1111): RedBeanPHP\Driver\RPDO->runQuery('insert into ope...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4154): RedBeanPHP\Driver\RPDO->Execute('insert into ope...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->exec('insert into ope...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12407): RedBeanPHP\Facade::query('exec', 'insert into ope...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/sale.php(31): RedBeanPHP\Facade::exec('insert into ope...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[28-Feb-2019 16:08:01 America/Chicago] PHP Fatal error:  Uncaught [23000] - SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`casamar5_chaps`.`operation`, CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`))
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1111): RedBeanPHP\Driver\RPDO->runQuery('insert into ope...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4154): RedBeanPHP\Driver\RPDO->Execute('insert into ope...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->exec('insert into ope...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12407): RedBeanPHP\Facade::query('exec', 'insert into ope...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/sale.php(31): RedBeanPHP\Facade::exec('insert into ope...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[28-Feb-2019 16:19:02 America/Chicago] PHP Fatal error:  Uncaught [23000] - SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`casamar5_chaps`.`operation`, CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`))
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1111): RedBeanPHP\Driver\RPDO->runQuery('insert into ope...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4154): RedBeanPHP\Driver\RPDO->Execute('insert into ope...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->exec('insert into ope...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12407): RedBeanPHP\Facade::query('exec', 'insert into ope...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/sale.php(31): RedBeanPHP\Facade::exec('insert into ope...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[28-Feb-2019 16:19:02 America/Chicago] PHP Fatal error:  Uncaught [23000] - SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`casamar5_chaps`.`operation`, CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`))
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1111): RedBeanPHP\Driver\RPDO->runQuery('insert into ope...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4154): RedBeanPHP\Driver\RPDO->Execute('insert into ope...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->exec('insert into ope...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12407): RedBeanPHP\Facade::query('exec', 'insert into ope...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/sale.php(31): RedBeanPHP\Facade::exec('insert into ope...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[28-Feb-2019 16:19:02 America/Chicago] PHP Fatal error:  Uncaught [23000] - SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`casamar5_chaps`.`operation`, CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`))
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1111): RedBeanPHP\Driver\RPDO->runQuery('insert into ope...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4154): RedBeanPHP\Driver\RPDO->Execute('insert into ope...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->exec('insert into ope...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12407): RedBeanPHP\Facade::query('exec', 'insert into ope...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/sale.php(31): RedBeanPHP\Facade::exec('insert into ope...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[28-Feb-2019 16:19:41 America/Chicago] PHP Fatal error:  Uncaught [23000] - SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`casamar5_chaps`.`operation`, CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`))
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1111): RedBeanPHP\Driver\RPDO->runQuery('insert into ope...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4154): RedBeanPHP\Driver\RPDO->Execute('insert into ope...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->exec('insert into ope...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12407): RedBeanPHP\Facade::query('exec', 'insert into ope...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/sale.php(31): RedBeanPHP\Facade::exec('insert into ope...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[28-Feb-2019 16:19:41 America/Chicago] PHP Fatal error:  Uncaught [23000] - SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`casamar5_chaps`.`operation`, CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`))
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1111): RedBeanPHP\Driver\RPDO->runQuery('insert into ope...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4154): RedBeanPHP\Driver\RPDO->Execute('insert into ope...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->exec('insert into ope...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12407): RedBeanPHP\Facade::query('exec', 'insert into ope...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/sale.php(31): RedBeanPHP\Facade::exec('insert into ope...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[28-Feb-2019 16:19:41 America/Chicago] PHP Fatal error:  Uncaught [23000] - SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`casamar5_chaps`.`operation`, CONSTRAINT `operation_ibfk_1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`id`))
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1111): RedBeanPHP\Driver\RPDO->runQuery('insert into ope...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4154): RedBeanPHP\Driver\RPDO->Execute('insert into ope...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->exec('insert into ope...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12407): RedBeanPHP\Facade::query('exec', 'insert into ope...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/sale.php(31): RedBeanPHP\Facade::exec('insert into ope...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[28-Feb-2019 16:20:34 America/Chicago] PHP Notice:  Undefined index: product in /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php on line 12
+[28-Feb-2019 16:20:34 America/Chicago] PHP Stack trace:
+[28-Feb-2019 16:20:34 America/Chicago] PHP   1. {main}() /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php:0
+[05-Mar-2019 10:31:56 America/Chicago] PHP Notice:  Undefined index: product in /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php on line 12
+[05-Mar-2019 10:31:56 America/Chicago] PHP Stack trace:
+[05-Mar-2019 10:31:56 America/Chicago] PHP   1. {main}() /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php:0
+[24-May-2019 12:58:20 America/Chicago] PHP Notice:  Undefined index: stock_id in /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php on line 6
+[24-May-2019 12:58:20 America/Chicago] PHP Stack trace:
+[24-May-2019 12:58:20 America/Chicago] PHP   1. {main}() /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php:0
+[24-May-2019 12:58:20 America/Chicago] PHP Notice:  Undefined index: product in /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php on line 12
+[24-May-2019 12:58:20 America/Chicago] PHP Stack trace:
+[24-May-2019 12:58:20 America/Chicago] PHP   1. {main}() /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php:0
+[24-May-2019 12:58:20 America/Chicago] PHP Notice:  Undefined index: stock_id in /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php on line 20
+[24-May-2019 12:58:20 America/Chicago] PHP Stack trace:
+[24-May-2019 12:58:20 America/Chicago] PHP   1. {main}() /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php:0
+[24-May-2019 12:58:20 America/Chicago] PHP Notice:  Undefined index: user_id in /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php on line 20
+[24-May-2019 12:58:20 America/Chicago] PHP Stack trace:
+[24-May-2019 12:58:20 America/Chicago] PHP   1. {main}() /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php:0
+[24-May-2019 12:58:20 America/Chicago] PHP Fatal error:  Uncaught [42000] - SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'and s.user_id =
+	order by s.created_at desc' at line 5
+trace: #0 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(1035): RedBeanPHP\Driver\RPDO->runQuery('SELECT s.total,...', Array)
+#1 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(4165): RedBeanPHP\Driver\RPDO->GetAll('SELECT s.total,...', Array)
+#2 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(11526): RedBeanPHP\Adapter\DBAdapter->get('SELECT s.total,...', Array)
+#3 /home/casamar5/heladoschaps.com/webserviceapp/rb.php(12425): RedBeanPHP\Facade::query('get', 'SELECT s.total,...', Array)
+#4 /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php(21): RedBeanPHP\Facade::getAll('SELECT s.total,...')
+#5 {main}
+  thrown in /home/casamar5/heladoschaps.com/webserviceapp/rb.php on line 768
+[24-May-2019 13:19:31 America/Chicago] PHP Parse error:  syntax error, unexpected ''\n;' (T_ENCAPSED_AND_WHITESPACE) in /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php on line 50
+[24-May-2019 13:19:40 America/Chicago] PHP Parse error:  syntax error, unexpected ''\n;' (T_ENCAPSED_AND_WHITESPACE) in /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php on line 50
+[24-May-2019 13:20:44 America/Chicago] PHP Fatal error:  Undefined constant 'n' in /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php on line 50
+[24-May-2019 13:20:44 America/Chicago] PHP Stack trace:
+[24-May-2019 13:20:44 America/Chicago] PHP   1. {main}() /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php:0
+[24-May-2019 13:24:59 America/Chicago] PHP Fatal error:  Undefined constant 'n' in /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php on line 50
+[24-May-2019 13:24:59 America/Chicago] PHP Stack trace:
+[24-May-2019 13:24:59 America/Chicago] PHP   1. {main}() /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php:0
+[25-May-2019 12:21:10 America/Chicago] PHP Notice:  Undefined index: product in /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php on line 13
+[25-May-2019 12:21:10 America/Chicago] PHP Stack trace:
+[25-May-2019 12:21:10 America/Chicago] PHP   1. {main}() /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php:0
+[25-May-2019 12:33:48 America/Chicago] PHP Notice:  Undefined index: product in /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php on line 13
+[25-May-2019 12:33:48 America/Chicago] PHP Stack trace:
+[25-May-2019 12:33:48 America/Chicago] PHP   1. {main}() /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php:0
+[25-May-2019 12:35:51 America/Chicago] PHP Notice:  Undefined index: product in /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php on line 13
+[25-May-2019 12:35:51 America/Chicago] PHP Stack trace:
+[25-May-2019 12:35:51 America/Chicago] PHP   1. {main}() /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php:0
+[25-May-2019 12:37:58 America/Chicago] PHP Notice:  Undefined index: product in /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php on line 13
+[25-May-2019 12:37:58 America/Chicago] PHP Stack trace:
+[25-May-2019 12:37:58 America/Chicago] PHP   1. {main}() /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php:0
+[25-May-2019 13:30:13 America/Chicago] PHP Notice:  Undefined index: product in /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php on line 13
+[25-May-2019 13:30:13 America/Chicago] PHP Stack trace:
+[25-May-2019 13:30:13 America/Chicago] PHP   1. {main}() /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php:0
+[25-May-2019 13:34:55 America/Chicago] PHP Notice:  Undefined index: product in /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php on line 13
+[25-May-2019 13:34:55 America/Chicago] PHP Stack trace:
+[25-May-2019 13:34:55 America/Chicago] PHP   1. {main}() /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php:0
+[25-May-2019 15:32:01 America/Chicago] PHP Notice:  Undefined index: product in /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php on line 13
+[25-May-2019 15:32:01 America/Chicago] PHP Stack trace:
+[25-May-2019 15:32:01 America/Chicago] PHP   1. {main}() /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php:0
+[25-May-2019 17:35:29 America/Chicago] PHP Notice:  Undefined index: product in /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php on line 13
+[25-May-2019 17:35:29 America/Chicago] PHP Stack trace:
+[25-May-2019 17:35:29 America/Chicago] PHP   1. {main}() /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php:0
+[25-May-2019 17:36:46 America/Chicago] PHP Notice:  Undefined index: product in /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php on line 13
+[25-May-2019 17:36:46 America/Chicago] PHP Stack trace:
+[25-May-2019 17:36:46 America/Chicago] PHP   1. {main}() /home/casamar5/heladoschaps.com/webserviceapp/get_sales.php:0
