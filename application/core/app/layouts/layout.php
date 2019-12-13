@@ -61,24 +61,24 @@
 if (isset($_SESSION["user_id"])):
 	$msgs = MessageData::getUnreadedByUserId($_SESSION["user_id"]);
 	?>
-		<li class="dropdown messages-menu">
-		            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		              <i class="fa fa-envelope-o"></i>
-		              <span class="label label-success"><?php echo count($msgs); ?></span>
-		            </a>
-		            <ul class="dropdown-menu">
-		              <li class="header">Tienes <?php echo count($msgs); ?> mensajes nuevos</li>
-		              <li>
-		                <!-- inner menu: contains the actual data -->
-		                <ul class="menu">
-		                <?php foreach ($msgs as $i): ?>
-		                  <li><!-- start message -->
-		                    <a href="./?view=messages&opt=open&code=<?php echo $i->code; ?>">
-		                      <h4>
-		                    <?php if ($i->user_from != $_SESSION["user_id"]): ?>
-		                    <?php $u = $i->getFrom();
+				<li class="dropdown messages-menu">
+				            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				              <i class="fa fa-envelope-o"></i>
+				              <span class="label label-success"><?php echo count($msgs); ?></span>
+				            </a>
+				            <ul class="dropdown-menu">
+				              <li class="header">Tienes <?php echo count($msgs); ?> mensajes nuevos</li>
+				              <li>
+				                <!-- inner menu: contains the actual data -->
+				                <ul class="menu">
+				                <?php foreach ($msgs as $i): ?>
+				                  <li><!-- start message -->
+				                    <a href="./?view=messages&opt=open&code=<?php echo $i->code; ?>">
+				                      <h4>
+				                    <?php if ($i->user_from != $_SESSION["user_id"]): ?>
+				                    <?php $u = $i->getFrom();
 	echo $u->name . " " . $u->lastname;?>
-		                    <?php elseif ($i->user_to != $_SESSION["user_id"]): ?>
+				                    <?php elseif ($i->user_to != $_SESSION["user_id"]): ?>
                     <?php $u = $i->getTo();
 echo $u->name . " " . $u->lastname;?>
                   <?php endif;?>
@@ -104,7 +104,7 @@ echo $u->name . " " . $u->lastname;?>
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
                   <span class=""><?php if (isset($_SESSION["user_id"])) {
 	echo UserData::getById($_SESSION["user_id"])->name;
-	if (Core::$user->kind == 1) {echo " (Administrador)";} else if (Core::$user->kind == 2) {echo " (Almacenista)";} else if (Core::$user->kind == 3) {echo " (Vendedor)";}
+	if (Core::$user->kind == 1) {echo " (Administrador)";} else if (Core::$user->kind == 2) {echo " (Mecanico)";} else if (Core::$user->kind == 3) {echo " (Vendedor)";} else if (Core::$user->kind == 4) {echo " (Almacenista)";}
 
 } else if (isset($_SESSION["client_id"])) {echo PersonData::getById($_SESSION["client_id"])->name . " (Cliente)";}?> <b class="caret"></b> </span>
 
@@ -147,11 +147,13 @@ echo $u->name . " " . $u->lastname;?>
             <li class="header">ADMINISTRACION</li>
             <?php if (isset($_SESSION["user_id"])): ?>
                         <li><a href="./index.php?view=home"><i class='fa fa-dashboard'></i> <span>Dashboard</span></a></li>
-<?php if (Core::$user->kind == 1 || Core::$user->kind == 2): ?>
+
                          <li><a href="./index.php?view=alerts"><i class='fa fa-bell-o'></i> <span>Alertas</span></a></li>
-<?php endif;?>
+
+<?php if (Core::$user->kind == 1 || Core::$user->kind == 3): ?>
             <li><a href="./?view=sell"><i class='fa fa-usd'></i> <span>Vender</span></a></li>
             <li><a href="./?view=rent"><i class='fa fa-usd'></i> <span>Rentar</span></a></li>
+            <?php endif;?>
  <!--           <li><a href="./?view=cotizations"><i class='fa fa-square-o'></i> <span>Cotizaciones</span></a></li>
 
             <li class="treeview">
@@ -161,6 +163,7 @@ echo $u->name . " " . $u->lastname;?>
                 <li><a href="./?view=messages&opt=all">Mensajes</a></li>
               </ul>
             </li> -->
+            <?php if (Core::$user->kind == 1 || Core::$user->kind == 3): ?>
             <li class="treeview <?php if (isset($_GET["view"]) && ($_GET["view"] == "sells" || $_GET["view"] == "bydeliver" || $_GET["view"] == "bycob")) {echo "active";}?>"   >
               <a href="#"><i class='fa fa-shopping-cart'></i> <span>Ventas</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
@@ -170,15 +173,25 @@ echo $u->name . " " . $u->lastname;?>
    <?php endif;?>
               </ul>
             </li>
+             <?php endif;?>
+             <?php if (Core::$user->kind == 1 || Core::$user->kind == 3): ?>
             <li class="treeview <?php if (isset($_GET["view"]) && ($_GET["view"] == "sells" || $_GET["view"] == "bydeliver" || $_GET["view"] == "bycob")) {echo "active";}?>"   >
               <a href="#"><i class='fa fa-shopping-cart'></i> <span>Rentas</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
                 <li><a href="./?view=rent">Rentas</a></li>
               </ul>
             </li>
+            <?php endif;?>
+              <?php if (Core::$user->kind == 1 || Core::$user->kind == 3 || Core::$user->kind == 4): ?>
             <li><a href="./?view=products"><i class='fa fa-database'></i>Almacen</a></li>
+             <?php endif;?>
+              <?php if (Core::$user->kind == 1 || Core::$user->kind == 2): ?>
             <li><a href="./?view=products&is_workshop=1"><i class='fa fa-database'></i>Taller</a></li>
+             <?php endif;?>
+             <?php if (Core::$user->kind == 1 || Core::$user->kind == 3 || Core::$user->kind == 4): ?>
             <li><a href="./?view=products&is_ended=1"><i class='fa fa-database'></i>Terminados</a></li>
+             <?php endif;?>
+             <?php if (Core::$user->kind == 1): ?>
             <li class="treeview">
               <a href="#"><i class='fa fa-cog'></i> <span>Administracion</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
@@ -190,30 +203,7 @@ echo $u->name . " " . $u->lastname;?>
               </ul>
             </li>
 
-<!--
-            <?php if (Core::$user->kind == 1): ?>
-                        <li class="treeview">
-              <a href="#"><i class='fa fa-file-text-o'></i> <span>Reportes</span> <i class="fa fa-angle-left pull-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="./?view=reports">Inventario</a></li>
-                <li><a href="./?view=sellreports">Ventas</a></li>
-                <li><a href="./?view=resreport">Compras</a></li>
-                <li><a href="./?view=paymentreport">Reporte de pagos</a></li>
-                <li><a href="./?view=popularproductsreport">Productos Populares</a></li>
-              </ul>
-            </li>
 
-
-            <li class="treeview">
-              <a href="#"><i class='fa fa-cog'></i> <span>Administracion</span> <i class="fa fa-angle-left pull-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="./?view=users">Usuarios</a></li>
-                <li><a href="./?view=settings">Configuracion</a></li>
-                <li><a href="./?view=import">Importar Datos</a></li>
-
-
-              </ul>
-            </li> -->
           <?php endif;?>
                       <?php elseif (isset($_SESSION["client_id"])): ?>
             <li><a href="./index.php?view=clienthome"><i class='fa fa-dashboard'></i> <span>Dashboard</span></a></li>
