@@ -536,7 +536,7 @@ if ($product != null):
                                                                             class="fa fa-trash"></i></a></td>
                                                                             <?php else: ?>
                                                 <?php endif;?>
-                                                <?php if ($finished): ?>
+                                                <?php if ($finished && Core::$user->kind == 1): ?>
                                                 <td style="width: 28%; "><input type="text" id="costoF_<?php echo $l->id; ?>" class="form-control costoF" style=""  name="" placeholder="Precio" value="<?php echo $l->cost; ?>"></td>
                                               <?php endif;?>
                                                         </tr>
