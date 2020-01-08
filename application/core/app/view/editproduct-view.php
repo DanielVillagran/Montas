@@ -446,7 +446,7 @@ if ($product != null):
                                                                             class="fa fa-trash"></i></a></td>
                                                                             <?php else: ?>
                                                 <?php endif;?>
-                                                <?php if ($finished): ?>
+                                                <?php if ($finished && Core::$user->kind == 1): ?>
                                                 <td><input type="number" name="" id="costoR_<?php echo $l->id; ?>" class="form-control costoR" placeholder="precio" value="<?php echo $l->cost; ?>"></td>
                                               <?php endif;?>
                                                         </tr>

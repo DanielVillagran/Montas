@@ -1,14 +1,14 @@
 <!-- Content Header (Page header) -->
 <?php
-if(isset($_GET["is_workshop"])){
-    $workshop = true;
-}else{
-    $workshop = false;
+if (isset($_GET["is_workshop"])) {
+	$workshop = true;
+} else {
+	$workshop = false;
 }
-if(isset($_GET["is_ended"])){
-    $ended = true;
-}else{
-    $ended = false;
+if (isset($_GET["is_ended"])) {
+	$ended = true;
+} else {
+	$ended = false;
 }
 ?>
 <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/alertify.min.js"></script>
@@ -29,8 +29,8 @@ if(isset($_GET["is_ended"])){
     <div class="row">
         <div class="col-md-12">
             <div class="btn-group  pull-right">
-                <?php if($workshop || $ended): ?>
-                <?php else:?>
+                <?php if ($workshop || $ended): ?>
+                <?php else: ?>
                 <a href="index.php?view=newproduct" class="btn btn-default">Agregar Producto</a>
 
                 <?php endif;?>
@@ -50,28 +50,25 @@ if(isset($_GET["is_ended"])){
             <br>
 
             <?php
-            $showStatus = false;
-            if($workshop){
-                $products = ProductData::getWorkshop();
-                $showStatus = false;
-                $showPrice = false;
+$showStatus = false;
+if ($workshop) {
+	$products = ProductData::getWorkshop();
+	$showStatus = false;
+	$showPrice = false;
 
+} else if ($ended) {
+	$products = ProductData::getFinished();
+	$showStatus = false;
+	$showPrice = true;
 
-            }else if($ended){
-                $products = ProductData::getFinished();
-                $showStatus = false;
-                $showPrice = true;
+} else {
+	$products = ProductData::getAll();
+	$showStatus = true;
+	$showPrice = true;
 
-
-            }else{
-                $products = ProductData::getAll();
-                $showStatus = true;
-                $showPrice = true;
-
-
-            }
-            if (count($products) > 0) {
-                ?>
+}
+if (count($products) > 0) {
+	?>
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Productos</h3>
@@ -90,10 +87,10 @@ if(isset($_GET["is_ended"])){
                                 <th style="display: none;">Precio Salida</th>
                                 <th>Categoria</th>
                                 <th>Tipo</th>
-                                <?php if($showStatus) :?>
+                                <?php if ($showStatus): ?>
                                 <th>Estatus</th>
                               <?php endif;?>
-                              <?php if($showPrice) :?>
+                              <?php if ($showPrice): ?>
                               <th>Precio</th>
                             <?php endif;?>
 
@@ -107,9 +104,9 @@ if(isset($_GET["is_ended"])){
                                 <td>
 
                                     <?php
-                                            $serie = $product->serie;
-                                            $imagenes = ProductData::getBySerie($serie);
-                                            ?>
+$serie = $product->serie;
+	$imagenes = ProductData::getBySerie($serie);
+	?>
 
                                     <?php foreach ($imagenes as $i): ?>
                                     <a href="storage/products/<?php echo $i->img; ?>" target="_blank">
@@ -117,7 +114,7 @@ if(isset($_GET["is_ended"])){
                                             <img src="storage/products/<?php echo $i->img; ?>" style="width:64px;">
                                         </div>
                                     </a>
-                                    <?php endforeach; ?>
+                                    <?php endforeach;?>
                                 </td>
                                 <td><?php echo $product->name; ?></td>
                                 <td><?php echo $product->model; ?></td>
@@ -126,43 +123,46 @@ if(isset($_GET["is_ended"])){
                                 <td style="display: none;">$
                                     <?php echo number_format($product->price_out, 2, '.', ','); ?></td>
                                 <td><?php if ($product->category_id != null) {
-                                                echo $product->getCategory()->name;
-                                            } else {
-                                                echo "<center>----</center>";
-                                            } ?></td>
+		echo $product->getCategory()->name;
+	} else {
+		echo "<center>----</center>";
+	}?></td>
                                 <td><?php echo $product->type; ?></td>
-                                <?php if($showStatus): ?>
-                                  <?php if($product->status == 0):?>
+                                <?php if ($showStatus): ?>
+                                  <?php if ($product->status == 0): ?>
                                     <td>Taller</td>
-                                  <?php else:?>
+                                  <?php else: ?>
                                     <td>Terminado</td>
                                   <?php endif;?>
                               <?php endif;?>
-                              <?php if($showPrice) :?>
-                              <th><?php echo number_format($product->price_out,2, '.',','); ?></th>
+                              <?php if ($showPrice): ?>
+                              <th><?php echo number_format($product->price_out, 2, '.', ','); ?></th>
                             <?php endif;?>
 
 
                                 <td style="text-align: center; font-size: 30px;">
                                     <?php if ($product->is_active == 1): ?>
                                     <i class="fa fa-check"></i>
-                                    <?php else:?>
+                                    <?php else: ?>
                                     <i class="fa fa-times"></i>
 
-                                    <?php endif; ?>
+                                    <?php endif;?>
                                 </td>
 
-                                <?php if($ended): ?>
+                                <?php if ($ended): ?>
                                 <td style="width:90px;">
 
                                     <a href="index.php?view=editproduct&id=<?php echo $product->id; ?>&finished=1&serie=<?php echo $product->serie; ?>"
                                         class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
+                                        <?php if (Core::$user->kind == 1): ?>
                                     <a onclick="activate_product(<?php echo $product->id; ?>)"
                                         class="btn btn-xs btn-success"><i class="glyphicon glyphicon-check"></i></a>
+                                         <?php endif;?>
+
 
                                 </td>
 
-                                <?php elseif($workshop):?>
+                                <?php elseif ($workshop): ?>
                                 <td style="width:90px;">
 
                                     <a href="index.php?view=editproduct&id=<?php echo $product->id; ?>&is_workshop=1&serie=<?php echo $product->serie; ?>"
@@ -171,7 +171,7 @@ if(isset($_GET["is_ended"])){
                                         class="btn btn-xs btn-success"><i class="glyphicon glyphicon-usd"></i></a>
 
                                 </td>
-                                <?php else:?>
+                                <?php else: ?>
                                 <td style="width:90px;">
                                   <div class="row" style="margin-bottom: 2%;">
                                     <div class="col-md-2">
@@ -203,7 +203,7 @@ if(isset($_GET["is_ended"])){
 
                                 <?php endif;?>
                             </tr>
-                            <?php endforeach; ?>
+                            <?php endforeach;?>
                         </table>
                     </div>
                 </div><!-- /.box-body -->
@@ -359,8 +359,8 @@ if(isset($_GET["is_ended"])){
 
 
             <?php
-            } else {
-                ?>
+} else {
+	?>
             <div class="alert alert-info">
                 <h2>No hay productos</h2>
                 <p>No se han agregado productos a la base de datos, puedes agregar uno dando click en el boton
@@ -368,9 +368,9 @@ if(isset($_GET["is_ended"])){
                         Producto"</b>.</p>
             </div>
             <?php
-            }
+}
 
-            ?>
+?>
             <br><br><br><br><br><br><br><br><br><br>
         </div>
     </div>
@@ -384,13 +384,13 @@ if(isset($_GET["is_ended"])){
         var doc = new jsPDF('p', 'pt');
         doc.setFontSize(26);
         doc.text("<?php echo ConfigurationData::getByPreffix("
-            company_name ")->val;?>", 40, 65);
+            company_name ")->val; ?>", 40, 65);
         doc.setFontSize(18);
         doc.text("LISTADO DE PRODUCTOS", 40, 80);
         doc.setFontSize(12);
         doc.text("Usuario: <?php echo Core::$user->name . "
             " . Core::$user->lastname; ?>  -  Fecha: <?php echo date("
-            d - m - Y h: i: s ");?> ", 40, 90);
+            d - m - Y h: i: s "); ?> ", 40, 90);
         var columns = [{
                 title: "Id",
                 dataKey: "id"
@@ -419,8 +419,8 @@ if(isset($_GET["is_ended"])){
                 "id": "<?php echo $product->id; ?>",
                 "code": "<?php echo $product->barcode; ?>",
                 "name": "<?php echo $product->name; ?>",
-                "price_in": "$ <?php echo number_format($product->price_in, 2, '.', ',');?>",
-                "price_out": "$ <?php echo number_format($product->price_out, 2, '.', ',');?>",
+                "price_in": "$ <?php echo number_format($product->price_in, 2, '.', ','); ?>",
+                "price_out": "$ <?php echo number_format($product->price_out, 2, '.', ','); ?>",
             }, <
             ? php endforeach; ? >
         ];
@@ -441,14 +441,14 @@ if(isset($_GET["is_ended"])){
             afterPageContent: function (data) {}
         });
         doc.setFontSize(12);
-        doc.text("<?php echo Core::$pdf_footer;?>", 40, doc.autoTableEndPosY() + 25); <
+        doc.text("<?php echo Core::$pdf_footer; ?>", 40, doc.autoTableEndPosY() + 25); <
         ? php
         $con = ConfigurationData::getByPreffix("report_image");
         if ($con != null && $con - > val != ""):
             ?
             >
             var img = new Image();
-        img.src = "storage/configuration/<?php echo $con->val;?>";
+        img.src = "storage/configuration/<?php echo $con->val; ?>";
         img.onload = function () {
                 doc.addImage(img, 'PNG', 495, 20, 60, 60, 'mon');
                 doc.save('products-<?php echo date("d-m-Y h:i:s", time()); ?>.pdf');
