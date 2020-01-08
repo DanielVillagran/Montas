@@ -14,9 +14,11 @@ if (!isset($_SESSION["user_id"])) {
 	$query = $con->query($sql);
 	$found = false;
 	$userid = null;
+	$user_kind = "";
 	while ($r = $query->fetch_array()) {
 		$found = true;
 		$userid = $r['id'];
+		$user_kind = $r['kind'];
 	}
 
 	if ($found == true) {
@@ -32,7 +34,11 @@ if (!isset($_SESSION["user_id"])) {
 	}
 
 } else {
-	print "<script>window.location='index.php?view=home';</script>";
+	if ($user_kind != 1) {
+		print "<script>window.location='index.php?view=alerts';</script>";
+	} else {
+		print "<script>window.location='index.php?view=home';</script>";
+	}
 
 }
 ?>

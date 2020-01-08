@@ -61,24 +61,24 @@
 if (isset($_SESSION["user_id"])):
 	$msgs = MessageData::getUnreadedByUserId($_SESSION["user_id"]);
 	?>
-				<li class="dropdown messages-menu">
-				            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-				              <i class="fa fa-envelope-o"></i>
-				              <span class="label label-success"><?php echo count($msgs); ?></span>
-				            </a>
-				            <ul class="dropdown-menu">
-				              <li class="header">Tienes <?php echo count($msgs); ?> mensajes nuevos</li>
-				              <li>
-				                <!-- inner menu: contains the actual data -->
-				                <ul class="menu">
-				                <?php foreach ($msgs as $i): ?>
-				                  <li><!-- start message -->
-				                    <a href="./?view=messages&opt=open&code=<?php echo $i->code; ?>">
-				                      <h4>
-				                    <?php if ($i->user_from != $_SESSION["user_id"]): ?>
-				                    <?php $u = $i->getFrom();
+									<li class="dropdown messages-menu">
+									            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									              <i class="fa fa-envelope-o"></i>
+									              <span class="label label-success"><?php echo count($msgs); ?></span>
+									            </a>
+									            <ul class="dropdown-menu">
+									              <li class="header">Tienes <?php echo count($msgs); ?> mensajes nuevos</li>
+									              <li>
+									                <!-- inner menu: contains the actual data -->
+									                <ul class="menu">
+									                <?php foreach ($msgs as $i): ?>
+									                  <li><!-- start message -->
+									                    <a href="./?view=messages&opt=open&code=<?php echo $i->code; ?>">
+									                      <h4>
+									                    <?php if ($i->user_from != $_SESSION["user_id"]): ?>
+									                    <?php $u = $i->getFrom();
 	echo $u->name . " " . $u->lastname;?>
-				                    <?php elseif ($i->user_to != $_SESSION["user_id"]): ?>
+									                    <?php elseif ($i->user_to != $_SESSION["user_id"]): ?>
                     <?php $u = $i->getTo();
 echo $u->name . " " . $u->lastname;?>
                   <?php endif;?>
@@ -146,7 +146,9 @@ echo $u->name . " " . $u->lastname;?>
           <ul class="sidebar-menu">
             <li class="header">ADMINISTRACION</li>
             <?php if (isset($_SESSION["user_id"])): ?>
+              <?php if (Core::$user->kind == 1): ?>
                         <li><a href="./index.php?view=home"><i class='fa fa-dashboard'></i> <span>Dashboard</span></a></li>
+                           <?php endif;?>
 
                          <li><a href="./index.php?view=alerts"><i class='fa fa-bell-o'></i> <span>Alertas</span></a></li>
 
@@ -182,14 +184,17 @@ echo $u->name . " " . $u->lastname;?>
               </ul>
             </li>
             <?php endif;?>
+             <?php if (Core::$user->kind == 1): ?>
+            <li><a href="./?view=categories"><i class='fa fa-database'></i>Categorias</a></li>
+             <?php endif;?>
               <?php if (Core::$user->kind == 1 || Core::$user->kind == 3 || Core::$user->kind == 4): ?>
-            <li><a href="./?view=products"><i class='fa fa-database'></i>Almacen</a></li>
+            <li><a href="./?view=products"><i class='fa fa-truck'></i>Almacen</a></li>
              <?php endif;?>
               <?php if (Core::$user->kind == 1 || Core::$user->kind == 2): ?>
-            <li><a href="./?view=products&is_workshop=1"><i class='fa fa-database'></i>Taller</a></li>
+            <li><a href="./?view=products&is_workshop=1"><i class='fa fa-truck'></i>Taller</a></li>
              <?php endif;?>
              <?php if (Core::$user->kind == 1 || Core::$user->kind == 3 || Core::$user->kind == 4): ?>
-            <li><a href="./?view=products&is_ended=1"><i class='fa fa-database'></i>Terminados</a></li>
+            <li><a href="./?view=products&is_ended=1"><i class='fa fa-truck'></i>Terminados</a></li>
              <?php endif;?>
              <?php if (Core::$user->kind == 1): ?>
             <li class="treeview">
