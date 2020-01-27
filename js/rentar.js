@@ -1,4 +1,4 @@
-var server="";
+var server="http://vmcomp.com.mx/montacargas";
 
 $(document).ready(function(){
 	console.log("Esta perrada");
