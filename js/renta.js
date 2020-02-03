@@ -1,23 +1,28 @@
 var server="http://vmcomp.com.mx/montacargas";
 //server="";
-
+var monta="";
 $(document).ready(function(){
-	console.log("Esta perrada");
-	
+	monta=window.location.href.split("montcarga=")[1];	
 	$.ajax({
-		url: server+"/webservicesapp/get_products.php",
+		url: server+"/webservicesapp/get_product_info.php",
 		type: "POST",
-		data: {"product": "",
+		data: {"product":monta ,
 				"is_rent":1},
 		dataType: "json",
 		beforeSend: function() {
-			console.log("Que desmadre");
 		},
 		success: function(data) {
 			//swal.close();
 				//console.log(data);
 				console.log(data);
+				$("#producto").empty().append(data.elemento.name.toUpperCase()+" "+data.elemento.model.toUpperCase()
+					+" "+data.elemento.serie.toUpperCase());
+				$("#desc").empty().append(data.elemento.description.toUpperCase());
 				$("#rowproductos").append(data.list);
+				$("#capacidad").empty().append(data.elemento.capacity);
+				$("#altura").empty().append(data.elemento.height);
+				$("#combustible").empty().append(data.elemento.fuel);
+
 			}
 		});
 });

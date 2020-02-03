@@ -8,7 +8,7 @@ $(document).ready(function(){
 		url: server+"/webservicesapp/get_products.php",
 		type: "POST",
 		data: {"product": "",
-				"is_rent":1},
+				"is_rent":0},
 		dataType: "json",
 		beforeSend: function() {
 			console.log("Que desmadre");

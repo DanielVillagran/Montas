@@ -4,7 +4,7 @@
 <head>
 
     <!-- Metas -->
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="keywords" content="Aplicaciones Diseño Web y Consultoria" />
@@ -24,6 +24,7 @@
     <!-- Plugins -->
     <link rel="stylesheet" href="css/plugins.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+   
 
     <!-- Core Style Css -->
     <link rel="stylesheet" href="css/style.css" />
@@ -31,6 +32,13 @@
 </head>
 
 <body>
+    <style type="text/css">
+        .carousel-control-next,
+.carousel-control-prev {
+    
+}
+
+    </style>
 
     <!-- =====================================
     	==== Start Loading -->
@@ -97,25 +105,49 @@
 
     <section class="hero section-padding bg-gray" data-scroll-index="1">
         <div class="container">
-            <div class="row" >
+            <div class="row" id="rowproductos">
 
                 <div class="offset-lg-1 col-lg-10">
 
                     <div class="section-head text-center mb-70 col-sm-12">
-                        <h4>Rentas</h4>
-                        <p>Rentas los mejores equipos, a tiempo indefinido o por plazo, tu decides lo que mas te convenga.</p>
+                        <h4 id="producto"></h4>
+                        <p id="desc"></p>
+                        
                     </div>
 
                 </div>
-            </div>
-            <div id="rowproductos">
 
                 
 
                
 
             </div>
-        </div>
+            <br><br>
+            <center>
+            <h3 style="color: #FF592D">CARACTERISTICAS</h3>
+            </center>
+            <br>
+             <div class="row" >
+
+                <div class="col-md-6">
+                    <table class="table" style="width: 100%;"><tr>
+                        <td style="width: 30% !important;">Capacidad</th>
+                        <th id="capacidad"></th>
+                    </tr><tr>
+                        <td style="width: 30% !important;">Altura</th>
+                        <th id="altura"></th>
+                    </tr>
+                </table>
+                </div>
+                <div class="col-md-6">
+                     <table class="table" style="width: 100%;"><tr>
+                        <td style="width: 30% !important;">Combustible</th>
+                        <th id="combustible"></th>
+                    </tr>
+                </table>
+                </div>
+             </div>
+
     </section>
 
     <!-- End Hero ====
@@ -223,7 +255,8 @@
 
     <!-- words scripts -->
     <script src="js/words.js"></script>
-    <script src="js/rentar.js"></script>
+    <script src="js/renta.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
 
 </body></html>

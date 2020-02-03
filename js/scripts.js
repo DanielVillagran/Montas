@@ -43,7 +43,7 @@
                     navbar = $(".navbar"),
                     logo = $(".navbar .logo> img");
 
-                    if(bodyScroll > 100 || page=='rentas.html' || page=='ventas.html'){
+                    if(bodyScroll > 100 || page=='rentas.html' || page=='ventas.html'|| page=='renta.html' || page=='venta.html'){
 
                         navbar.addClass("nav-scroll");
                         logo.attr('src', 'img/logo.png');
