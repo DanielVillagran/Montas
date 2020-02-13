@@ -57,7 +57,11 @@ if ($workshop) {
 	$showPrice = false;
 
 } else if ($ended) {
-	$products = ProductData::getFinished();
+	if (Core::$user->kind == 3) {
+		$products = ProductData::getOnlyFinished();
+	} else {
+		$products = ProductData::getFinished();
+	}
 	$showStatus = false;
 	$showPrice = true;
 
