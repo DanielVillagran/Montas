@@ -287,7 +287,7 @@ function closeAlert(pid) {
         url: "../application/core/app/view/closeAlert.php",
         type: 'POST',
         data: {
-            'id': id
+            'id': pid
 
         },
         success(data) {
