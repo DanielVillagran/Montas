@@ -73,7 +73,7 @@ $iva_val = ConfigurationData::getByPreffix("imp-val")->val;
 <div style="display:none;" id="qrreader">
 <div id="mainbody">
 <a class="selector" id="webcamimg" onclick="setwebcam()" align="left">Camara</a>
-<a class="selector" id="qrimg" src="cam.png" onclick="setimg()" align="right">Imagen</a>
+<a class="selector" id="qrimg" style="display: none;" src="cam.png" onclick="setimg()" align="right">Imagen</a>
 <div id="outdiv">
 </div>
 <video id="preview"></video>
@@ -100,7 +100,6 @@ $iva_val = ConfigurationData::getByPreffix("imp-val")->val;
       $("#readqr").click(function(){
         if(qrreader.style.display=="none"){
           qrreader.style.display="block";
-          load();
         }else if(qrreader.style.display=="block"){
           qrreader.style.display="none";
         }
