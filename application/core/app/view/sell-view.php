@@ -95,6 +95,7 @@ $iva_val = ConfigurationData::getByPreffix("imp-val")->val;
     document.getElementById("result").innerHTML=html;
     document.getElementById("product_name").value=a.split("-")[1]+"\n";
     $("#searchp").submit();
+    $("#qrreader").hide();
 }
   $(document).ready(function(){
       $("#readqr").click(function(){
