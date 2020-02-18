@@ -115,7 +115,11 @@ $iva_val = ConfigurationData::getByPreffix("imp-val")->val;
         Instascan.Camera.getCameras().then(cameras =>
         {
             if(cameras.length > 0){
+              if(cameras.length==2){
+                scanner.start(cameras[1]);
+              }else{
                 scanner.start(cameras[0]);
+              }
             } else {
                 console.error("Please enable Camera!");
             }
