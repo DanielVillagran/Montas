@@ -29,7 +29,6 @@
           <script src="plugins/jspdf/jspdf.plugin.autotable.js"></script>
           <?php if (isset($_GET["view"]) && $_GET["view"] == "sell"): ?>
 <script type="text/javascript" src="plugins/jsqrcode/llqrcode.js"></script>
-<script type="text/javascript" src="plugins/jsqrcode/webqr.js"></script>
           <?php endif;?>
 
   </head>
@@ -61,24 +60,24 @@
 if (isset($_SESSION["user_id"])):
 	$msgs = MessageData::getUnreadedByUserId($_SESSION["user_id"]);
 	?>
-										<li class="dropdown messages-menu">
-										            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-										              <i class="fa fa-envelope-o"></i>
-										              <span class="label label-success"><?php echo count($msgs); ?></span>
-										            </a>
-										            <ul class="dropdown-menu">
-										              <li class="header">Tienes <?php echo count($msgs); ?> mensajes nuevos</li>
-										              <li>
-										                <!-- inner menu: contains the actual data -->
-										                <ul class="menu">
-										                <?php foreach ($msgs as $i): ?>
-										                  <li><!-- start message -->
-										                    <a href="./?view=messages&opt=open&code=<?php echo $i->code; ?>">
-										                      <h4>
-										                    <?php if ($i->user_from != $_SESSION["user_id"]): ?>
-										                    <?php $u = $i->getFrom();
+												<li class="dropdown messages-menu">
+												            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+												              <i class="fa fa-envelope-o"></i>
+												              <span class="label label-success"><?php echo count($msgs); ?></span>
+												            </a>
+												            <ul class="dropdown-menu">
+												              <li class="header">Tienes <?php echo count($msgs); ?> mensajes nuevos</li>
+												              <li>
+												                <!-- inner menu: contains the actual data -->
+												                <ul class="menu">
+												                <?php foreach ($msgs as $i): ?>
+												                  <li><!-- start message -->
+												                    <a href="./?view=messages&opt=open&code=<?php echo $i->code; ?>">
+												                      <h4>
+												                    <?php if ($i->user_from != $_SESSION["user_id"]): ?>
+												                    <?php $u = $i->getFrom();
 	echo $u->name . " " . $u->lastname;?>
-										                    <?php elseif ($i->user_to != $_SESSION["user_id"]): ?>
+												                    <?php elseif ($i->user_to != $_SESSION["user_id"]): ?>
                     <?php $u = $i->getTo();
 echo $u->name . " " . $u->lastname;?>
                   <?php endif;?>
