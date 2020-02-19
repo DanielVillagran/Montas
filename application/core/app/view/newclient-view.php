@@ -56,7 +56,7 @@
       <input type="text" name="phone3"  class="form-control" id="phone3" placeholder="Telefono">
     </div>
   </div>
-
+<div style="display: none;">
   <div class="form-group">
     <label for="inputEmail1" class="col-lg-2 control-label" >Activar Credito</label>
     <div class="col-md-6">
@@ -88,6 +88,7 @@
     <label for="inputEmail1" class="col-lg-2 control-label">Password</label>
     <div class="col-md-6">
       <input type="password" name="password" class="form-control" id="phone1" placeholder="Password">
+    </div>
     </div>
     </div>
 
