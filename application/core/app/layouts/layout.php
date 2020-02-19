@@ -154,10 +154,11 @@ echo $u->name . " " . $u->lastname;?>
 
 <?php if (Core::$user->kind == 1 || Core::$user->kind == 3): ?>
             <li><a href="./?view=sell"><i class='fa fa-usd'></i> <span>Vender</span></a></li>
+            <li><a href="./?view=sell"><i class='fa fa-usd'></i> <span>Vender</span></a></li>
             <li><a href="./?view=rent"><i class='fa fa-usd'></i> <span>Rentar</span></a></li>
             <?php endif;?>
- <!--           <li><a href="./?view=cotizations"><i class='fa fa-square-o'></i> <span>Cotizaciones</span></a></li>
-
+          <li><a href="./?view=clients"><i class='fa fa-square-o'></i> <span>Clientes</span></a></li>
+<!--  
             <li class="treeview">
               <a href="#"><i class='fa fa-wrench'></i> <span>Herramientas</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
