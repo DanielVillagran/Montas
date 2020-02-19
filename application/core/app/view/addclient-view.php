@@ -25,6 +25,7 @@ if(isset($_POST["credit_limit"])&&$_POST["credit_limit"]!="")
 	$user->is_active_access = isset($_POST["is_active_access"])?1:0;
 	$user->has_credit = isset($_POST["has_credit"])?1:0;
 	$user->password = "";
+	$user->credit_limit=0;
 
 	$user->add_client();
 
