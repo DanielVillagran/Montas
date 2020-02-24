@@ -1,124 +1,125 @@
 <section class="content">
-<div class="btn-group pull-right">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-    <i class="fa fa-download"></i> Descargar <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="report/onesell-word.php?id=<?php echo $_GET["id"];?>">Word 2007 (.docx)</a></li>
-<li><a onclick="thePDF()" id="makepdf" class=""><i class="fa fa-download"></i> Descargar PDF</a>
-  </ul>
-</div>
-<h1>Resumen de Venta</h1>
-<?php if(isset($_GET["id"]) && $_GET["id"]!=""):?>
-<?php
+  <div class="btn-group pull-right">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+      <i class="fa fa-download"></i> Descargar <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="report/onesell-word.php?id=<?php echo $_GET["id"]; ?>">Word 2007 (.docx)</a></li>
+      <li><a onclick="thePDF()" id="makepdf" class=""><i class="fa fa-download"></i> Descargar PDF</a>
+      </ul>
+    </div>
+    <h1>Resumen de Venta</h1>
+    <?php if (isset($_GET["id"]) && $_GET["id"] != ""): ?>
+      <?php
 $sell = SellData::getById($_GET["id"]);
 $operations = OperationData::getAllProductsBySellId($_GET["id"]);
 $total = 0;
 ?>
-<?php
-if(isset($_COOKIE["selled"])){
-  foreach ($operations as $operation) {
+      <?php
+if (isset($_COOKIE["selled"])) {
+	foreach ($operations as $operation) {
 //    print_r($operation);
-    $qx = OperationData::getQByStock($operation->product_id,StockData::getPrincipal()->id);
-    // print "qx=$qx";
-      $p = $operation->getProduct();
-    if($qx==0){
-      echo "<p class='alert alert-danger'>El producto <b style='text-transform:uppercase;'> $p->name</b> no tiene existencias en inventario.</p>";      
-    }else if($qx<=$p->inventary_min/2){
-      echo "<p class='alert alert-danger'>El producto <b style='text-transform:uppercase;'> $p->name</b> tiene muy pocas existencias en inventario.</p>";
-    }else if($qx<=$p->inventary_min){
-      echo "<p class='alert alert-warning'>El producto <b style='text-transform:uppercase;'> $p->name</b> tiene pocas existencias en inventario.</p>";
-    }
-  }
-  setcookie("selled","",time()-18600);
+		$qx = OperationData::getQByStock($operation->product_id, StockData::getPrincipal()->id);
+		// print "qx=$qx";
+		$p = $operation->getProduct();
+		if ($qx == 0) {
+			echo "<p class='alert alert-danger'>El producto <b style='text-transform:uppercase;'> $p->name</b> no tiene existencias en inventario.</p>";
+		} else if ($qx <= $p->inventary_min / 2) {
+			echo "<p class='alert alert-danger'>El producto <b style='text-transform:uppercase;'> $p->name</b> tiene muy pocas existencias en inventario.</p>";
+		} else if ($qx <= $p->inventary_min) {
+			echo "<p class='alert alert-warning'>El producto <b style='text-transform:uppercase;'> $p->name</b> tiene pocas existencias en inventario.</p>";
+		}
+	}
+	setcookie("selled", "", time() - 18600);
 }
 
 ?>
-<div class="box box-primary">
-<table class="table table-bordered">
-<?php if($sell->person_id!=""):
-$client = $sell->getPerson();
-?>
-<tr>
-  <td style="width:150px;">Cliente</td>
-  <td><?php echo $client->name." ".$client->lastname;?></td>
-</tr>
+   <div class="box box-primary">
+    <table class="table table-bordered">
+      <?php if ($sell->person_id != ""):
+	$client = $sell->getPerson();
+	?>
+																																		       <tr>
+																																		        <td style="width:150px;">Cliente</td>
+																																		        <td><?php echo $client->name . " " . $client->lastname; ?></td>
+																																		      </tr>
 
-<?php endif; ?>
-<?php if($sell->user_id!=""):
-$user = $sell->getUser();
-?>
-<tr>
-  <td>Atendido por</td>
-  <td><?php echo $user->name." ".$user->lastname;?></td>
-</tr>
-<?php endif; ?>
+																																		    <?php endif;?>
+    <?php if ($sell->user_id != ""):
+	$user = $sell->getUser();
+	?>
+																																		     <tr>
+																																		      <td>Atendido por</td>
+																																		      <td><?php echo $user->name . " " . $user->lastname; ?></td>
+																																		    </tr>
+																																		  <?php endif;?>
 </table>
 </div>
 <br>
 <div class="box box-primary">
-<table class="table table-bordered table-hover">
-  <thead>
-    <th>Codigo</th>
-    <th>Cantidad</th>
-    <th>Nombre del Producto</th>
-    <th>Precio Unitario</th>
-    <th>Total</th>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <th>Codigo</th>
+      <th>Cantidad</th>
+      <th>Nombre del Producto</th>
+      <th>Precio Unitario</th>
+      <th>Total</th>
 
-  </thead>
-<?php
-  foreach($operations as $operation){
-    $product  = $operation->getProduct();
+    </thead>
+    <?php
+foreach ($operations as $operation) {
+	$product = $operation->getProduct();
+	?>
+     <tr>
+      <td><?php echo $product->id; ?></td>
+      <td><?php echo $operation->q; ?></td>
+      <td><?php echo $product->name; ?> <?php echo $product->model; ?> <?php echo $product->serie; ?></td>
+      <td>$ <?php echo number_format($product->price_out, 2, ".", ","); ?></td>
+      <td><b>$ <?php echo number_format($product->price_out, 2, ".", ",");
+	$total += $product->price_out; ?></b></td>
+    </tr>
+    <?php
+}
 ?>
-<tr>
-  <td><?php echo $product->id ;?></td>
-  <td><?php echo $operation->q ;?></td>
-  <td><?php echo $product->name ;?> <?php echo $product->model ;?> <?php echo $product->serie ;?></td>
-  <td>$ <?php echo number_format($product->price_out,2,".",",") ;?></td>
-  <td><b>$ <?php echo number_format($product->price_out,2,".",",");$total+=$product->price_out;?></b></td>
-</tr>
-<?php
-  }
-  ?>
 </table>
 </div>
 <br><br>
 <div class="row">
-<div class="col-md-4">
-<div class="box box-primary">
-<table class="table table-bordered">
-  <tr>
-    <td><h4>Descuento:</h4></td>
-    <td><h4>$ <?php echo number_format($sell->discount,2,'.',','); ?></h4></td>
-  </tr>
-  <tr>
-    <td><h4>Subtotal:</h4></td>
-    <td><h4>$ <?php echo number_format($total,2,'.',','); ?></h4></td>
-  </tr>
-  <tr>
-    <td><h4>Total:</h4></td>
-    <td><h4>$ <?php echo number_format($total-  $sell->discount,2,'.',','); ?></h4></td>
-  </tr>
-</table>
-</div>
+  <div class="col-md-4">
+    <div class="box box-primary">
+      <table class="table table-bordered">
+        <tr>
+          <td><h4>Descuento:</h4></td>
+          <td><h4>$ <?php echo number_format($sell->discount, 2, '.', ','); ?></h4></td>
+        </tr>
+        <tr>
+          <td><h4>Subtotal:</h4></td>
+          <td><h4>$ <?php echo number_format($total, 2, '.', ','); ?></h4></td>
+        </tr>
+        <tr>
+          <td><h4>Total:</h4></td>
+          <td><h4>$ <?php echo number_format($total - $sell->discount, 2, '.', ','); ?></h4></td>
+        </tr>
+      </table>
+    </div>
 
-<?php if($sell->person_id!=""):
-$credit=PaymentData::sumByClientId($sell->person_id)->total;
+    <?php if ($sell->person_id != ""):
+	$credit = PaymentData::sumByClientId($sell->person_id)->total;
 
-?>
-<div class="box box-primary">
-<table class="table table-bordered">
-  <tr>
-    <td><h4>Saldo anterior:</h4></td>
-    <td><h4>$ <?php echo number_format($credit-$total,2,'.',','); ?></h4></td>
-  </tr>
-  <tr>
-    <td><h4>Saldo Actual:</h4></td>
-    <td><h4>$ <?php echo number_format($credit,2,'.',','); ?></h4></td>
-  </tr>
-</table>
-</div>
-<?php endif;?>
+	?>
+																																		     <div class="box box-primary">
+																																		      <table class="table table-bordered">
+																																		        <tr>
+																																		          <td><h4>Saldo anterior:</h4></td>
+																																		          <td><h4>$ <?php echo number_format($credit - $total, 2, '.', ','); ?></h4></td>
+																																		        </tr>
+																																		        <tr>
+																																		          <td><h4>Saldo Actual:</h4></td>
+																																		          <td><h4>$ <?php echo number_format($credit, 2, '.', ','); ?></h4></td>
+																																		        </tr>
+																																		      </table>
+																																		    </div>
+																																		  <?php endif;?>
 </div>
 </div>
 
@@ -128,128 +129,128 @@ $credit=PaymentData::sumByClientId($sell->person_id)->total;
 
 
 <script type="text/javascript">
-        function thePDF() {
-var sale_type=<?php echo $sell->d_id; ?>;
+  function thePDF() {
+    var sale_type=<?php echo $sell->d_id; ?>;
 
-var columns = [
+    var columns = [
 //    {title: "Reten", dataKey: "reten"},
-    {title: "Codigo", dataKey: "code"}, 
-    {title: "Cantidad", dataKey: "q"}, 
-    {title: "Nombre del Producto", dataKey: "product"}
+{title: "Codigo", dataKey: "code"},
+{title: "Cantidad", dataKey: "q"},
+{title: "Nombre del Producto", dataKey: "product"}
 //    ...
 ];
 
 
 var columns2 = [
 //    {title: "Reten", dataKey: "reten"},
-    {title: "", dataKey: "clave"}, 
-    {title: "", dataKey: "valor"}, 
+{title: "", dataKey: "clave"},
+{title: "", dataKey: "valor"},
 //    ...
 ];
 
 var rows = [
-  <?php foreach($operations as $operation):
-  $product  = $operation->getProduct();
-  ?>
+<?php foreach ($operations as $operation):
+	$product = $operation->getProduct();
+	?>
 
-    {
-      "code": "<?php echo $product->id; ?>",
-      "q": "<?php echo $operation->q; ?>",
-      "product": "<?php echo $product->name ;?> <?php echo $product->model ;?> <?php echo $product->serie ;?>",
-      
-      "total": "$ <?php echo number_format($product->price_out,2,".",","); ?>",
-      },
- <?php endforeach; ?>
+																																		  {
+																																		    "code": "<?php echo $product->id; ?>",
+																																		    "q": "<?php echo $operation->q; ?>",
+																																		    "product": "<?php echo $product->name; ?> <?php echo $product->model; ?> <?php echo $product->serie; ?>",
+
+																																		    "total": "$ <?php echo number_format($product->price_out, 2, ".", ","); ?>",
+																																		  },
+																																		<?php endforeach;?>
 ];
 
 var rows2 = [
-<?php if($sell->person_id!=""):
-$person = $sell->getPerson();
-?>
+<?php if ($sell->person_id != ""):
+	$person = $sell->getPerson();
+	?>
 
-    {
-      "clave": "Cliente",
-      "valor": "<?php echo $person->name." ".$person->lastname; ?>",
-      },
-      <?php endif; ?>
-    {
-      "clave": "Atendido por",
-      "valor": "<?php echo $user->name." ".$user->lastname; ?>",
-      },
+																																		  {
+																																		    "clave": "Cliente",
+																																		    "valor": "<?php echo $person->name . " " . $person->lastname; ?>",
+																																		  },
+																																		<?php endif;?>
+{
+  "clave": "Atendido por",
+  "valor": "<?php echo $user->name . " " . $user->lastname; ?>",
+},
 
 ];
 
 var rows3 = [
 
-    {
-      "clave": "Descuento",
-      "valor": "$ <?php echo number_format($sell->discount,2,'.',',');; ?>",
-      },
-    {
-      "clave": "Subtotal",
-      "valor": "$ <?php echo number_format($sell->total,2,'.',',');; ?>",
-      },
-    {
-      "clave": "Total",
-      "valor": "$ <?php echo number_format($sell->total-$sell->discount,2,'.',',');; ?>",
-      },
+{
+  "clave": "Descuento",
+  "valor": "$ <?php echo number_format($sell->discount, 2, '.', ','); ?>",
+},
+{
+  "clave": "Subtotal",
+  "valor": "$ <?php echo number_format($sell->total, 2, '.', ','); ?>",
+},
+{
+  "clave": "Total",
+  "valor": "$ <?php echo number_format($sell->total - $sell->discount, 2, '.', ','); ?>",
+},
 ];
 
 
 // Only pt supported (not mm or in)
 var doc = new jsPDF('p', 'pt');
-        doc.setFontSize(26);
-        doc.text("NOTA DE VENTA", 40, 65);
-        doc.setFontSize(14);
-        doc.text("Fecha: <?php echo $sell->created_at; ?>", 40, 80);
+doc.setFontSize(26);
+doc.text("NOTA DE VENTA", 40, 65);
+doc.setFontSize(14);
+doc.text("Fecha: <?php echo $sell->created_at; ?>", 40, 80);
 //        doc.text("Operador:", 40, 150);
 //        doc.text("Header", 40, 30);
   //      doc.text("Header", 40, 30);
 
-doc.autoTable(columns2, rows2, {
+  doc.autoTable(columns2, rows2, {
     theme: 'grid',
     overflow:'linebreak',
     styles: {
-        fillColor: [100, 100, 100]
+      fillColor: [100, 100, 100]
     },
     columnStyles: {
-        id: {fillColor: 255}
+      id: {fillColor: 255}
     },
     margin: {top: 100},
     afterPageContent: function(data) {
 //        doc.text("Header", 40, 30);
-    }
+}
 });
 
 
-doc.autoTable(columns, rows, {
+  doc.autoTable(columns, rows, {
     theme: 'grid',
     overflow:'linebreak',
     styles: {
-        fillColor: [100, 100, 100]
+      fillColor: [100, 100, 100]
     },
     columnStyles: {
-        id: {fillColor: 255}
+      id: {fillColor: 255}
     },
     margin: {top: doc.autoTableEndPosY()+15},
     afterPageContent: function(data) {
 //        doc.text("Header", 40, 30);
-    }
+}
 });
 
-doc.autoTable(columns2, rows2, {
+  doc.autoTable(columns2, rows2, {
     theme: 'grid',
     overflow:'linebreak',
     styles: {
-        fillColor: [100, 100, 100]
+      fillColor: [100, 100, 100]
     },
     columnStyles: {
-        id: {fillColor: 255}
+      id: {fillColor: 255}
     },
     margin: {top: doc.autoTableEndPosY()+15},
     afterPageContent: function(data) {
 //        doc.text("Header", 40, 30);
-    }
+}
 });
 //doc.setFontsize
 img = new Image();
@@ -264,36 +265,51 @@ doc.setFillColor(255,255,200);
 doc.rect(40, doc.autoTableEndPosY()+90, 500, 100, 'F');
 if(sale_type!=2){
   doc.text("___________________________________________________________________________", 40, doc.autoTableEndPosY()+220);
-  doc.text("PAGARE. ", 40, doc.autoTableEndPosY()+240);
-  doc.text("Bueno por:________________________________. ", 40, doc.autoTableEndPosY()+260);
+  doc.setFontSize(20);
+  doc.text("PAGARÉ ", 245, doc.autoTableEndPosY()+240);
+  doc.text("No:_____ ", 450, doc.autoTableEndPosY()+240);
+  doc.setFontSize(12);
+
+  doc.text("Bueno por:________________________________. ", 270, doc.autoTableEndPosY()+260);
   doc.text("En_______________________a____de___________de________. ", 40, doc.autoTableEndPosY()+280);
   doc.text("Debo(mos) y pagaré(mos) inconcidicionalemente este Pagaré a la orden de ______________", 40, doc.autoTableEndPosY()+300);
   doc.text("_________________________ en_____________________ el________________________ ",40, doc.autoTableEndPosY()+320);
   doc.text("La cantidad de:", 40, doc.autoTableEndPosY()+340);
   doc.text("___________________________________________________________________________", 40, doc.autoTableEndPosY()+360);
-  doc.text("", 40, doc.autoTableEndPosY()+380);
-  doc.text("Nombre del deudor:___________________________________________________________", 40, doc.autoTableEndPosY()+400);
-  doc.text("Dirección del deudor:__________________________________________________________ ", 40, doc.autoTableEndPosY()+420);
-  doc.text("                                             _______________________________ ", 40, doc.autoTableEndPosY()+460);
-  doc.text("                                                                      Firma. ", 40, doc.autoTableEndPosY()+480);
+  doc.setFontSize(9);
+  doc.setFontType("italic");
+  doc.text("Valor recibido a mi entera satisfacción, este pagare forma parte de una serie numerada del 1 al ___ y todos están sujetos a la condición", 40, doc.autoTableEndPosY()+380);
+  doc.text("de que, al no pagarse cualquiera de ellos a su vencimiento, serán exigibles todos los que le sigan en número, ademas de los ya vencidos,", 40, doc.autoTableEndPosY()+395);
+  doc.text("desde la fecha de vencimiento de este documento hasta el día de su liquidación. La suma que ampara este título causará interés a razón", 40, doc.autoTableEndPosY()+410);
+  doc.text("de ___% mensual en caso de mora.", 40, doc.autoTableEndPosY()+425);
+  //doc.text("vencimiento de este documento hasta el día de su liquidación. La suma que ampara este título causará interés a razón de ___% mensual en caso de mora.", 40, doc.autoTableEndPosY()+420);
+ doc.setFontSize(12);
+ doc.setFontType("normal");
+  doc.text("Nombre del deudor:___________________________________________________________", 40, doc.autoTableEndPosY()+445);
+  doc.text("Dirección del deudor:__________________________________________________________ ", 40, doc.autoTableEndPosY()+465);
+  doc.text("                                             _______________________________ ", 40, doc.autoTableEndPosY()+505);
+  doc.text("                                                                      Firma. ", 40, doc.autoTableEndPosY()+525);
 }
-doc.save('sell-<?php echo date("d-m-Y h:i:s",time()); ?>.pdf');
+doc.save('sell-<?php echo date("d-m-Y h:i:s", time()); ?>.pdf');
 };
 //doc.output("datauri");
 
-        }
-    </script>
+}
+</script>
 
 <script>
   $(document).ready(function(){
   //  $("#makepdf").trigger("click");
-  });
+});
+  function text_align(type){
+
+  }
 </script>
 
 
 
 
-<?php else:?>
+<?php else: ?>
   501 Internal Error
-<?php endif; ?>
+<?php endif;?>
 </section>
