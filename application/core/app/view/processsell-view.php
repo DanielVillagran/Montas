@@ -63,7 +63,7 @@ $_SESSION["errors"] = $errors;
 			$sell->discount = $_POST["discount"];
 			$sell->stock_to_id = StockData::getPrincipal()->id;
 			$sell->person_id=$_POST["client_id"]!=""?$_POST["client_id"]:"NULL";
-
+			$sell->observaciones=$_POST["observaciones"];
 			$s = $sell->add();
 
 			 /// si es credito....

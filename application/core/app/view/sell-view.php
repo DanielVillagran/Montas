@@ -297,7 +297,15 @@ $clients = DData::getAll();
 
 </div>
 
-
+<div class="row">
+<div class="col-md-12">
+    <label class="control-label">Observaciones</label>
+    <div class="col-lg-12">
+      <textarea class="form-control" name="observaciones"></textarea>
+    </div>
+  </div>
+  </div>
+</div>
       <input type="hidden" name="total" value="<?php echo $total; ?>" class="form-control" placeholder="Total">
       <div class="clearfix"></div>
 <br>

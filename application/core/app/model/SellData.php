@@ -13,8 +13,8 @@ class SellData {
 	public function getStockTo(){ return StockData::getById($this->stock_to_id);}
 
 	public function add(){
-		$sql = "insert into ".self::$tablename." (person_id,stock_to_id,iva,p_id,d_id,total,discount,user_id,created_at) ";
-		$sql .= "value ($this->person_id,$this->stock_to_id,$this->iva,$this->p_id,$this->d_id,$this->total,$this->discount,$this->user_id,$this->created_at)";
+		$sql = "insert into ".self::$tablename." (person_id,stock_to_id,iva,p_id,d_id,total,discount,user_id,created_at,observaciones) ";
+		$sql .= "value ($this->person_id,$this->stock_to_id,$this->iva,$this->p_id,$this->d_id,$this->total,$this->discount,$this->user_id,$this->created_at,\"$this->observaciones\")";
 		return Executor::doit($sql);
 	}
 	public function add_traspase(){
