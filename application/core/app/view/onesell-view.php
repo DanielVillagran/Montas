@@ -259,10 +259,12 @@ img.onload = function(){
 doc.addImage(img, 'PNG', 495, 20, 60, 60,'mon');  // Cache the image using the alias 'monkey'
 doc.setFontSize(20);
 doc.setFontSize(12);
+<?php if( $sell->observaciones!=""){ ?>
 doc.text("Observaciones. ", 40, doc.autoTableEndPosY()+20);
 doc.setFillColor(255,255,200);
 doc.rect(40, doc.autoTableEndPosY()+25, 500, 37, 'F');
 doc.text("<?php echo $sell->observaciones; ?>", 40, doc.autoTableEndPosY()+40);
+<?php }?>
 doc.text("Firma de recepción conforme. ", 40, doc.autoTableEndPosY()+75);
 
 doc.setFillColor(255,255,200);
