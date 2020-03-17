@@ -83,6 +83,12 @@ class ProductData {
 		return Model::many($query[0], new ProductData());
 
 	}
+	public static function getBySerieOnly($serie) {
+		$sql = "select * from " . self::$imgtable . " where product_id like '%$serie%' limit 1";
+		$query = Executor::doit($sql);
+		return Model::many($query[0], new ProductData());
+
+	}
 
 	public static function getAll() {
 		$sql = "select * from " . self::$tablename . " WHERE id not in(SELECT product_id from operation where operation_type_id=2)";

@@ -109,7 +109,7 @@ if (count($products) > 0) {
 
                                     <?php
 $serie = $product->serie;
-	$imagenes = ProductData::getBySerie($serie);
+	$imagenes = ProductData::getBySerieOnly($serie);
 	?>
 
                                     <?php foreach ($imagenes as $i): ?>
