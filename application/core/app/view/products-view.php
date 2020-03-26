@@ -109,8 +109,9 @@ if (count($products) > 0) {
 
                                     <?php
 $serie = $product->serie;
-	$imagenes = ProductData::getBySerieOnly($serie);
+    $imagenes = ProductData::getBySerieOnly($serie);
 	?>
+ <?php echo $serie;?>
 
                                     <?php foreach ($imagenes as $i): ?>
                                     <a href="storage/products/<?php echo $i->img; ?>" target="_blank">

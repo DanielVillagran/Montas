@@ -77,7 +77,12 @@ if ($product != null):
                             <td>
                                 <form class="form-horizontal" method="post" id="addproduct"
                                       enctype="multipart/form-data" action="index.php?view=updateproduct" role="form">
-
+                                      <section class="galleria">
+    <?php foreach ($imagenes as $img): ?>
+   <a href="storage/products/<?php echo $img->img;?>"><img src="storage/products/<?php echo $img->img;?>"></a>
+   <?php endforeach;?>
+</section>
+<br><br>
                                     <div class="form-group">
                                         <label for="inputEmail1" class="col-lg-3 control-label">Imagen*</label>
                                         <div class="col-md-8">
@@ -95,7 +100,7 @@ if ($product != null):
     <?php endif;?>
 
 
-
+   
                                                 <?php foreach ($imagenes as $img): ?>
 
                                                     <div class="col-md-2">
@@ -573,5 +578,16 @@ if ($product != null):
                                                 <?php endif;?>
     <?php endif;?>
 </section>
+<style>
+.galleria {
+   height: 400px;       /* Change the height to whatever you want */
+   width: 100%;         /* Optional: default is 100% */
+}
+</style>
 <script src="../application/core/app/assets/refactions.js"></script>
 <script src="../application/core/app/assets/alertify.js"></script>
+<script src="../application/core/app/assets/galleria/galleria.min.js"></script>
+<script>
+          Galleria.loadTheme('../application/core/app/assets/galleria/themes/classic/galleria.classic.min.js');
+          Galleria.run('.galleria');   // Use the class name of your gallery
+       </script>
