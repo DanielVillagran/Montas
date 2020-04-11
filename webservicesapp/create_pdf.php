@@ -44,8 +44,8 @@ $lista = R::find("product");
 		$y = $pdf->getY();
 	if ($elemento) {
 		foreach ($elemento as $imagen) {
-            if(file_exists("http://vmcomp.com.mx/montacargas/application/storage/products/" . $imagen['img']) && $imagen['img']!=""){
-                $pdf->Image("http://vmcomp.com.mx/montacargas/application/storage/products/" . $imagen['img'], $x, $y,75,95);
+            if(file_exists("http://vmcomp.com.mx/montacargas/application/storage/products/" . str_replace(" ","%20",$imagen['img'])) && $imagen['img']!=""){
+                $pdf->Image("http://vmcomp.com.mx/montacargas/application/storage/products/" . str_replace(" ","%20",$imagen['img']), $x, $y,75,95);
                 if($x==20){
                     $x+=95;
                 }else{
