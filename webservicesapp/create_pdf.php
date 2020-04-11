@@ -36,7 +36,7 @@ $lista = R::find("product");
 	    $pdf->Cell(185, 15, utf8_decode(strtoupper($key['name'] . ' ' . $key['model'] . ' ' . $key['serie'])), 0, 0, 'C');
         $pdf->Ln(20);
         $pdf->SetFont('Arial', '', 10);
-        $pdf->MultiCell(185, 5, utf8_decode($key['description']),0,'C',false);
+        $pdf->MultiCell(185, 5, $key['description'],0,'C',false);
         $pdf->Ln(10);
         $elemento = false;
         $elemento = R::getAll("SELECT * from products_images where product_id='" . $key['serie'] . "' order by id desc limit 4");
@@ -54,6 +54,8 @@ $lista = R::find("product");
                     //$pdf->Ln(15);
                     $y = $pdf->getY();
                 }
+            }else{
+                $pdf->Cell(185, 15, utf8_decode("http://vmcomp.com.mx/montacargas/application/storage/products/" . $imagen['img']), 0, 0, 'C');
             }
         }
 	} 
