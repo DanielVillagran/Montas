@@ -39,7 +39,7 @@ if (isset($_GET["is_ended"])) {
                             <i class="fa fa-download"></i> Descargar <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="/montacargas/webservicesapp/create_pdf.php" download class="">PDF (.pdf)</a>
+                            <li><a href="http://vmcomp.com.mx/montacargas/webservicesapp/create_pdf.php" download class="">PDF (.pdf)</a>
 
                             </ul>
                         </div>
