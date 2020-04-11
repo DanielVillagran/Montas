@@ -6,7 +6,7 @@ $url = "application/storage/products/monta.jpg";
 if ($_POST['product'] != '') {
 	$lista = R::find("product", "name like '%{$_POST['product']}%'");
 } else {
-	$lista = R::find("product", " is_rent=" . $_POST['is_rent']);
+	$lista = R::find("product", " is_active=1 AND is_rent=" . $_POST['is_rent']);
 }
 //"is_active=1 AND is_rent=" . $_POST['is_rent']
 
