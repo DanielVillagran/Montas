@@ -78,13 +78,13 @@ class ProductData {
 
 	}
 	public static function getBySerie($serie) {
-		$sql = "select * from " . self::$imgtable . " where product_id like '%$serie%'";
+		$sql = "select * from " . self::$imgtable . " where product_id like '%$serie%' order by principal desc, id desc";
 		$query = Executor::doit($sql);
 		return Model::many($query[0], new ProductData());
 
 	}
 	public static function getBySerieOnly($serie) {
-		$sql = "select * from " . self::$imgtable . " where product_id like '%$serie%' limit 1";
+		$sql = "select * from " . self::$imgtable . " where product_id like '%$serie%' limit 1 order by principal desc, id desc";
 		$query = Executor::doit($sql);
 		return Model::many($query[0], new ProductData());
 
