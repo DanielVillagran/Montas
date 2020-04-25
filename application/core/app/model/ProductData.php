@@ -84,7 +84,7 @@ class ProductData {
 
 	}
 	public static function getBySerieOnly($serie) {
-		$sql = "select * from " . self::$imgtable . " where product_id like '%$serie%' limit 1 order by principal desc, id desc";
+		$sql = "select * from " . self::$imgtable . " where product_id like '%$serie%' order by principal desc, id desc limit 1 ";
 		$query = Executor::doit($sql);
 		return Model::many($query[0], new ProductData());
 
