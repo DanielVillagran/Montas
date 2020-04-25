@@ -15,7 +15,7 @@ $server = "http://brayammorando.com/Chaps/storage/products/";
 foreach ($lista as $key) {
 	$products['elemento'] = $key;
 	$elemento = false;
-	$elemento = R::getAll("SELECT * from products_images where product_id='" . $key['serie'] . "' order by id desc");
+	$elemento = R::getAll("SELECT * from products_images where product_id='" . $key['serie'] . "' order by principal desc,id desc desc");
 	$carousel = "";
 	$flag = true;
 	$clas = "";

@@ -34,7 +34,7 @@ $lista = R::find("product", " is_active=1");
         $pdf->MultiCell(185, 5, utf8_decode(utf8_decode($key['description'])),0,'C',false);
         $pdf->Ln(10);
         $elemento = false;
-        $elemento = R::getAll("SELECT * from products_images where product_id='" . $key['serie'] . "' and img not like '%.webp%' order by id desc limit 4");
+        $elemento = R::getAll("SELECT * from products_images where product_id='" . $key['serie'] . "' and img not like '%.webp%' order by principal desc,id desc limit 4");
         $x = 20;
 		$y = $pdf->getY();
 	if ($elemento) {

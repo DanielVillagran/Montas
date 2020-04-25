@@ -104,16 +104,23 @@ if ($product != null):
                                                 <?php foreach ($imagenes as $img): ?>
 
                                                     <div class="col-md-2">
+                                                    <div class="row">
                                                         <div class="container">
-                                                            <img style="max-height: 350px; width: 100%;"
+                                                            <img style="height: 100px; width: 100%;"
                                                                  src="storage/products/<?php echo $img->img; ?>"
                                                                  class="img-responsive">
                                                                  <?php if ($workshop): ?>
     <?php else: ?>
     <button type="button" onclick="deleteImage(<?php echo $img->id; ?>)" class="btn btn-danger"><i class="fa fa-times"></i></button>
-
     <?php endif;?>
                                                         </div>
+                                                    </div>
+                                                    <?php if ($workshop || $img->principal!=0): ?>
+    <?php else: ?>
+    <div class="row" style="text-align:center;">
+        <button type="button" onclick="principal(<?php echo $img->id; ?>,'<?php echo $_GET["serie"]; ?>')" class="btn btn-primary">Principal</button>
+        </div>
+    <?php endif;?>
                                                     </div>
                                                 <?php endforeach;?>
                                             </div>

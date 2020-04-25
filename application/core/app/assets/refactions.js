@@ -178,6 +178,27 @@ function deleteImage(id) {
         });
 
 }
+function principal(id,serie) {
+   
+
+            $.ajax({
+                url: "../application/core/app/view/updatePrincipal.php",
+                type: 'POST',
+                data: {
+                    'id': id,
+                    'serie': serie,
+
+                },
+                success(data) {
+                
+                    location.reload();
+                }
+            });
+
+
+      
+
+}
 
 function deleteAllImage(id) {
     alertify.confirm('Desea eliminar todas las imagenes?', 'Si las elimina, no se podrán recuperar', function () {

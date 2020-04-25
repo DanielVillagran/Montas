@@ -16,7 +16,7 @@ $server = "http://brayammorando.com/Chaps/storage/products/";
 $contador = 1;
 foreach ($lista as $key) {
 	$elemento = false;
-	$elemento = R::getAll("SELECT * from products_images where product_id='" . $key['serie'] . "' order by id desc limit 1");
+	$elemento = R::getAll("SELECT * from products_images where product_id='" . $key['serie'] . "' order by principal desc,id desc desc limit 1");
 	//var_dump($elemento);
 
 	//$elemento = R::convertToBeans('myResult', $result);
