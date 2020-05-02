@@ -4,9 +4,9 @@ require 'conexion.php';
 
 $url = "application/storage/products/monta.jpg";
 if ($_POST['product'] != '') {
-	$lista = R::find("product", "name like '%{$_POST['product']}%'");
+	$lista = R::find("product", " is_active=1 AND id not in(SELECT product_id from operation where operation_type_id=2) AND  name like '%{$_POST['product']}%'");
 } else {
-	$lista = R::find("product", " is_active=1 AND is_rent=" . $_POST['is_rent']);
+	$lista = R::find("product", " is_active=1 AND id not in(SELECT product_id from operation where operation_type_id=2) AND  is_rent=" . $_POST['is_rent']);
 }
 //"is_active=1 AND is_rent=" . $_POST['is_rent']
 

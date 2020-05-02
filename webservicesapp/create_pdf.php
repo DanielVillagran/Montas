@@ -1,7 +1,7 @@
 <?php
 require('conexion.php');
 require('fpdf/fpdf.php');
-$lista = R::find("product", " is_active=1");
+$lista = R::find("product", " is_active=1 AND id not in(SELECT product_id from operation where operation_type_id=2)");
     $pdf = new FPDF();
     foreach ($lista as $key) {
     $pdf->AddPage();
