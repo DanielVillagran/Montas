@@ -153,7 +153,9 @@ echo $u->name . " " . $u->lastname;?>
                          <li><a href="./index.php?view=alerts"><i class='fa fa-bell-o'></i> <span>Alertas</span></a></li>
 
 <?php if (Core::$user->kind == 1 || Core::$user->kind == 3): ?>
+  <?php if (Core::$user->kind == 4: ?>
             <li><a href="./?view=sell"><i class='fa fa-usd'></i> <span>Vender</span></a></li>
+            <?php endif;?>
             <li><a href="./?view=rent"><i class='fa fa-usd'></i> <span>Rentar</span></a></li>
             <?php endif;?>
           <li><a href="./?view=clients"><i class='fa fa-square-o'></i> <span>Clientes</span></a></li>
