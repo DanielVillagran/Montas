@@ -17,6 +17,8 @@ $alertas = R::getAll('SELECT * FROM alerts where status = 1');
 
 <!-- Main content -->
 <section class="content">
+<span style="background-color: red !important;" class="badge"
+		                                                  onclick="closeAllAlert()">Cerrar Todas las Alertas</span>
 
     <div class="row">
         <div class="col-md-12">

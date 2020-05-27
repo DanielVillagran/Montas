@@ -104,7 +104,7 @@ echo $u->name . " " . $u->lastname;?>
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
                   <span class=""><?php if (isset($_SESSION["user_id"])) {
 	echo UserData::getById($_SESSION["user_id"])->name;
-	if (Core::$user->kind == 1) {echo " (Administrador)";} else if (Core::$user->kind == 2) {echo " (Mecanico)";} else if (Core::$user->kind == 3) {echo " (Vendedor)";} else if (Core::$user->kind == 4) {echo " (Almacenista)";}
+	if (Core::$user->kind == 1) {echo " (Administrador)";} else if (Core::$user->kind == 2) {echo " (Mecanico)";} else if (Core::$user->kind == 3) {echo " (Vendedor)";} else if (Core::$user->kind == 4) {echo " (Almacenista)";}else if (Core::$user->kind == 5) {echo " (Mecanico de rentas)";}
 
 } else if (isset($_SESSION["client_id"])) {echo PersonData::getById($_SESSION["client_id"])->name . " (Cliente)";}?> <b class="caret"></b> </span>
 

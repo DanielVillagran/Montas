@@ -302,6 +302,21 @@ function activate_product(id) {
         });
 
 }
+function closeAllAlert() {
+    $.ajax({
+        url: "../application/core/app/view/closeAllAlert.php",
+        type: 'POST',
+        data: {
+        
+
+        },
+        success(data) {
+            location.reload();
+        }
+
+
+    });
+}
 
 function closeAlert(pid) {
     $.ajax({

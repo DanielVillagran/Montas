@@ -4,6 +4,7 @@
 		<h1>Lista de Usuarios</h1>
 	<a href="index.php?view=newuser&kind=1" class="btn btn-default"><i class='glyphicon glyphicon-user'></i> Nuevo Administrador</a>
 	<a href="index.php?view=newuser&kind=2" class="btn btn-default"><i class='glyphicon glyphicon-user'></i> Nuevo Mecanico</a>
+	<a href="index.php?view=newuser&kind=5" class="btn btn-default"><i class='glyphicon glyphicon-user'></i> Nuevo Mecanico de rentas</a>
 	<a href="index.php?view=newuser&kind=3" class="btn btn-default"><i class='glyphicon glyphicon-user'></i> Nuevo Vendedor</a>
 	<a href="index.php?view=newuser&kind=4" class="btn btn-default"><i class='glyphicon glyphicon-user'></i> Nuevo Almacenista</a>
 <br><br>
@@ -47,6 +48,8 @@ switch ($user->kind) {
 		case '3':echo "Vendedor";
 			break;
 		case '4':echo "Almacenista";
+			break;
+		case '5':echo "Mecanico de rentas";
 			break;
 		default:
 			# code...

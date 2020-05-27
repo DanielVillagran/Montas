@@ -1,7 +1,7 @@
 <?php
 // $symbol = ConfigurationData::getByPreffix("currency")->val;
 require '../application/core/app/model/Conection.php';
-$lista = R::getAll('SELECT r.id,r.cliente_name, r.cliente_address, r.cliente_phone, r.type, r.date_start, r.date_end, p.serie, p.model FROM rent r inner join product p on p.id = r.product_id where r.status = 1');
+$lista = R::getAll('SELECT r.id,r.cliente_name, r.cliente_address, r.cliente_phone, r.type, r.date_start, r.date_end, p.serie, p.model,p.name FROM rent r inner join product p on p.id = r.product_id where r.status = 1');
 ?>
 <style>
   
@@ -75,6 +75,7 @@ $lista = R::getAll('SELECT r.id,r.cliente_name, r.cliente_address, r.cliente_pho
                 <thead>
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col">Imagen</th>
                     <th scope="col">Nombre del cliente</th>
                     <th scope="col">Domicilio</th>
                     <th scope="col">Teléfono</th>
@@ -89,10 +90,24 @@ $lista = R::getAll('SELECT r.id,r.cliente_name, r.cliente_address, r.cliente_pho
                 <?php foreach ($lista as $l): ?>
                 <tr>
                     <th scope="row"><?php echo $l['id']?></th>
+                    <td>
+
+<?php
+$serie = $l['serie'];
+$imagenes = ProductData::getBySerieOnly($serie);
+?>
+<?php foreach ($imagenes as $i): ?>
+    <a href="storage/products/<?php echo $i->img; ?>" target="_blank">
+        <div class="col-md-2">
+            <img src="storage/products/<?php echo $i->img; ?>" style="width:64px;">
+        </div>
+    </a>
+<?php endforeach;?>
+</td>
                     <th><?php echo $l['cliente_name']?></th>
                     <th><?php echo $l['cliente_address']?></th>
                     <th><?php echo $l['cliente_phone']?></th>
-                    <th><?php echo $l['serie']?></th>
+                    <th><?php echo $l['name'].' '.$l['serie']?></th>
                     <th><?php echo $l['model']?></th>
                     <?php if($l['type'] == 1):?>
                         <th>Indefinido</th>

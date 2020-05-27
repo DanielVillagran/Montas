@@ -24,7 +24,7 @@
 $products = null;
 if(isset($_SESSION["user_id"])){
 if(Core::$user->kind==3){
-$products = SellData::getSellsByUS(Core::$user->id);
+$products = SellData::getSells();
 
 }
 else if(Core::$user->kind==2){
