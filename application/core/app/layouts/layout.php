@@ -59,26 +59,26 @@
 
 <?php
 if (isset($_SESSION["user_id"])):
-	$msgs = MessageData::getUnreadedByUserId($_SESSION["user_id"]);
-	?>
-											<li class="dropdown messages-menu">
-											            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-											              <i class="fa fa-envelope-o"></i>
-											              <span class="label label-success"><?php echo count($msgs); ?></span>
-											            </a>
-											            <ul class="dropdown-menu">
-											              <li class="header">Tienes <?php echo count($msgs); ?> mensajes nuevos</li>
-											              <li>
-											                <!-- inner menu: contains the actual data -->
-											                <ul class="menu">
-											                <?php foreach ($msgs as $i): ?>
-											                  <li><!-- start message -->
-											                    <a href="./?view=messages&opt=open&code=<?php echo $i->code; ?>">
-											                      <h4>
-											                    <?php if ($i->user_from != $_SESSION["user_id"]): ?>
-											                    <?php $u = $i->getFrom();
-	echo $u->name . " " . $u->lastname;?>
-											                    <?php elseif ($i->user_to != $_SESSION["user_id"]): ?>
+    $msgs = MessageData::getUnreadedByUserId($_SESSION["user_id"]);
+    ?>
+												<li class="dropdown messages-menu">
+												            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+												              <i class="fa fa-envelope-o"></i>
+												              <span class="label label-success"><?php echo count($msgs); ?></span>
+												            </a>
+												            <ul class="dropdown-menu">
+												              <li class="header">Tienes <?php echo count($msgs); ?> mensajes nuevos</li>
+												              <li>
+												                <!-- inner menu: contains the actual data -->
+												                <ul class="menu">
+												                <?php foreach ($msgs as $i): ?>
+												                  <li><!-- start message -->
+												                    <a href="./?view=messages&opt=open&code=<?php echo $i->code; ?>">
+												                      <h4>
+												                    <?php if ($i->user_from != $_SESSION["user_id"]): ?>
+												                    <?php $u = $i->getFrom();
+    echo $u->name . " " . $u->lastname;?>
+												                    <?php elseif ($i->user_to != $_SESSION["user_id"]): ?>
                     <?php $u = $i->getTo();
 echo $u->name . " " . $u->lastname;?>
                   <?php endif;?>
@@ -103,8 +103,8 @@ echo $u->name . " " . $u->lastname;?>
                   <!-- The user image in the navbar-->
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
                   <span class=""><?php if (isset($_SESSION["user_id"])) {
-	echo UserData::getById($_SESSION["user_id"])->name;
-	if (Core::$user->kind == 1) {echo " (Administrador)";} else if (Core::$user->kind == 2) {echo " (Mecanico)";} else if (Core::$user->kind == 3) {echo " (Vendedor)";} else if (Core::$user->kind == 4) {echo " (Almacenista)";}else if (Core::$user->kind == 5) {echo " (Mecanico de rentas)";}
+    echo UserData::getById($_SESSION["user_id"])->name;
+    if (Core::$user->kind == 1) {echo " (Administrador)";} else if (Core::$user->kind == 2) {echo " (Mecanico)";} else if (Core::$user->kind == 3) {echo " (Vendedor)";} else if (Core::$user->kind == 4) {echo " (Almacenista)";} else if (Core::$user->kind == 5) {echo " (Mecanico de rentas)";}
 
 } else if (isset($_SESSION["client_id"])) {echo PersonData::getById($_SESSION["client_id"])->name . " (Cliente)";}?> <b class="caret"></b> </span>
 
@@ -153,13 +153,13 @@ echo $u->name . " " . $u->lastname;?>
                          <li><a href="./index.php?view=alerts"><i class='fa fa-bell-o'></i> <span>Alertas</span></a></li>
 
 <?php if (Core::$user->kind == 1 || Core::$user->kind == 3): ?>
-  <?php if (Core::$user->kind == 4: ?>
+  <?php if (Core::$user->kind == 4): ?>
             <li><a href="./?view=sell"><i class='fa fa-usd'></i> <span>Vender</span></a></li>
             <?php endif;?>
             <li><a href="./?view=rent"><i class='fa fa-usd'></i> <span>Rentar</span></a></li>
             <?php endif;?>
           <li><a href="./?view=clients"><i class='fa fa-square-o'></i> <span>Clientes</span></a></li>
-<!--  
+<!--
             <li class="treeview">
               <a href="#"><i class='fa fa-wrench'></i> <span>Herramientas</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
