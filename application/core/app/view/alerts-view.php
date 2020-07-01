@@ -316,7 +316,7 @@ setlocale(LC_TIME, 'es_MX.UTF-8');
                                 </div><!-- /.box-body -->
 
                             </div><!-- /.box -->
-                        <?php elseif ($alerta['type'] == 6): ?>
+                        <?php elseif ($alerta['type'] == 6 ): ?>
                             <div class="box" style="border-top-color: red !important;">
                                 <div class="box-header">
                                     <div class="row">

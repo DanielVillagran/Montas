@@ -4,7 +4,7 @@ require '../application/core/app/model/Conection.php';
 $lista = R::getAll('SELECT r.id,r.cliente_name, r.cliente_address, r.cliente_phone, r.type, r.date_start, r.date_end, p.serie, p.model,p.name FROM rent r inner join product p on p.id = r.product_id where r.status = 1');
 ?>
 <style>
-  
+
 #v{
     width:320px;
     height:240px;
@@ -68,7 +68,7 @@ $lista = R::getAll('SELECT r.id,r.cliente_name, r.cliente_address, r.cliente_pho
 
 		</div>
 		</form>
-        <?php if(!empty($lista)):?>
+        <?php if (!empty($lista)): ?>
         <div style="border-bottom: 1px solid black;">
             <h3>Productos rentados</h3>
             <table class="table table-sm table-dark">
@@ -89,7 +89,7 @@ $lista = R::getAll('SELECT r.id,r.cliente_name, r.cliente_address, r.cliente_pho
                 <tbody>
                 <?php foreach ($lista as $l): ?>
                 <tr>
-                    <th scope="row"><?php echo $l['id']?></th>
+                    <th scope="row"><?php echo $l['id'] ?></th>
                     <td>
 
 <?php
@@ -104,24 +104,36 @@ $imagenes = ProductData::getBySerieOnly($serie);
     </a>
 <?php endforeach;?>
 </td>
-                    <th><?php echo $l['cliente_name']?></th>
-                    <th><?php echo $l['cliente_address']?></th>
-                    <th><?php echo $l['cliente_phone']?></th>
-                    <th><?php echo $l['name'].' '.$l['serie']?></th>
-                    <th><?php echo $l['model']?></th>
-                    <?php if($l['type'] == 1):?>
+<?php $finalizada = false;?>
+                    <th><?php echo $l['cliente_name'] ?></th>
+                    <th><?php echo $l['cliente_address'] ?></th>
+                    <th><?php echo $l['cliente_phone'] ?></th>
+                    <th><?php echo $l['name'] . ' ' . $l['serie'] ?></th>
+                    <th><?php echo $l['model'] ?></th>
+                    <?php if ($l['type'] == 1): ?>
                         <th>Indefinido</th>
 
-                    <?php else:?>
+                    <?php else: ?>
                         <th>Por fecha</th>
 
                     <?php endif;?>
                     <th><?php echo date("d/m/Y", strtotime($l['date_start'])); ?></th>
                     <th><?php
-                        if($l['date_end'] != ''){
-                                                    echo date("d/m/Y", strtotime($l['date_end']));
+if ($l['date_end'] != '') {
+    $finalizada = true;
+    echo date("d/m/Y", strtotime($l['date_end']));
 
-                        }; ?></th>
+}
+;?></th>
+                         <th><?php
+if ($finalizada) {
+
+    echo '<label class="label label-success">Terminada</label>';
+
+}else{
+  echo '<label class="label label-warning">En renta</label>';
+}
+;?></th>
 
 
                 </tr>
@@ -130,7 +142,7 @@ $imagenes = ProductData::getBySerieOnly($serie);
             </table>
             <hr>
         </div>
-        <?php else:?>
+        <?php else: ?>
         <div>
             <h3>No existen productos en renta</h3>
         </div>
@@ -223,7 +235,7 @@ $(document).ready(function(){
 });
 </script>
 
-<?php if(isset($_SESSION["errors"])):?>
+<?php if (isset($_SESSION["errors"])): ?>
 <h2>Errores</h2>
 <p></p>
 <table class="table table-bordered table-hover">
@@ -232,77 +244,79 @@ $(document).ready(function(){
 	<th>Producto</th>
 	<th>Mensaje</th>
 </tr>
-<?php foreach ($_SESSION["errors"]  as $error):
-$product = ProductData::getById($error["product_id"]);
-?>
-<tr class="danger">
-	<td><?php echo $product->id; ?></td>
-	<td><?php echo $product->name; ?></td>
-	<td><b><?php echo $error["message"]; ?></b></td>
-</tr>
+<?php foreach ($_SESSION["errors"] as $error):
+    $product = ProductData::getById($error["product_id"]);
+    ?>
+	<tr class="danger">
+		<td><?php echo $product->id; ?></td>
+		<td><?php echo $product->name; ?></td>
+		<td><b><?php echo $error["message"]; ?></b></td>
+	</tr>
 
-<?php endforeach; ?>
+	<?php endforeach;?>
 </table>
 <?php
 unset($_SESSION["errors"]);
- endif; ?>
+endif;?>
 
 
 <!--- Carrito de compras :) -->
-<?php if(isset($_SESSION["cart"])):
-$total = 0;
-?>
-<h2>Lista de venta</h2>
-<div class="box box-primary">
-<table class="table table-bordered table-hover">
-<thead>
-	<th style="width:30px;">Codigo</th>
-	<th style="width:30px;">Cantidad</th>
-	<th style="width:30px;">Unidad</th>
-	<th>Producto</th>
-	<th style="width:30px;">Precio Unitario</th>
-	<th style="width:30px;">Precio Total</th>
-	<th ></th>
-</thead>
-<?php foreach($_SESSION["cart"] as $p):
-$product = ProductData::getById($p["product_id"]);
-?>
-<tr >
-	<td><?php echo $product->id; ?></td>
-	<td ><?php echo $p["q"]; ?></td>
-	<td><?php echo $product->unit; ?></td>
-	<td><?php echo $product->name; ?></td>
-	<td><b>$ <?php echo number_format($product->price_out,2,".",","); ?></b></td>
-	<td><b>$ <?php  $pt = $product->price_out*$p["q"]; $total +=$pt; echo number_format($pt,2,".",","); ?></b></td>
-	<td style="width:30px;"><a href="index.php?view=clearcart&product_id=<?php echo $product->id; ?>" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></td>
-</tr>
+<?php if (isset($_SESSION["cart"])):
+    $total = 0;
+    ?>
+	<h2>Lista de venta</h2>
+	<div class="box box-primary">
+	<table class="table table-bordered table-hover">
+	<thead>
+		<th style="width:30px;">Codigo</th>
+		<th style="width:30px;">Cantidad</th>
+		<th style="width:30px;">Unidad</th>
+		<th>Producto</th>
+		<th style="width:30px;">Precio Unitario</th>
+		<th style="width:30px;">Precio Total</th>
+		<th ></th>
+	</thead>
+	<?php foreach ($_SESSION["cart"] as $p):
+        $product = ProductData::getById($p["product_id"]);
+        ?>
+		<tr >
+			<td><?php echo $product->id; ?></td>
+			<td ><?php echo $p["q"]; ?></td>
+			<td><?php echo $product->unit; ?></td>
+			<td><?php echo $product->name; ?></td>
+			<td><b>$ <?php echo number_format($product->price_out, 2, ".", ","); ?></b></td>
+			<td><b>$ <?php $pt = $product->price_out * $p["q"];
+        $total += $pt;
+        echo number_format($pt, 2, ".", ",");?></b></td>
+			<td style="width:30px;"><a href="index.php?view=clearcart&product_id=<?php echo $product->id; ?>" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Cancelar</a></td>
+		</tr>
 
-<?php endforeach; ?>
-</table>
-</div>
-<form method="post" class="form-horizontal" id="processsell" action="index.php?view=processsell">
-<h2>Resumen</h2>
-<div class="row">
-<div class="col-md-3">
-    <label class="control-label">Almacen</label>
-    <div class="col-lg-12">
-    <h4 class=""><?php 
+		<?php endforeach;?>
+	</table>
+	</div>
+	<form method="post" class="form-horizontal" id="processsell" action="index.php?view=processsell">
+	<h2>Resumen</h2>
+	<div class="row">
+	<div class="col-md-3">
+	    <label class="control-label">Almacen</label>
+	    <div class="col-lg-12">
+	    <h4 class=""><?php
     echo StockData::getPrincipal()->name;
     ?></h4>
-    </div>
-  </div>
+	    </div>
+	  </div>
 
-<div class="col-md-3">
-    <label class="control-label">Cliente</label>
-    <div class="col-lg-12">
-    <?php 
-$clients = PersonData::getClients();
+	<div class="col-md-3">
+	    <label class="control-label">Cliente</label>
+	    <div class="col-lg-12">
+	    <?php
+    $clients = PersonData::getClients();
     ?>
-    <select name="client_id" id="client_id" class="form-control">
-    <option value="">-- NINGUNO --</option>
-    <?php foreach($clients as $client):?>
-    	<option value="<?php echo $client->id;?>"><?php echo $client->name." ".$client->lastname;?></option>
-    <?php endforeach;?>
+	    <select name="client_id" id="client_id" class="form-control">
+	    <option value="">-- NINGUNO --</option>
+	    <?php foreach ($clients as $client): ?>
+	    	<option value="<?php echo $client->id; ?>"><?php echo $client->name . " " . $client->lastname; ?></option>
+	    <?php endforeach;?>
     	</select>
     </div>
   </div>
@@ -324,12 +338,12 @@ $clients = PersonData::getClients();
 <div class="col-md-6">
     <label class="control-label">Pago</label>
     <div class="col-lg-12">
-    <?php 
+    <?php
 $clients = PData::getAll();
-    ?>
+?>
     <select name="p_id" id="p_id" class="form-control">
-    <?php foreach($clients as $client):?>
-    	<option value="<?php echo $client->id;?>"><?php echo $client->name;?></option>
+    <?php foreach ($clients as $client): ?>
+    	<option value="<?php echo $client->id; ?>"><?php echo $client->name; ?></option>
     <?php endforeach;?>
     	</select>
     </div>
@@ -338,12 +352,12 @@ $clients = PData::getAll();
     <label class="control-label">Entrega</label>
 
     <div class="col-lg-12">
-    <?php 
+    <?php
 $clients = DData::getAll();
-    ?>
+?>
     <select name="d_id" class="form-control">
-    <?php foreach($clients as $client):?>
-    	<option value="<?php echo $client->id;?>"><?php echo $client->name;?></option>
+    <?php foreach ($clients as $client): ?>
+    	<option value="<?php echo $client->id; ?>"><?php echo $client->name; ?></option>
     <?php endforeach;?>
     	</select>
     </div>
@@ -361,15 +375,15 @@ $clients = DData::getAll();
 <table class="table table-bordered">
 <tr>
 	<td><p>Subtotal</p></td>
-	<td><p><b>$ <?php echo number_format($total*(1 - ($iva_val/100) ),2,'.',','); ?></b></p></td>
+	<td><p><b>$ <?php echo number_format($total * (1 - ($iva_val / 100)), 2, '.', ','); ?></b></p></td>
 </tr>
 <tr>
-	<td><p><?php echo $iva_name." (".$iva_val."%) ";?></p></td>
-	<td><p><b>$ <?php echo number_format($total*($iva_val/100),2,'.',','); ?></b></p></td>
+	<td><p><?php echo $iva_name . " (" . $iva_val . "%) "; ?></p></td>
+	<td><p><b>$ <?php echo number_format($total * ($iva_val / 100), 2, '.', ','); ?></b></p></td>
 </tr>
 <tr>
 	<td><p>Total</p></td>
-	<td><p><b>$ <?php echo number_format($total,2,'.',','); ?></b></p></td>
+	<td><p><b>$ <?php echo number_format($total, 2, '.', ','); ?></b></p></td>
 </tr>
 
 </table>
@@ -402,12 +416,12 @@ $clients = DData::getAll();
 		money = $("#money").val();
     if(money!=""){
     if(p!=4){
-		if(money<(<?php echo $total;?>-discount)){
+		if(money<(<?php echo $total; ?>-discount)){
 			alert("Efectivo insificiente!");
 			e.preventDefault();
 		}else{
 			if(discount==""){ discount=0;}
-			go = confirm("Cambio: $"+(money-(<?php echo $total;?>-discount ) ) );
+			go = confirm("Cambio: $"+(money-(<?php echo $total; ?>-discount ) ) );
 			if(go){}
 				else{e.preventDefault();}
 		}
@@ -415,11 +429,11 @@ $clients = DData::getAll();
       if(client!=""){
         // procedemos
         cli=null;
-        <?php 
-        foreach(PersonData::getClients() as $cli){
-          echo " cli[$cli->id]=$cli->has_credit ;";
-        }
-        ?>
+        <?php
+foreach (PersonData::getClients() as $cli) {
+    echo " cli[$cli->id]=$cli->has_credit ;";
+}
+?>
 
         if(cli[client]==1){
           // si el cliente tiene credito entonces procedemos a hacer la venta a credito :D
@@ -431,7 +445,7 @@ $clients = DData::getAll();
 
         }
       }else{
-        // 
+        //
         alert("Debe seleccionar un cliente!");
         e.preventDefault();
       }
@@ -446,7 +460,7 @@ $clients = DData::getAll();
 </div>
 </div>
 
-<?php endif; ?>
+<?php endif;?>
 
 </div>
 </section>

@@ -189,10 +189,10 @@ echo $u->name . " " . $u->lastname;?>
              <?php if (Core::$user->kind == 1): ?>
             <li><a href="./?view=categories"><i class='fa fa-database'></i>Categorias</a></li>
              <?php endif;?>
-              <?php if (Core::$user->kind == 1 || Core::$user->kind == 3 || Core::$user->kind == 4): ?>
+              <?php if (Core::$user->kind == 1 || Core::$user->kind == 3 || Core::$user->kind == 4 || Core::$user->kind == 5): ?>
             <li><a href="./?view=products"><i class='fa fa-truck'></i>Almacen</a></li>
              <?php endif;?>
-              <?php if (Core::$user->kind == 1 || Core::$user->kind == 2): ?>
+              <?php if (Core::$user->kind == 1 || Core::$user->kind == 2 || Core::$user->kind == 5): ?>
             <li><a href="./?view=products&is_workshop=1"><i class='fa fa-truck'></i>Taller</a></li>
              <?php endif;?>
              <?php if (Core::$user->kind == 1 || Core::$user->kind == 3): ?>
@@ -241,7 +241,7 @@ echo $u->name . " " . $u->lastname;?>
         <div class="pull-right hidden-xs">
           <b>Version</b> 6.1
         </div>
-        <strong>Copyright &copy; 2018 <a href="http://vmcomp.mx/" target="_blank">VMComp</a></strong>
+        <strong>Copyright &copy; <?php echo date('Y')?> <a href="http://vmcomp.mx/" target="_blank">VMComp</a></strong>
       </footer>
       <?php else: ?>
         <?php if (isset($_GET["view"]) && $_GET["view"] == "clientaccess"): ?>
